@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 export default function ApplicationStatus() {
+  const { user, logout } = useAuth();
   return (
     <>
       
@@ -43,10 +45,13 @@ export default function ApplicationStatus() {
 <span className="material-symbols-outlined">account_circle</span>
 <span className="font-label-md text-label-md">Account</span>
 </div>
-<div className="group cursor-pointer active:scale-95 flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all">
+<button
+  onClick={logout}
+  className="w-full text-left group cursor-pointer active:scale-95 flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all"
+>
 <span className="material-symbols-outlined">logout</span>
 <span className="font-label-md text-label-md">Logout</span>
-</div>
+</button>
 </div>
 </aside>
 {/* Main Content Canvas */}
@@ -70,7 +75,7 @@ export default function ApplicationStatus() {
 <div className="w-8 h-8 rounded-full overflow-hidden bg-surface-container">
 <img className="w-full h-full object-cover" data-alt="A professional studio headshot of a smiling woman in business casual attire, with soft focus lighting and a neutral minimalist gray background, embodying a high-end corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwFvOUTTvCmioXfls2r4aiPnh-Pmbbf2P5r-JDEfTSwvBWlTexfZAGjAZgdaKWM7_p-AUsAr_LfRc4I3y0uL6N8qmUR0KTlvs2LhiFN3p4eCIrHivY3v8RUInJXqUheoNM7mtX_3Ctkbawk_jBRr_zh_lfgTVaZiDktpv_9mf-riFG0CzwyIZRHJkeqGCvmYxKH6VQufQH47S4z9sMJ5qwFt7k0tQYZ6VD818vQOzADVN0rdzFdtx9OYV2ac7FtWT04TsdkZiFtcOl"/>
 </div>
-<span className="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Alex Rivera</span>
+<span className="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">{user?.fullName || 'User'}</span>
 </div>
 </div>
 </header>

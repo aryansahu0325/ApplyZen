@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 export default function CompanyProfile() {
+  const { user, logout } = useAuth();
   return (
     <>
       
@@ -48,10 +50,13 @@ export default function CompanyProfile() {
 <span className="material-symbols-outlined">help</span>
 <span className="font-label-md text-label-md">Help Center</span>
 </Link>
-<a className="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all" href="#">
+<button 
+  onClick={logout}
+  className="w-full flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all text-left text-error"
+>
 <span className="material-symbols-outlined">logout</span>
 <span className="font-label-md text-label-md">Log Out</span>
-</a>
+</button>
 </div>
 </aside>
 {/* Main Content Area */}
@@ -76,7 +81,7 @@ export default function CompanyProfile() {
 <div className="w-8 h-8 rounded-full bg-primary-container overflow-hidden">
 <img className="w-full h-full object-cover" data-alt="A professional portrait of a tech company executive, headshot style, clean studio lighting with a neutral gray background. The subject is wearing modern professional attire, conveying confidence and accessibility. The visual style is crisp and high-resolution, fitting a premium SaaS dashboard aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAevSlOVkubvy07PqMYcyCwhhElPUcPYpivdsf8hb9qjLLngpRvPDJEUDeg5qaFgsFO0H7bOxYTUXHrQzusqWtURDyADJpxAqyvNmVOMFP9YW0QzYHqWll9DLeNHlcxGNoSnjJ8PK4j0GwcxqI0KODkvn1yvUuktolwEKZRY8zzz20jX-36j_Zvq1XvfB4jAtlL7EBr3esg4AtX1iOSKQb6sFXzX44FZJ1OBNNwQFRwqwHOB1-nFdoumeuSamwiQT9U49UeXQa2pZBS"/>
 </div>
-<span className="font-label-md text-label-md font-bold">Alex Rivera</span>
+<span className="font-label-md text-label-md font-bold">{user?.fullName || 'User'}</span>
 </div>
 </div>
 </header>

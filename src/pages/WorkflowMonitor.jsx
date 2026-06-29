@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 export default function WorkflowMonitor() {
+  const { user, logout } = useAuth();
   return (
     <>
       
@@ -50,6 +52,13 @@ export default function WorkflowMonitor() {
 <span className="material-symbols-outlined">help</span>
 <span className="font-label-sm">Help</span>
 </Link>
+<button
+  onClick={logout}
+  className="w-full flex items-center gap-md px-lg py-sm text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg text-left"
+>
+  <span className="material-symbols-outlined">logout</span>
+  <span className="font-label-sm">Log Out</span>
+</button>
 </div>
 </div>
 </aside>
@@ -72,7 +81,7 @@ export default function WorkflowMonitor() {
 <div className="h-8 w-[1px] bg-outline-variant mx-sm"></div>
 <div className="flex items-center gap-sm">
 <div className="text-right hidden sm:block">
-<p className="font-label-md text-on-surface">Alex Thompson</p>
+<p className="font-label-md text-on-surface">{user?.fullName || 'User'}</p>
 <p className="font-label-sm text-on-surface-variant">Pro Plan</p>
 </div>
 <div className="w-10 h-10 rounded-full border border-outline-variant overflow-hidden">

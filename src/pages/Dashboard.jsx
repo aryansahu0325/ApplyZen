@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 export default function Dashboard() {
+  const { user, logout } = useAuth();
+  const firstName = user?.fullName ? user.fullName.split(' ')[0] : 'User';
   return (
     <>
       
@@ -75,6 +78,13 @@ export default function Dashboard() {
 <span className="material-symbols-outlined">help</span>
 <span className="font-body-md">Help</span>
 </Link>
+<button 
+  onClick={logout}
+  className="w-full flex items-center gap-md px-lg py-md text-on-surface-variant hover:bg-surface-container transition-colors rounded-lg text-left"
+>
+  <span className="material-symbols-outlined">logout</span>
+  <span className="font-body-md">Log Out</span>
+</button>
 </div>
 </div>
 </aside>
@@ -99,7 +109,7 @@ export default function Dashboard() {
 <div className="flex items-center gap-md cursor-pointer hover:bg-surface-container-high p-xs pr-md rounded-full transition-colors">
 <div className="w-10 h-10 rounded-full bg-cover bg-center" data-alt="Professional corporate headshot of a young male professional named Aman, smiling confidently in front of a neutral office background, clean modern lighting." style={{ "backgroundImage": "url(\"https://lh3.googleusercontent.com/aida-public/AB6AXuBdOpaLAVQ2ZkwDPXAK0-pzWy_KVhOXoJcoCJS82j965NeP7qwGd5YEjYh_QXOb-NKWjbHFQ9oOYL4fc9FIJTlTAgysmSm-3ZVSKrfe5jLjQ87ELTEDbwWj_3gMzAduhhGJepS0TOlxZiK6iGOkoAXyUDSwcrPW7tB4N0mraGkEh0VXTUKkbNmYZyRQH0x_NwDEuDMxc6vI7bjNgSwUL0Dd4ZWaOSi1YUVIWMXaiBao1GADF_V0MR7z8UYd9M9nHuvT_p1iCUTKzIkx\")" }}></div>
 <div className="hidden lg:block">
-<p className="text-label-md font-bold text-on-surface leading-tight">Aman Kumar</p>
+<p className="text-label-md font-bold text-on-surface leading-tight">{user?.fullName || 'User'}</p>
 <p className="text-label-sm text-outline leading-tight">Premium Plan</p>
 </div>
 </div>
@@ -110,7 +120,7 @@ export default function Dashboard() {
 {/* Welcome Header */}
 <div className="flex justify-between items-end mb-sm">
 <div>
-<h2 className="font-display text-headline-lg text-on-surface mb-xs"><div><br /></div>Good morning, Aryan! 👋</h2>
+<h2 className="font-display text-headline-lg text-on-surface mb-xs"><div><br /></div>Good morning, {firstName}! 👋</h2>
 <p className="font-body-lg text-outline">Here's what's happening with your career journey today.</p>
 </div>
 <button className="bg-primary text-white font-bold py-sm px-xl rounded-xl flex items-center gap-sm shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform active:scale-95">
@@ -324,7 +334,7 @@ export default function Dashboard() {
 <h4 className="font-headline-md">AI Assistant</h4>
 </div>
 <div className="bg-white/80 p-sm rounded-xl mb-md border border-outline-variant/30 text-label-md leading-relaxed">
-                            Hi Aman! 👋 I found <span className="font-bold text-indigo-600">5 new jobs</span> for you.
+                            Hi {firstName}! 👋 I found <span className="font-bold text-indigo-600">5 new jobs</span> for you.
                         </div>
 <button className="w-full bg-indigo-600 text-white font-bold py-sm rounded-xl mb-md hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-600/20">
                             Review Now

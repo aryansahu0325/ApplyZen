@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 export default function Analytics() {
+  const { logout } = useAuth();
   return (
     <>
       
@@ -45,10 +47,13 @@ export default function Analytics() {
 <span className="material-symbols-outlined">help</span>
 <span className="text-label-md font-label-md">Help Center</span>
 </div>
-<div className="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low rounded-lg cursor-pointer transition-all">
+<button
+  onClick={logout}
+  className="w-full text-left flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low rounded-lg cursor-pointer transition-all text-error"
+>
 <span className="material-symbols-outlined">logout</span>
 <span className="text-label-md font-label-md">Log Out</span>
-</div>
+</button>
 </div>
 </div>
 </aside>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import { 
   Search, 
   Bell, 
@@ -27,6 +28,7 @@ import {
 } from 'lucide-react';
 
 export default function ProductDetail() {
+  const { user, logout } = useAuth();
   const { id } = useParams();
   const [activeTab, setActiveTab] = useState('overview');
 
@@ -164,10 +166,13 @@ export default function ProductDetail() {
             <HelpCircle className="w-5 h-5 text-slate-500" />
             <span className="text-sm font-medium">Help Center</span>
           </Link>
-          <a className="flex items-center gap-3 p-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all" href="#">
+          <button 
+            onClick={logout}
+            className="w-full text-left flex items-center gap-3 p-3 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-all"
+          >
             <LogOut className="w-5 h-5 text-slate-500" />
             <span className="text-sm font-medium">Log Out</span>
-          </a>
+          </button>
         </div>
       </aside>
 
@@ -202,7 +207,7 @@ export default function ProductDetail() {
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuAevSlOVkubvy07PqMYcyCwhhElPUcPYpivdsf8hb9qjLLngpRvPDJEUDeg5qaFgsFO0H7bOxYTUXHrQzusqWtURDyADJpxAqyvNmVOMFP9YW0QzYHqWll9DLeNHlcxGNoSnjJ8PK4j0GwcxqI0KODkvn1yvUuktolwEKZRY8zzz20jX-36j_Zvq1XvfB4jAtlL7EBr3esg4AtX1iOSKQb6sFXzX44FZJ1OBNNwQFRwqwHOB1-nFdoumeuSamwiQT9U49UeXQa2pZBS" 
                 />
               </div>
-              <span className="text-sm font-semibold">Alex Rivera</span>
+              <span className="text-sm font-semibold">{user?.fullName || 'User'}</span>
             </div>
           </div>
         </header>

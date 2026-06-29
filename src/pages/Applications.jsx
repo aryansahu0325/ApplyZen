@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 export default function Applications() {
+  const { logout } = useAuth();
   return (
     <>
       
@@ -48,10 +50,13 @@ export default function Applications() {
 <span className="material-symbols-outlined text-[20px]">help</span>
 <span className="text-label-md font-label-md">Help Center</span>
 </Link>
-<a className="flex items-center gap-md px-md py-2 text-on-surface-variant hover:bg-surface-container-low transition-all rounded-lg" href="#">
+<button 
+  onClick={logout}
+  className="w-full flex items-center gap-md px-md py-2 text-on-surface-variant hover:bg-surface-container-low transition-all rounded-lg text-left text-error"
+>
 <span className="material-symbols-outlined text-[20px]">logout</span>
 <span className="text-label-md font-label-md">Log Out</span>
-</a>
+</button>
 </div>
 </div>
 </aside>

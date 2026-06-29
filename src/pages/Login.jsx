@@ -1,7 +1,34 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    setIsSubmitting(true);
+
+    try {
+      const success = login(email, password);
+      if (success) {
+        navigate('/dashboard');
+      } else {
+        setError('Invalid email or password. Please check your credentials and try again.');
+      }
+    } catch (err) {
+      setError('An unexpected error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <>
       {/* Split Screen Layout */}
@@ -31,6 +58,15 @@ export default function Login() {
               <h2 className="text-xl font-bold text-on-surface">Welcome back</h2>
               <p className="text-sm text-on-surface-variant">Enter your details to access your dashboard.</p>
             </div>
+
+            {/* Error Message Alert */}
+            {error && (
+              <div className="p-3.5 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm flex items-center gap-2.5 shadow-sm animate-pulse-subtle">
+                <span className="material-symbols-outlined text-[20px] text-red-500 shrink-0">error</span>
+                <span className="leading-tight font-medium">{error}</span>
+              </div>
+            )}
+
             {/* Social Logins */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <button className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg border border-outline-variant bg-surface hover:bg-surface-container-low hover:border-outline transition-colors text-on-surface text-sm font-semibold h-[40px]" type="button">
@@ -48,12 +84,21 @@ export default function Login() {
               <div className="h-px bg-outline-variant flex-1"></div>
             </div>
             {/* Form */}
-            <form action="#" className="space-y-4" method="POST">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-1.5">
                 <label className="block text-sm font-semibold text-on-surface" htmlFor="email">Email Address</label>
                 <div className="relative">
                   <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px] pointer-events-none">mail</span>
-                  <input className="w-full pl-10 pr-4 py-2.5 h-[40px] bg-surface border border-outline-variant rounded-lg text-on-surface text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-shadow" id="email" name="email" placeholder="you@company.com" required type="email" />
+                  <input
+                    className="w-full pl-10 pr-4 py-2.5 h-[40px] bg-surface border border-outline-variant rounded-lg text-on-surface text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-shadow"
+                    id="email"
+                    name="email"
+                    placeholder="you@company.com"
+                    required
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                 </div>
               </div>
               <div className="space-y-1.5">
@@ -63,12 +108,25 @@ export default function Login() {
                 </div>
                 <div className="relative">
                   <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px] pointer-events-none">lock</span>
-                  <input className="w-full pl-10 pr-4 py-2.5 h-[40px] bg-surface border border-outline-variant rounded-lg text-on-surface text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-shadow" id="password" name="password" placeholder="••••••••" required type="password" />
+                  <input
+                    className="w-full pl-10 pr-4 py-2.5 h-[40px] bg-surface border border-outline-variant rounded-lg text-on-surface text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-shadow"
+                    id="password"
+                    name="password"
+                    placeholder="••••••••"
+                    required
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
                 </div>
               </div>
               <div className="pt-2">
-                <button className="w-full flex items-center justify-center h-[40px] bg-primary hover:bg-primary/90 text-white font-semibold text-sm rounded-lg transition-colors shadow-sm" type="submit">
-                  Sign In
+                <button
+                  className="w-full flex items-center justify-center h-[40px] bg-primary hover:bg-primary/90 text-white font-semibold text-sm rounded-lg transition-colors shadow-sm disabled:opacity-50"
+                  type="submit"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? 'Signing In...' : 'Sign In'}
                 </button>
               </div>
             </form>
@@ -82,3 +140,4 @@ export default function Login() {
     </>
   );
 }
+

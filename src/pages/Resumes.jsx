@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 export default function Resumes() {
+  const { user, logout } = useAuth();
   return (
     <>
       
@@ -43,10 +45,13 @@ export default function Resumes() {
 <span className="material-symbols-outlined">help</span>
 <span className="text-label-md font-label-md">Help Center</span>
 </Link>
-<a className="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-low transition-all duration-150 rounded-lg text-error" href="#">
+<button 
+  onClick={logout}
+  className="w-full flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-low transition-all duration-150 rounded-lg text-error text-left"
+>
 <span className="material-symbols-outlined">logout</span>
 <span className="text-label-md font-label-md">Log Out</span>
-</a>
+</button>
 </div>
 </aside>
 {/* Main Content Area */}
@@ -73,7 +78,7 @@ export default function Resumes() {
 <div className="h-8 w-[1px] bg-outline-variant mx-1"></div>
 <div className="flex items-center gap-2 cursor-pointer p-1 pr-3 hover:bg-surface-container-high rounded-full transition-colors">
 <img className="w-8 h-8 rounded-full bg-outline-variant object-cover" data-alt="A professional studio headshot of a young female tech professional with a friendly smile, wearing a modern gray blazer, against a clean minimalist soft-lit background, high-end corporate photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_EH5E8a4zgPJLKoUiaIKbem1YwkmzALqV78aBamQJQQ6dpq0wHdjaD43_lFOaJfGxNESLkP1qo_6NQRpg3U-2qzbMkbI20TDO8rw1p55Hbrap8-ohU9MB5DN-Y04EvMeRIEkBYJpqzPuVfxyctGrOYmtgAfGSBB-O7pQG1CaI0SNIUqDjBueBST98YXt2SJjxhoVVBx1P0cCzgWo6MBTVsvDUrwH3eiC1kKqySw317oqz8cBKcyBdv3G7stDDLpuQKnkUGAEwL2im"/>
-<span className="hidden lg:block text-label-md font-label-md text-on-surface">Alex Rivera</span>
+<span className="hidden lg:block text-label-md font-label-md text-on-surface">{user?.fullName || 'User'}</span>
 </div>
 </div>
 </header>
