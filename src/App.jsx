@@ -8,12 +8,14 @@ import Resumes from './pages/Resumes';
 import Analytics from './pages/Analytics';
 import WorkflowMonitor from './pages/WorkflowMonitor';
 import CompanyProfile from './pages/CompanyProfile';
+import UserProfile from './pages/UserProfile';
 import ApplicationStatus from './pages/ApplicationStatus';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import EnhancedLanding from './pages/EnhancedLanding';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
+import Layout from './components/Layout';
 
 function App() {
   return (
@@ -36,47 +38,22 @@ function App() {
             </ProtectedRoute>
           } />
 
-          {/* Protected Dashboard/App Routes */}
-          <Route path="/dashboard" element={
+          {/* Protected Dashboard/App Routes with common Layout */}
+          <Route element={
             <ProtectedRoute>
-              <Dashboard />
+              <Layout />
             </ProtectedRoute>
-          } />
-          <Route path="/product/:id" element={
-            <ProtectedRoute>
-              <ProductDetail />
-            </ProtectedRoute>
-          } />
-          <Route path="/applications" element={
-            <ProtectedRoute>
-              <Applications />
-            </ProtectedRoute>
-          } />
-          <Route path="/resumes" element={
-            <ProtectedRoute>
-              <Resumes />
-            </ProtectedRoute>
-          } />
-          <Route path="/analytics" element={
-            <ProtectedRoute>
-              <Analytics />
-            </ProtectedRoute>
-          } />
-          <Route path="/workflow" element={
-            <ProtectedRoute>
-              <WorkflowMonitor />
-            </ProtectedRoute>
-          } />
-          <Route path="/company-profile" element={
-            <ProtectedRoute>
-              <CompanyProfile />
-            </ProtectedRoute>
-          } />
-          <Route path="/status" element={
-            <ProtectedRoute>
-              <ApplicationStatus />
-            </ProtectedRoute>
-          } />
+          }>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/applications" element={<Applications />} />
+            <Route path="/resumes" element={<Resumes />} />
+            <Route path="/analytics" element={<Analytics />} />
+            <Route path="/workflow" element={<WorkflowMonitor />} />
+            <Route path="/company-profile" element={<CompanyProfile />} />
+            <Route path="/career-profile" element={<UserProfile />} />
+            <Route path="/status" element={<ApplicationStatus />} />
+          </Route>
         </Routes>
       </AuthProvider>
     </Router>

@@ -1,0 +1,418 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Profile | ApplyZen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#151c27",
+                    "tertiary-container": "#fc7c78",
+                    "surface-container-high": "#e2e8f8",
+                    "surface-container": "#e7eefe",
+                    "secondary-fixed-dim": "#95d3ba",
+                    "inverse-primary": "#4edea3",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#d3daea",
+                    "surface-variant": "#dce2f3",
+                    "inverse-on-surface": "#ebf1ff",
+                    "primary-container": "#10b981",
+                    "on-secondary-fixed": "#002117",
+                    "on-primary-fixed-variant": "#005236",
+                    "surface-container-low": "#f0f3ff",
+                    "surface": "#f9f9ff",
+                    "secondary": "#2b6954",
+                    "on-primary-container": "#00422b",
+                    "on-tertiary-container": "#711419",
+                    "on-tertiary-fixed": "#410005",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#a43a3a",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#4edea3",
+                    "outline-variant": "#bbcabf",
+                    "on-primary-fixed": "#002113",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#6ffbbe",
+                    "inverse-surface": "#2a313d",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "on-surface-variant": "#3c4a42",
+                    "on-surface": "#151c27",
+                    "on-error": "#ffffff",
+                    "outline": "#6c7a71",
+                    "secondary-container": "#adedd3",
+                    "tertiary-fixed": "#ffdad7",
+                    "primary": "#006c49",
+                    "surface-tint": "#006c49",
+                    "on-secondary-fixed-variant": "#0b513d",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#f9f9ff",
+                    "surface-container-highest": "#dce2f3",
+                    "on-tertiary-fixed-variant": "#842225",
+                    "background": "#f9f9ff",
+                    "secondary-fixed": "#b0f0d6",
+                    "on-secondary-container": "#306d58"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "2xl": "48px",
+                    "base": "4px",
+                    "xl": "32px",
+                    "gutter": "20px",
+                    "lg": "24px",
+                    "container-max": "1280px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "display": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["30px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f9f9ff; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+            font-size: 20px;
+        }
+        .sidebar-active {
+            font-weight: 700;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #d1d5db; }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- Sidebar Navigation (Mandatory Shared Component) -->
+<aside class="fixed left-0 top-0 h-full w-[280px] bg-surface border-r border-outline-variant flex flex-col p-lg gap-xl z-50">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">bolt</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">ApplyZen</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-70">AI Career Automation</p>
+</div>
+</div>
+<button class="w-full py-md px-lg bg-primary text-on-primary rounded-lg font-bold flex items-center justify-center gap-sm hover:opacity-90 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">add_circle</span>
+            New Application
+        </button>
+<nav class="flex-1 flex flex-col gap-xs">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">assignment_turned_in</span>
+<span class="font-label-md text-label-md">Applications</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-md text-label-md">Resumes</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">account_circle</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-xs">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-md text-label-md">Help</span>
+</a>
+</div>
+</aside>
+<!-- Top Navigation (Mandatory Shared Component) -->
+<header class="fixed top-0 right-0 w-[calc(100%-280px)] h-16 bg-surface border-b border-outline-variant flex justify-between items-center px-xl z-40">
+<div class="flex items-center bg-surface-container-low px-md py-xs rounded-full border border-outline-variant w-80">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md font-body-md w-full" placeholder="Search applications..." type="text">
+</div>
+<div class="flex items-center gap-lg">
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-xs">
+<span class="font-label-sm text-label-sm">Feedback</span>
+</button>
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant mx-xs"></div>
+<div class="flex items-center gap-sm">
+<img class="w-8 h-8 rounded-full border border-outline-variant" data-alt="A professional headshot of a modern corporate professional in a brightly lit, minimalist office environment. The subject has a confident expression, wearing a neutral-toned smart-casual outfit. The lighting is soft and even, highlighting the clean and professional SaaS aesthetic of the platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLkSbEgUou0RNOeyqDmmMqgX1bu5oelyRMn1bpabK05Z6e6BlNLGVv-1szYezGAm0uA4Y3TNnATBjFyduxGj-AqemYd74teH5nwaZPlrYzHZxq2kqkdvOfHvwuGsIOHlf70-4W__HFJTOuUHgkBe7Pf0GK6W9OeDKWWCerR3PAPIqSjp3TZMqPyLAuoWubMxJwm37Ikoev-he1beFbrtwTVagGdWVN83jDT3ybGHekA7gsO9s9ETLZcuUsccQHqJUDL15eA7RmeQiN">
+<span class="font-label-md text-label-md font-bold">Aman Kumar</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[280px] pt-16 h-screen overflow-y-auto custom-scrollbar">
+<div class="max-w-container-max mx-auto p-xl space-y-xl">
+<!-- Hero / Profile Header -->
+<section class="bg-white rounded-xl border border-outline-variant p-lg flex flex-col md:flex-row items-center justify-between gap-lg relative overflow-hidden">
+<div class="absolute top-0 right-0 p-lg">
+<button class="px-lg py-sm bg-primary text-on-primary rounded-lg font-bold flex items-center gap-sm hover:opacity-90 transition-all shadow-sm">
+<span class="material-symbols-outlined">edit</span>
+                        Edit Profile
+                    </button>
+</div>
+<div class="flex flex-col md:flex-row items-center gap-xl">
+<div class="relative group">
+<img class="w-32 h-32 rounded-full border-4 border-surface-container object-cover" data-alt="Close up portrait of Aman Kumar, a Senior Product Designer, looking friendly and professional. He is against a soft blurred background of a modern green studio. The lighting is warm and clear, suggesting a high-performance career environment. The image uses a natural color palette with emerald green undertones to match the ApplyZen brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWechQuRFtBEvnmahFJj-H9FdAy0lfVc8ZDQ7cNdWcbtzAcZjI_9t9QCyYesyNjexgXL7LxKKgVwyQL-rUF2QeI_nU9u_pMlTQ11TWcYyI-FUf_8eEO2k6yg-PF-lb1dKjTaoVVeqa8I9Ke8W5ZOX5jnnKcDWu-MFk5a4B6-aCJPKb992B94exxp0ar2A8LgSUO6erPeTX6aDFbihKPxkZ9H9OnZ7i2j3NZ0uIdLFB4qa-WP6DlifiWgsmn2q_IMF0LdRrPdIPemLq">
+<div class="absolute bottom-0 right-0 bg-primary text-on-primary p-xs rounded-full border-2 border-white cursor-pointer hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[16px]">photo_camera</span>
+</div>
+</div>
+<div class="text-center md:text-left">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Aman Kumar</h2>
+<p class="font-body-lg text-body-lg text-primary font-medium">Senior Product Designer</p>
+<div class="flex flex-wrap justify-center md:justify-start gap-md mt-md">
+<div class="flex items-center gap-xs text-on-surface-variant font-label-sm">
+<span class="material-symbols-outlined text-outline">location_on</span>
+                                San Francisco, CA
+                            </div>
+<div class="flex items-center gap-xs text-on-surface-variant font-label-sm">
+<span class="material-symbols-outlined text-outline">mail</span>
+                                aman.kumar@example.com
+                            </div>
+<div class="flex items-center gap-xs text-on-surface-variant font-label-sm">
+<span class="material-symbols-outlined text-outline">verified</span>
+                                Profile Verified
+                            </div>
+</div>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-xl">
+<!-- Personal & Professional Info (Bento Style) -->
+<div class="lg:col-span-2 space-y-xl">
+<!-- Personal Info -->
+<div class="bg-white rounded-xl border border-outline-variant p-lg">
+<div class="flex items-center justify-between mb-lg border-b border-outline-variant pb-md">
+<h3 class="font-headline-md text-headline-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">person</span>
+                                Personal Information
+                            </h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-xl">
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Full Name</label>
+<p class="font-body-lg text-body-lg text-on-surface font-medium">Aman Kumar</p>
+</div>
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Email Address</label>
+<p class="font-body-lg text-body-lg text-on-surface font-medium">aman.kumar@example.com</p>
+</div>
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Phone Number</label>
+<p class="font-body-lg text-body-lg text-on-surface font-medium">+1 (555) 0123-4567</p>
+</div>
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Location</label>
+<p class="font-body-lg text-body-lg text-on-surface font-medium">San Francisco, CA, USA</p>
+</div>
+<div class="md:col-span-2 space-y-xs">
+<label class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Bio</label>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                                    I am a results-driven Senior Product Designer with over 8 years of experience building scalable design systems and user-centric mobile applications. Passionate about AI integration in everyday workflows and bridging the gap between engineering and creative direction. Currently optimizing career transition paths at ApplyZen.
+                                </p>
+</div>
+</div>
+</div>
+<!-- Professional Info -->
+<div class="bg-white rounded-xl border border-outline-variant p-lg">
+<div class="flex items-center justify-between mb-lg border-b border-outline-variant pb-md">
+<h3 class="font-headline-md text-headline-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">work</span>
+                                Professional Information
+                            </h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-xl">
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Current Role</label>
+<p class="font-body-lg text-body-lg text-on-surface font-medium">Senior Product Designer</p>
+</div>
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Industry</label>
+<p class="font-body-lg text-body-lg text-on-surface font-medium">Technology / SaaS</p>
+</div>
+<div class="space-y-xs">
+<label class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Experience</label>
+<p class="font-body-lg text-body-lg text-on-surface font-medium">8.5 Years</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Connected Accounts & Security -->
+<div class="space-y-xl">
+<!-- Connected Accounts -->
+<div class="bg-white rounded-xl border border-outline-variant p-lg">
+<h3 class="font-headline-md text-headline-md flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-primary">link</span>
+                            Connected Accounts
+                        </h3>
+<div class="space-y-md">
+<!-- Gmail -->
+<div class="flex items-center justify-between p-sm border border-outline-variant rounded-lg hover:bg-surface transition-colors">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 flex items-center justify-center overflow-hidden rounded-sm"><img src="https://images.icon-icons.com/2642/PNG/512/google_mail_gmail_logo_icon_159346.png" class="w-full h-full object-contain" alt="Gmail"></div>
+<div>
+<p class="font-label-md text-label-md">Gmail</p>
+<span class="text-[11px] bg-secondary-container text-on-secondary-container px-xs py-[1px] rounded uppercase font-bold">Connected</span>
+</div>
+</div>
+<button class="text-label-sm font-label-sm text-error hover:underline">Disconnect</button>
+</div>
+<!-- LinkedIn -->
+<div class="flex items-center justify-between p-sm border border-outline-variant rounded-lg hover:bg-surface transition-colors">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 flex items-center justify-center"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD6dsOl3iyIXgDwbrFZzJSDiCM-ceHvvVgWS5MdyIjrKGe13AvRxeqzctFgp-QxGaAlthJl_FjEeiyF8JcoZOCzPDqnTldul-a2LTlqn_KK5FVtwQtL9i6riqx8F6WIWmOocWhyfrd3dMFMOrznNTVHSMVqcD19PtRS5gZffHyh_xNp7FV5W_AX09pegvAZoihM8LToRyHFq1sdyEkTdSQhacRogpLaj0B8rfwPscdLwZuAKWKmZPLcIUXIMN8_hCFag08JBbjh1tx" class="w-full h-full object-contain" alt="LinkedIn"></div>
+<div>
+<p class="font-label-md text-label-md">LinkedIn</p>
+<span class="text-[11px] bg-secondary-container text-on-secondary-container px-xs py-[1px] rounded uppercase font-bold">Connected</span>
+</div>
+</div>
+<button class="text-label-sm font-label-sm text-error hover:underline">Disconnect</button>
+</div>
+<!-- GitHub -->
+<div class="flex items-center justify-between p-sm border border-outline-variant rounded-lg hover:bg-surface transition-colors">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 flex items-center justify-center"><img src="https://cdn.simpleicons.org/github/181717" class="w-6 h-6" alt="GitHub"></div>
+<div>
+<p class="font-label-md text-label-md">GitHub</p>
+<span class="text-[11px] bg-secondary-container text-on-secondary-container px-xs py-[1px] rounded uppercase font-bold">Connected</span>
+</div>
+</div>
+<button class="text-label-sm font-label-sm text-error hover:underline">Disconnect</button>
+</div>
+<div class="flex items-center justify-between p-sm border border-outline-variant rounded-lg hover:bg-surface transition-colors"><div class="flex items-center gap-md"><div class="w-8 h-8 flex items-center justify-center"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz_tMONCAuzgWsqeRlfVvKLFS1DiXrmFHZLTDM3vYUBPPjHr5cb3OrXd3AxFNKxNOSTo_KUdE_GjA0r29i2JifK_CP3_onCMqTEkBeBI5cZiv1NdwaPh_tB9yT7j5yNIhXGWqP1MTx9TefrSsPHeugtDGEx1s2B-YZbJAyJ3L0qc8sDOe2R9_uuvD1HNbzi3tOOHAWP9cYyNKeglwzkSr-rFXi1gfnpwbypgDnSJ0VNvRU7jXnGzENLejDcNYEgTE84nh6M2eBwu_E" class="w-6 h-6" alt="Outlook"></div><div><p class="font-label-md text-label-md">Outlook</p><span class="text-[11px] bg-surface-container-high text-on-surface-variant px-xs py-[1px] rounded uppercase font-bold">Not Connected</span></div></div><button class="text-label-sm font-label-sm text-primary hover:underline">Connect</button></div></div>
+</div>
+<!-- Security Section -->
+<div class="bg-white rounded-xl border border-outline-variant p-lg">
+<h3 class="font-headline-md text-headline-md flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-primary">security</span>
+                            Security
+                        </h3>
+<div class="space-y-lg">
+<div class="flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md">Two-Factor Authentication</p>
+<p class="text-[12px] text-on-surface-variant">Recommended for high security</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="pt-md border-t border-outline-variant">
+<button class="w-full flex items-center justify-between py-sm px-md border border-outline-variant rounded-lg hover:bg-surface transition-colors group">
+<div class="flex items-center gap-md text-on-surface">
+<span class="material-symbols-outlined">key</span>
+<span class="font-label-md text-label-md">Change Password</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">chevron_right</span>
+</button>
+</div>
+<button class="w-full py-sm text-center text-error border border-error/20 rounded-lg hover:bg-error/5 transition-colors font-label-md">
+                                Delete Account
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Profile Completion Progress (Atmospheric Interaction) -->
+<section class="bg-primary-container/10 border border-primary/20 rounded-xl p-lg flex items-center justify-between gap-xl">
+<div class="flex items-center gap-lg">
+<div class="relative w-16 h-16">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-primary/10" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-primary" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-dasharray="175.9" stroke-dashoffset="17.6" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center font-bold text-primary font-label-sm">90%</div>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-on-primary-container">Profile Completion</h4>
+<p class="font-body-md text-body-md text-on-secondary-container">Add your portfolio link to reach 100% and unlock high-tier job matches.</p>
+</div>
+</div>
+<button class="px-lg py-sm border-2 border-primary text-primary rounded-lg font-bold hover:bg-primary hover:text-on-primary transition-all">
+                    Add Portfolio
+                </button>
+</section>
+</div>
+</main>
+<script>
+        // Micro-interaction for sidebar links
+        document.querySelectorAll('aside nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                document.querySelectorAll('aside nav a').forEach(l => {
+                    l.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'font-bold');
+                    l.classList.add('text-on-surface-variant');
+                    const icon = l.querySelector('.material-symbols-outlined');
+                    if(icon) icon.style.fontVariationSettings = "'FILL' 0";
+                });
+                this.classList.add('bg-secondary-container', 'text-on-secondary-container', 'font-bold');
+                this.classList.remove('text-on-surface-variant');
+                const icon = this.querySelector('.material-symbols-outlined');
+                if(icon) icon.style.fontVariationSettings = "'FILL' 1";
+            });
+        });
+
+        // Hover effect for image edit
+        const profileImage = document.querySelector('.relative.group');
+        profileImage.addEventListener('mouseenter', () => {
+            profileImage.querySelector('.absolute.bottom-0').classList.add('scale-110');
+        });
+        profileImage.addEventListener('mouseleave', () => {
+            profileImage.querySelector('.absolute.bottom-0').classList.remove('scale-110');
+        });
+    </script>
+
+
+
+
+</body></html>

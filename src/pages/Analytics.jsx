@@ -1,327 +1,321 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import React, { useEffect, useState } from 'react';
 
 export default function Analytics() {
-  const { logout } = useAuth();
-  return (
-    <>
-      
-{/* Navigation Shell (Desktop SideNav) */}
-<aside className="hidden md:flex flex-col h-screen p-md fixed left-0 top-0 border-r border-outline-variant bg-surface-container-lowest w-[280px] z-40">
-<div className="flex items-center gap-sm mb-xl">
-<div className="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center text-on-primary-container">
-<span className="material-symbols-outlined" style={{ "fontVariationSettings": "'FILL' 1" }}>insights</span>
-</div>
-<div>
-<h1 className="text-headline-md font-black text-primary leading-none">ApplyZen</h1>
-<p className="text-label-sm text-on-surface-variant opacity-70">Career Intelligence</p>
-</div>
-</div>
-<nav className="flex-1 space-y-1">
-<div className="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low rounded-lg cursor-pointer transition-all duration-150">
-<span className="material-symbols-outlined">dashboard</span>
-<span className="text-label-md font-label-md">Dashboard</span>
-</div>
-<div className="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low rounded-lg cursor-pointer transition-all duration-150">
-<span className="material-symbols-outlined">assignment</span>
-<span className="text-label-md font-label-md">Applications</span>
-</div>
-<div className="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low rounded-lg cursor-pointer transition-all duration-150">
-<span className="material-symbols-outlined">description</span>
-<span className="text-label-md font-label-md">Resume Builder</span>
-</div>
-<div className="flex items-center gap-md px-md py-sm bg-secondary-container text-on-secondary-container rounded-lg cursor-pointer transition-transform active:scale-[0.98]">
-<span className="material-symbols-outlined">analytics</span>
-<span className="text-label-md font-label-md">Analytics</span>
-</div>
-</nav>
-<div className="mt-auto space-y-md">
-<div className="bg-primary-container/10 p-md rounded-xl border border-primary-container/20">
-<p className="text-label-sm font-bold text-primary mb-xs">PRO FEATURE</p>
-<p className="text-label-sm text-on-surface-variant mb-md">Unlock predictive interview insights.</p>
-<button className="w-full bg-primary text-on-primary py-2 rounded-lg text-label-md font-bold hover:brightness-110 transition-all">Upgrade to Pro</button>
-</div>
-<div className="pt-md border-t border-outline-variant space-y-1">
-<div className="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low rounded-lg cursor-pointer transition-all">
-<span className="material-symbols-outlined">help</span>
-<span className="text-label-md font-label-md">Help Center</span>
-</div>
-<button
-  onClick={logout}
-  className="w-full text-left flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low rounded-lg cursor-pointer transition-all text-error"
->
-<span className="material-symbols-outlined">logout</span>
-<span className="text-label-md font-label-md">Log Out</span>
-</button>
-</div>
-</div>
-</aside>
-{/* Main Content Canvas */}
-<main className="md:ml-[280px] min-h-screen">
-{/* TopAppBar */}
-<header className="flex justify-between items-center w-full px-lg h-16 sticky top-0 z-50 bg-surface border-b border-outline-variant">
-<div className="flex items-center gap-md">
-<span className="md:hidden material-symbols-outlined text-on-surface cursor-pointer">menu</span>
-<h2 className="font-headline-md text-headline-md text-primary font-bold">Analytics</h2>
-</div>
-<div className="flex items-center gap-lg">
-<div className="hidden md:flex items-center bg-surface-container-low px-md py-2 rounded-full border border-outline-variant w-64">
-<span className="material-symbols-outlined text-on-surface-variant text-[20px]">search</span>
-<input className="bg-transparent border-none focus:ring-0 text-body-md w-full placeholder:text-on-surface-variant/50" placeholder="Search insights..." type="text"/>
-</div>
-<div className="flex items-center gap-sm">
-<span className="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">notifications</span>
-</div>
-</div>
-</header>
-{/* Analytics Dashboard Content */}
-<div className="p-lg space-y-lg">
-{/* Interactive Filters Section */}
-<div className="flex flex-col sm:flex-row gap-md items-start sm:items-center justify-between mb-lg">
-<div className="flex gap-md w-full sm:w-auto">
-<select className="bg-surface-container-lowest border-outline-variant rounded-lg text-body-md px-md py-2 focus:ring-primary focus:border-primary cursor-pointer min-w-[160px]">
-<option>This Month</option>
-<option selected="">Last 3 Months</option>
-<option>Year to Date</option>
-<option>All Time</option>
-</select>
-<select className="bg-surface-container-lowest border-outline-variant rounded-lg text-body-md px-md py-2 focus:ring-primary focus:border-primary cursor-pointer min-w-[160px]">
-<option>All Role Types</option>
-<option>Full-time</option>
-<option>Contract</option>
-<option>Remote</option>
-</select>
-</div>
-<div className="text-label-md text-on-surface-variant">
-                Last updated: <span className="font-bold">Today, 09:42 AM</span>
-</div>
-</div>
-{/* Top Metrics Row */}
-<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
-<div className="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
-<div className="flex items-center justify-between mb-sm">
-<span className="text-label-md font-medium text-on-surface-variant">Average ATS Score</span>
-<span className="material-symbols-outlined text-primary">analytics</span>
-</div>
-<div className="flex items-baseline gap-xs">
-<span className="text-headline-lg font-bold">84</span>
-<span className="text-label-sm text-on-surface-variant">/ 100</span>
-</div>
-<div className="mt-md flex items-center text-primary gap-1">
-<span className="material-symbols-outlined text-sm">trending_up</span>
-<span className="text-label-sm font-bold">+12% vs last period</span>
-</div>
-</div>
-<div className="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
-<div className="flex items-center justify-between mb-sm">
-<span className="text-label-md font-medium text-on-surface-variant">Interview Rate</span>
-<span className="material-symbols-outlined text-primary">groups</span>
-</div>
-<div className="flex items-baseline gap-xs">
-<span className="text-headline-lg font-bold">18.5</span>
-<span className="text-label-sm text-on-surface-variant">%</span>
-</div>
-<div className="mt-md flex items-center text-primary gap-1">
-<span className="material-symbols-outlined text-sm">trending_up</span>
-<span className="text-label-sm font-bold">+2.4% vs last period</span>
-</div>
-</div>
-<div className="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
-<div className="flex items-center justify-between mb-sm">
-<span className="text-label-md font-medium text-on-surface-variant">Applications Sent</span>
-<span className="material-symbols-outlined text-primary">send</span>
-</div>
-<div className="flex items-baseline gap-xs">
-<span className="text-headline-lg font-bold">42</span>
-<span className="text-label-sm text-on-surface-variant">this month</span>
-</div>
-<div className="mt-md flex items-center text-tertiary gap-1">
-<span className="material-symbols-outlined text-sm">trending_down</span>
-<span className="text-label-sm font-bold">-5% vs last month</span>
-</div>
-</div>
-<div className="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
-<div className="flex items-center justify-between mb-sm">
-<span className="text-label-md font-medium text-on-surface-variant">Time-to-Offer</span>
-<span className="material-symbols-outlined text-primary">schedule</span>
-</div>
-<div className="flex items-baseline gap-xs">
-<span className="text-headline-lg font-bold">34</span>
-<span className="text-label-sm text-on-surface-variant">Avg Days</span>
-</div>
-<div className="mt-md flex items-center text-on-surface-variant/50 gap-1">
-<span className="material-symbols-outlined text-sm">horizontal_rule</span>
-<span className="text-label-sm font-bold">Stable performance</span>
-</div>
-</div>
-</div>
-{/* Main Analytics Grid */}
-<div className="grid grid-cols-1 lg:grid-cols-3 gap-lg">
-{/* Application Success Funnel */}
-<div className="lg:col-span-2 bg-surface-container-lowest p-lg rounded-2xl border border-outline-variant shadow-sm">
-<div className="flex items-center justify-between mb-xl">
-<h3 className="text-headline-md text-on-surface font-bold">Application Success Funnel</h3>
-<span className="material-symbols-outlined text-on-surface-variant cursor-pointer">more_vert</span>
-</div>
-<div className="flex flex-col h-[300px] justify-end space-y-4">
-<div className="flex items-end gap-lg h-full px-lg">
-<div className="flex-1 flex flex-col items-center group">
-<div className="w-full bg-secondary-container rounded-t-lg success-funnel-bar h-full relative">
-<div className="absolute -top-8 left-1/2 -translate-x-1/2 font-bold text-primary">156</div>
-</div>
-<span className="text-label-sm mt-4 text-on-surface-variant">Applied</span>
-</div>
-<div className="flex-1 flex flex-col items-center group">
-<div className="w-full bg-primary-container rounded-t-lg success-funnel-bar h-[65%] relative">
-<div className="absolute -top-8 left-1/2 -translate-x-1/2 font-bold text-primary">102</div>
-</div>
-<span className="text-label-sm mt-4 text-on-surface-variant">Screened</span>
-</div>
-<div className="flex-1 flex flex-col items-center group">
-<div className="w-full bg-primary/60 rounded-t-lg success-funnel-bar h-[28%] relative">
-<div className="absolute -top-8 left-1/2 -translate-x-1/2 font-bold text-primary">29</div>
-</div>
-<span className="text-label-sm mt-4 text-on-surface-variant">Interviewed</span>
-</div>
-<div className="flex-1 flex flex-col items-center group">
-<div className="w-full bg-primary rounded-t-lg success-funnel-bar h-[8%] relative">
-<div className="absolute -top-8 left-1/2 -translate-x-1/2 font-bold text-primary">4</div>
-</div>
-<span className="text-label-sm mt-4 text-on-surface-variant">Offers</span>
-</div>
-</div>
-</div>
-</div>
-{/* Success Rate by Platform */}
-<div className="bg-surface-container-lowest p-lg rounded-2xl border border-outline-variant shadow-sm">
-<h3 className="text-headline-md text-on-surface font-bold mb-xl">Platform Performance</h3>
-<div className="space-y-lg">
-<div>
-<div className="flex justify-between mb-2">
-<span className="text-label-md font-medium">LinkedIn</span>
-<span className="text-label-md font-bold">24%</span>
-</div>
-<div className="w-full bg-surface-container rounded-full h-2">
-<div className="bg-[#0077b5] h-2 rounded-full" style={{ "width": "24%" }}></div>
-</div>
-</div>
-<div>
-<div className="flex justify-between mb-2">
-<span className="text-label-md font-medium">Glassdoor</span>
-<span className="text-label-md font-bold">12%</span>
-</div>
-<div className="w-full bg-surface-container rounded-full h-2">
-<div className="bg-[#0caa41] h-2 rounded-full" style={{ "width": "12%" }}></div>
-</div>
-</div>
-<div>
-<div className="flex justify-between mb-2">
-<span className="text-label-md font-medium">Direct Apply</span>
-<span className="text-label-md font-bold">42%</span>
-</div>
-<div className="w-full bg-surface-container rounded-full h-2">
-<div className="bg-primary h-2 rounded-full" style={{ "width": "42%" }}></div>
-</div>
-</div>
-<div>
-<div className="flex justify-between mb-2">
-<span className="text-label-md font-medium">Referrals</span>
-<span className="text-label-md font-bold">68%</span>
-</div>
-<div className="w-full bg-surface-container rounded-full h-2">
-<div className="bg-secondary h-2 rounded-full" style={{ "width": "68%" }}></div>
-</div>
-</div>
-</div>
-<div className="mt-lg pt-lg border-t border-outline-variant">
-<p className="text-label-sm text-on-surface-variant italic">Tip: Referrals continue to be your highest conversion channel.</p>
-</div>
-</div>
-{/* Salary Insights */}
-<div className="lg:col-span-2 bg-surface-container-lowest p-lg rounded-2xl border border-outline-variant shadow-sm">
-<div className="flex items-center justify-between mb-xl">
-<div>
-<h3 className="text-headline-md text-on-surface font-bold">Salary Range Insights</h3>
-<p className="text-label-sm text-on-surface-variant">Market average vs. Target roles</p>
-</div>
-<div className="flex gap-md items-center">
-<div className="flex items-center gap-2">
-<span className="w-3 h-3 rounded-full bg-primary"></span>
-<span className="text-label-sm">Applied Roles</span>
-</div>
-<div className="flex items-center gap-2">
-<span className="w-3 h-3 rounded-full bg-outline-variant"></span>
-<span className="text-label-sm">Market Avg</span>
-</div>
-</div>
-</div>
-<div className="space-y-6">
-<div className="flex items-center gap-4">
-<span className="w-32 text-label-md font-medium">Software Eng II</span>
-<div className="flex-1 relative h-6 bg-surface-container rounded-full overflow-hidden">
-<div className="absolute left-[15%] right-[25%] bg-primary/20 h-full"></div>
-<div className="absolute left-[30%] right-[40%] bg-primary h-full"></div>
-<div className="absolute left-[50%] h-full w-[2px] bg-on-background z-10"></div>
-</div>
-<span className="w-20 text-right text-label-sm">$120k-$165k</span>
-</div>
-<div className="flex items-center gap-4">
-<span className="w-32 text-label-md font-medium">Senior Product</span>
-<div className="flex-1 relative h-6 bg-surface-container rounded-full overflow-hidden">
-<div className="absolute left-[25%] right-[15%] bg-primary/20 h-full"></div>
-<div className="absolute left-[40%] right-[30%] bg-primary h-full"></div>
-<div className="absolute left-[55%] h-full w-[2px] bg-on-background z-10"></div>
-</div>
-<span className="w-20 text-right text-label-sm">$145k-$190k</span>
-</div>
-<div className="flex items-center gap-4">
-<span className="w-32 text-label-md font-medium">Frontend Dev</span>
-<div className="flex-1 relative h-6 bg-surface-container rounded-full overflow-hidden">
-<div className="absolute left-[10%] right-[40%] bg-primary/20 h-full"></div>
-<div className="absolute left-[20%] right-[55%] bg-primary h-full"></div>
-<div className="absolute left-[40%] h-full w-[2px] bg-on-background z-10"></div>
-</div>
-<span className="w-20 text-right text-label-sm">$100k-$135k</span>
-</div>
-</div>
-</div>
-{/* Recent AI Insights Section */}
-<div className="bg-primary/5 p-lg rounded-2xl border border-primary-container/20 shadow-sm flex flex-col">
-<div className="flex items-center gap-md mb-xl">
-<div className="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center text-on-primary-container">
-<span className="material-symbols-outlined">auto_awesome</span>
-</div>
-<h3 className="text-headline-md text-primary font-bold">AI Smart Tips</h3>
-</div>
-<div className="space-y-md flex-1">
-<div className="bg-surface-container-lowest p-md rounded-xl border border-primary-container/10 shadow-sm">
-<div className="flex gap-md">
-<span className="material-symbols-outlined text-primary text-[20px]">bolt</span>
-<p className="text-body-md text-on-surface">Your response rate is <span className="font-bold text-primary">15% higher</span> when applying within the first 24 hours of a posting.</p>
-</div>
-</div>
-<div className="bg-surface-container-lowest p-md rounded-xl border border-primary-container/10 shadow-sm">
-<div className="flex gap-md">
-<span className="material-symbols-outlined text-primary text-[20px]">history</span>
-<p className="text-body-md text-on-surface">Applying on <span className="font-bold text-primary">Tuesdays</span> has yielded the most recruiter callbacks this month.</p>
-</div>
-</div>
-<div className="bg-surface-container-lowest p-md rounded-xl border border-primary-container/10 shadow-sm">
-<div className="flex gap-md">
-<span className="material-symbols-outlined text-primary text-[20px]">psychology</span>
-<p className="text-body-md text-on-surface">Roles mentioning <span className="font-bold text-primary">"Scalability"</span> match your current resume with 94% accuracy.</p>
-</div>
-</div>
-</div>
-<button className="mt-xl w-full border-2 border-primary text-primary py-2 rounded-lg text-label-md font-bold hover:bg-primary hover:text-on-primary transition-all">
-                    View All Insights
-                </button>
-</div>
-</div>
-</div>
-</main>
+  const glassClass = "bg-white/70 backdrop-blur-xl border border-white/50 shadow-sm";
+  const [animate, setAnimate] = useState(false);
 
-    </>
+  useEffect(() => {
+    // Trigger animations slightly after mount for visual effect
+    const timer = setTimeout(() => setAnimate(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <div className="space-y-8 animate-fadeIn pb-8">
+      
+      {/* Page Header & Interactive Filters Section */}
+      <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-end justify-between mb-8">
+        <div>
+          <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight mb-1">Analytics</h2>
+          <p className="text-lg text-slate-600">Understand your performance and market fit.</p>
+        </div>
+        
+        <div className="flex flex-col items-end gap-2">
+          <div className="flex gap-3 w-full sm:w-auto">
+            <select className={`${glassClass} rounded-xl text-sm font-bold text-slate-700 px-4 py-2.5 outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer min-w-[160px] appearance-none bg-no-repeat`} style={{ backgroundImage: 'url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2394a3b8%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E")', backgroundPosition: 'right 1rem center', backgroundSize: '0.65em auto' }}>
+              <option>This Month</option>
+              <option defaultValue>Last 3 Months</option>
+              <option>Year to Date</option>
+              <option>All Time</option>
+            </select>
+            <select className={`${glassClass} rounded-xl text-sm font-bold text-slate-700 px-4 py-2.5 outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer min-w-[160px] appearance-none bg-no-repeat`} style={{ backgroundImage: 'url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2394a3b8%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E")', backgroundPosition: 'right 1rem center', backgroundSize: '0.65em auto' }}>
+              <option>All Role Types</option>
+              <option>Full-time</option>
+              <option>Contract</option>
+              <option>Remote</option>
+            </select>
+          </div>
+          <div className="text-xs text-slate-500 font-medium">
+            Last updated: <span className="font-bold text-slate-700">Today, 09:42 AM</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Top Metrics Row */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        {/* Metric 1 */}
+        <div className={`${glassClass} p-6 rounded-2xl hover:border-primary/30 hover:shadow-md transition-all group cursor-default relative overflow-hidden`}>
+          <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div className="flex items-center justify-between mb-2 relative z-10">
+            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Avg ATS Score</span>
+            <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600 border border-emerald-100">
+              <span className="material-symbols-outlined text-[18px]">analytics</span>
+            </div>
+          </div>
+          <div className="flex items-baseline gap-1 relative z-10">
+            <span className="text-4xl font-extrabold text-slate-900">84</span>
+            <span className="text-sm font-bold text-emerald-600">/ 100</span>
+          </div>
+          <div className="mt-4 flex items-center text-emerald-600 gap-1 relative z-10">
+            <span className="material-symbols-outlined text-[16px]">trending_up</span>
+            <span className="text-xs font-bold">+12% vs last period</span>
+          </div>
+        </div>
+
+        {/* Metric 2 */}
+        <div className={`${glassClass} p-6 rounded-2xl hover:border-blue-500/30 hover:shadow-md transition-all group cursor-default relative overflow-hidden`}>
+          <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div className="flex items-center justify-between mb-2 relative z-10">
+            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Interview Rate</span>
+            <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 border border-blue-100">
+              <span className="material-symbols-outlined text-[18px]">groups</span>
+            </div>
+          </div>
+          <div className="flex items-baseline gap-1 relative z-10">
+            <span className="text-4xl font-extrabold text-slate-900">18.5</span>
+            <span className="text-sm font-bold text-blue-600">%</span>
+          </div>
+          <div className="mt-4 flex items-center text-emerald-600 gap-1 relative z-10">
+            <span className="material-symbols-outlined text-[16px]">trending_up</span>
+            <span className="text-xs font-bold">+2.4% vs last period</span>
+          </div>
+        </div>
+
+        {/* Metric 3 */}
+        <div className={`${glassClass} p-6 rounded-2xl hover:border-indigo-500/30 hover:shadow-md transition-all group cursor-default relative overflow-hidden`}>
+          <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-500/10 rounded-full blur-2xl -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div className="flex items-center justify-between mb-2 relative z-10">
+            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Applications Sent</span>
+            <div className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600 border border-indigo-100">
+              <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: '"FILL" 1' }}>send</span>
+            </div>
+          </div>
+          <div className="flex items-baseline gap-1 relative z-10">
+            <span className="text-4xl font-extrabold text-slate-900">42</span>
+            <span className="text-sm font-bold text-slate-500">this month</span>
+          </div>
+          <div className="mt-4 flex items-center text-orange-600 gap-1 relative z-10">
+            <span className="material-symbols-outlined text-[16px]">trending_down</span>
+            <span className="text-xs font-bold">-5% vs last month</span>
+          </div>
+        </div>
+
+        {/* Metric 4 */}
+        <div className={`${glassClass} p-6 rounded-2xl hover:border-purple-500/30 hover:shadow-md transition-all group cursor-default relative overflow-hidden`}>
+          <div className="absolute top-0 right-0 w-24 h-24 bg-purple-500/10 rounded-full blur-2xl -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div className="flex items-center justify-between mb-2 relative z-10">
+            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Time-to-Offer</span>
+            <div className="w-8 h-8 rounded-lg bg-purple-50 flex items-center justify-center text-purple-600 border border-purple-100">
+              <span className="material-symbols-outlined text-[18px]">schedule</span>
+            </div>
+          </div>
+          <div className="flex items-baseline gap-1 relative z-10">
+            <span className="text-4xl font-extrabold text-slate-900">34</span>
+            <span className="text-sm font-bold text-slate-500">Avg Days</span>
+          </div>
+          <div className="mt-4 flex items-center text-slate-400 gap-1 relative z-10">
+            <span className="material-symbols-outlined text-[16px]">horizontal_rule</span>
+            <span className="text-xs font-bold">Stable performance</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Analytics Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+        
+        {/* Application Success Funnel */}
+        <div className={`lg:col-span-2 ${glassClass} p-6 rounded-2xl flex flex-col`}>
+          <div className="flex items-center justify-between mb-8">
+            <h3 className="text-xl font-bold text-slate-900">Application Success Funnel</h3>
+            <button className="text-slate-400 hover:text-slate-700 transition-colors">
+              <span className="material-symbols-outlined text-[20px]">more_vert</span>
+            </button>
+          </div>
+          
+          <div className="flex flex-col h-[300px] justify-end space-y-4 flex-1">
+            <div className="flex items-end gap-2 sm:gap-6 h-full px-2 sm:px-6">
+              
+              <div className="flex-1 flex flex-col items-center group">
+                <div className="w-full bg-slate-200 rounded-t-xl relative border border-slate-300 transition-all duration-1000 ease-out" style={{ height: animate ? '100%' : '0%' }}>
+                  <div className="absolute -top-8 left-1/2 -translate-x-1/2 font-extrabold text-slate-700">156</div>
+                </div>
+                <span className="text-xs sm:text-sm mt-3 font-bold text-slate-500">Applied</span>
+              </div>
+              
+              <div className="flex-1 flex flex-col items-center group">
+                <div className="w-full bg-indigo-200 rounded-t-xl relative border border-indigo-300 transition-all duration-1000 ease-out delay-100" style={{ height: animate ? '65%' : '0%' }}>
+                  <div className="absolute -top-8 left-1/2 -translate-x-1/2 font-extrabold text-indigo-700">102</div>
+                </div>
+                <span className="text-xs sm:text-sm mt-3 font-bold text-slate-500">Screened</span>
+              </div>
+              
+              <div className="flex-1 flex flex-col items-center group">
+                <div className="w-full bg-emerald-200 rounded-t-xl relative border border-emerald-300 transition-all duration-1000 ease-out delay-200" style={{ height: animate ? '28%' : '0%' }}>
+                  <div className="absolute -top-8 left-1/2 -translate-x-1/2 font-extrabold text-emerald-700">29</div>
+                </div>
+                <span className="text-xs sm:text-sm mt-3 font-bold text-slate-500">Interview</span>
+              </div>
+              
+              <div className="flex-1 flex flex-col items-center group">
+                <div className="w-full bg-primary rounded-t-xl relative border border-primary/80 shadow-[0_-4px_15px_rgba(16,185,129,0.3)] transition-all duration-1000 ease-out delay-300" style={{ height: animate ? '8%' : '0%' }}>
+                  <div className="absolute -top-8 left-1/2 -translate-x-1/2 font-extrabold text-primary">4</div>
+                </div>
+                <span className="text-xs sm:text-sm mt-3 font-bold text-slate-500">Offers</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Success Rate by Platform */}
+        <div className={`${glassClass} p-6 rounded-2xl flex flex-col justify-between`}>
+          <div>
+            <h3 className="text-xl font-bold text-slate-900 mb-6">Platform Performance</h3>
+            <div className="space-y-6">
+              
+              <div>
+                <div className="flex justify-between mb-2">
+                  <span className="text-sm font-bold text-slate-700">LinkedIn</span>
+                  <span className="text-sm font-black text-slate-900">24%</span>
+                </div>
+                <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden border border-slate-200">
+                  <div className="bg-[#0077b5] h-full rounded-full transition-all duration-1000 ease-out" style={{ width: animate ? '24%' : '0%' }}></div>
+                </div>
+              </div>
+              
+              <div>
+                <div className="flex justify-between mb-2">
+                  <span className="text-sm font-bold text-slate-700">Glassdoor</span>
+                  <span className="text-sm font-black text-slate-900">12%</span>
+                </div>
+                <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden border border-slate-200">
+                  <div className="bg-[#0caa41] h-full rounded-full transition-all duration-1000 ease-out delay-100" style={{ width: animate ? '12%' : '0%' }}></div>
+                </div>
+              </div>
+              
+              <div>
+                <div className="flex justify-between mb-2">
+                  <span className="text-sm font-bold text-slate-700">Direct Apply</span>
+                  <span className="text-sm font-black text-slate-900">42%</span>
+                </div>
+                <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden border border-slate-200">
+                  <div className="bg-primary h-full rounded-full transition-all duration-1000 ease-out delay-200" style={{ width: animate ? '42%' : '0%' }}></div>
+                </div>
+              </div>
+              
+              <div>
+                <div className="flex justify-between mb-2">
+                  <span className="text-sm font-bold text-slate-700">Referrals</span>
+                  <span className="text-sm font-black text-slate-900">68%</span>
+                </div>
+                <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden border border-slate-200">
+                  <div className="bg-emerald-400 h-full rounded-full transition-all duration-1000 ease-out delay-300 shadow-[0_0_10px_rgba(52,211,153,0.8)]" style={{ width: animate ? '68%' : '0%' }}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="mt-6 pt-4 border-t border-slate-200/60">
+            <p className="text-xs text-slate-500 font-medium italic">
+              <span className="font-bold text-primary not-italic mr-1">Tip:</span> 
+              Referrals continue to be your highest conversion channel.
+            </p>
+          </div>
+        </div>
+
+        {/* Salary Insights */}
+        <div className={`lg:col-span-2 ${glassClass} p-6 rounded-2xl`}>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
+            <div>
+              <h3 className="text-xl font-bold text-slate-900">Salary Range Insights</h3>
+              <p className="text-xs text-slate-500 font-medium mt-0.5">Market average vs. Target roles</p>
+            </div>
+            <div className="flex gap-4 items-center bg-white/50 px-3 py-1.5 rounded-lg border border-slate-200 shadow-sm">
+              <div className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_5px_rgba(16,185,129,0.5)]"></span>
+                <span className="text-xs font-bold text-slate-700">Applied Roles</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+                <span className="text-xs font-bold text-slate-700">Market Avg</span>
+              </div>
+            </div>
+          </div>
+          
+          <div className="space-y-8">
+            {/* Range 1 */}
+            <div className="flex items-center gap-4">
+              <span className="w-32 text-sm font-bold text-slate-700">Software Eng II</span>
+              <div className="flex-1 relative h-6 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
+                <div className="absolute left-[15%] right-[25%] bg-emerald-100 h-full transition-all duration-1000 ease-out" style={{ width: animate ? '60%' : '0%' }}></div>
+                <div className="absolute left-[30%] right-[40%] bg-primary h-full transition-all duration-1000 ease-out delay-100" style={{ width: animate ? '30%' : '0%' }}></div>
+                <div className="absolute left-[50%] h-full w-[2px] bg-slate-900 z-10 shadow-sm"></div>
+              </div>
+              <span className="w-24 text-right text-xs font-black text-slate-900">$120k-$165k</span>
+            </div>
+            
+            {/* Range 2 */}
+            <div className="flex items-center gap-4">
+              <span className="w-32 text-sm font-bold text-slate-700">Senior Product</span>
+              <div className="flex-1 relative h-6 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
+                <div className="absolute left-[25%] right-[15%] bg-emerald-100 h-full transition-all duration-1000 ease-out" style={{ width: animate ? '60%' : '0%' }}></div>
+                <div className="absolute left-[40%] right-[30%] bg-primary h-full transition-all duration-1000 ease-out delay-100" style={{ width: animate ? '30%' : '0%' }}></div>
+                <div className="absolute left-[55%] h-full w-[2px] bg-slate-900 z-10 shadow-sm"></div>
+              </div>
+              <span className="w-24 text-right text-xs font-black text-slate-900">$145k-$190k</span>
+            </div>
+            
+            {/* Range 3 */}
+            <div className="flex items-center gap-4">
+              <span className="w-32 text-sm font-bold text-slate-700">Frontend Dev</span>
+              <div className="flex-1 relative h-6 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
+                <div className="absolute left-[10%] right-[40%] bg-emerald-100 h-full transition-all duration-1000 ease-out" style={{ width: animate ? '50%' : '0%' }}></div>
+                <div className="absolute left-[20%] right-[55%] bg-primary h-full transition-all duration-1000 ease-out delay-100" style={{ width: animate ? '25%' : '0%' }}></div>
+                <div className="absolute left-[40%] h-full w-[2px] bg-slate-900 z-10 shadow-sm"></div>
+              </div>
+              <span className="w-24 text-right text-xs font-black text-slate-900">$100k-$135k</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Recent AI Insights Section */}
+        <div className="bg-gradient-to-br from-emerald-50/90 to-teal-50/90 backdrop-blur-xl border border-emerald-100 rounded-2xl shadow-sm flex flex-col p-6">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-primary shadow-sm border border-emerald-100">
+              <span className="material-symbols-outlined" style={{ fontVariationSettings: '"FILL" 1' }}>auto_awesome</span>
+            </div>
+            <h3 className="text-xl font-extrabold text-slate-900">AI Smart Tips</h3>
+          </div>
+          
+          <div className="space-y-4 flex-1">
+            <div className="bg-white/80 p-4 rounded-xl border border-white shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex gap-3">
+                <span className="material-symbols-outlined text-orange-500 text-[20px] shrink-0" style={{ fontVariationSettings: '"FILL" 1' }}>bolt</span>
+                <p className="text-xs font-medium text-slate-700 leading-relaxed">Your response rate is <span className="font-bold text-primary">15% higher</span> when applying within the first 24 hours of a posting.</p>
+              </div>
+            </div>
+            
+            <div className="bg-white/80 p-4 rounded-xl border border-white shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex gap-3">
+                <span className="material-symbols-outlined text-blue-500 text-[20px] shrink-0">history</span>
+                <p className="text-xs font-medium text-slate-700 leading-relaxed">Applying on <span className="font-bold text-primary">Tuesdays</span> has yielded the most recruiter callbacks this month.</p>
+              </div>
+            </div>
+            
+            <div className="bg-white/80 p-4 rounded-xl border border-white shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex gap-3">
+                <span className="material-symbols-outlined text-indigo-500 text-[20px] shrink-0">psychology</span>
+                <p className="text-xs font-medium text-slate-700 leading-relaxed">Roles mentioning <span className="font-bold text-primary">"Scalability"</span> match your current resume with 94% accuracy.</p>
+              </div>
+            </div>
+          </div>
+          
+          <button className="mt-6 w-full bg-white border border-emerald-200 text-primary py-3 rounded-xl text-sm font-bold hover:bg-emerald-50 transition-colors shadow-sm">
+            View All Insights
+          </button>
+        </div>
+        
+      </div>
+    </div>
   );
 }
