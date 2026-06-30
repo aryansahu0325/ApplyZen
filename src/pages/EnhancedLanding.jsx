@@ -1,7 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 export default function EnhancedLanding() {
+  const navigate = useNavigate();
+  const { loginAsGuest } = useAuth();
   return (
     <>
 
@@ -54,9 +57,15 @@ export default function EnhancedLanding() {
                   <Link className="w-full sm:w-auto bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-custom font-bold text-lg flex items-center justify-center gap-2" to="/signup">
                     Get Started Free <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
                   </Link>
-                  <a className="w-full sm:w-auto border border-slate-200 hover:bg-slate-50 text-slate-700 px-8 py-4 rounded-custom font-bold text-lg flex items-center justify-center gap-2" href="#">
+                  <button 
+                    onClick={() => {
+                      loginAsGuest();
+                      navigate('/dashboard');
+                    }}
+                    className="w-full sm:w-auto border border-slate-200 hover:bg-slate-50 text-slate-700 px-8 py-4 rounded-custom font-bold text-lg flex items-center justify-center gap-2 cursor-pointer bg-transparent"
+                  >
                     Watch Demo <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-                  </a>
+                  </button>
                 </div>
                 <div className="flex items-center justify-center lg:justify-start gap-4">
                   <div className="flex -space-x-2">
