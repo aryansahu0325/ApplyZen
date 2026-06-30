@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import { 
   ArrowRight, 
   Play, 
@@ -24,6 +25,8 @@ import {
 export default function HomeHero() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeFaq, setActiveFaq] = useState(null);
+  const navigate = useNavigate();
+  const { loginAsGuest } = useAuth();
 
   const placements = [
     { name: 'Software Engineer', company: 'Meta', bg: 'bg-blue-600', letter: 'M' },
@@ -165,9 +168,15 @@ export default function HomeHero() {
                   <Link className="w-full sm:w-auto bg-primary hover:bg-primary/95 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all shadow-md shadow-primary/10" to="/signup">
                     Get Started Free <ArrowRight className="w-5 h-5" />
                   </Link>
-                  <Link className="w-full sm:w-auto border border-slate-200 hover:bg-slate-50 text-slate-700 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all" to="/applications">
+                  <button 
+                    onClick={() => {
+                      loginAsGuest();
+                      navigate('/dashboard');
+                    }}
+                    className="w-full sm:w-auto border border-slate-200 hover:bg-slate-50 text-slate-700 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all cursor-pointer bg-transparent"
+                  >
                     Watch Demo <Play className="w-5 h-5 fill-slate-700" />
-                  </Link>
+                  </button>
                 </div>
                 <div className="flex items-center justify-center lg:justify-start gap-4">
                   <div className="flex -space-x-2">

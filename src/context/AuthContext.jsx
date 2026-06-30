@@ -61,8 +61,15 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
+  const loginAsGuest = () => {
+    const guestUser = { fullName: 'Guest User', email: 'guest@applyzen.com', isGuest: true };
+    localStorage.setItem('applyzen_current_user', JSON.stringify(guestUser));
+    setUser(guestUser);
+    return true;
+  };
+
   return (
-    <AuthContext.Provider value={{ user, loading, login, signup, logout }}>
+    <AuthContext.Provider value={{ user, loading, login, signup, logout, loginAsGuest }}>
       {children}
     </AuthContext.Provider>
   );
