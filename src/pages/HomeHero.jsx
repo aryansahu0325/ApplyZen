@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import { 
-  ArrowRight, 
-  Play, 
-  Mail, 
-  Check, 
-  ChevronDown, 
-  Sparkles, 
+import { Link } from 'react-router-dom';
+import {
+  ArrowRight,
+  Play,
+  Mail,
+  Check,
+  ChevronDown,
+  Sparkles,
   MessageSquare,
   Search,
   FileText,
@@ -25,8 +24,6 @@ import {
 export default function HomeHero() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeFaq, setActiveFaq] = useState(null);
-  const navigate = useNavigate();
-  const { loginAsGuest } = useAuth();
 
   const placements = [
     { name: 'Software Engineer', company: 'Meta', bg: 'bg-blue-600', letter: 'M' },
@@ -75,7 +72,7 @@ export default function HomeHero() {
               </div>
               <span className="text-xl font-bold tracking-tight">ApplyZen</span>
             </div>
-            
+
             {/* Desktop Nav */}
             <div className="hidden md:flex items-center space-x-8">
               <a className="text-sm font-medium text-slate-600 hover:text-primary transition-colors" href="#features">Features</a>
@@ -93,7 +90,7 @@ export default function HomeHero() {
 
             {/* Mobile Nav Button */}
             <div className="md:hidden flex items-center">
-              <button 
+              <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="text-slate-600 hover:text-slate-950 p-2"
               >
@@ -106,29 +103,29 @@ export default function HomeHero() {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden bg-white border-b border-slate-100 px-4 pt-2 pb-6 space-y-3">
-            <a 
-              className="block text-base font-medium text-slate-600 py-2" 
-              href="#features" 
+            <a
+              className="block text-base font-medium text-slate-600 py-2"
+              href="#features"
               onClick={() => setMobileMenuOpen(false)}
             >
               Features
             </a>
-            <a 
-              className="block text-base font-medium text-slate-600 py-2" 
+            <a
+              className="block text-base font-medium text-slate-600 py-2"
               href="#how-it-works"
               onClick={() => setMobileMenuOpen(false)}
             >
               How It Works
             </a>
-            <a 
-              className="block text-base font-medium text-slate-600 py-2" 
+            <a
+              className="block text-base font-medium text-slate-600 py-2"
               href="#roadmap"
               onClick={() => setMobileMenuOpen(false)}
             >
               Roadmap
             </a>
-            <a 
-              className="block text-base font-medium text-slate-600 py-2" 
+            <a
+              className="block text-base font-medium text-slate-600 py-2"
               href="#pricing"
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -168,15 +165,9 @@ export default function HomeHero() {
                   <Link className="w-full sm:w-auto bg-primary hover:bg-primary/95 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all shadow-md shadow-primary/10" to="/signup">
                     Get Started Free <ArrowRight className="w-5 h-5" />
                   </Link>
-                  <button 
-                    onClick={() => {
-                      loginAsGuest();
-                      navigate('/dashboard');
-                    }}
-                    className="w-full sm:w-auto border border-slate-200 hover:bg-slate-50 text-slate-700 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all cursor-pointer bg-transparent"
-                  >
+                  <Link className="w-full sm:w-auto border border-slate-200 hover:bg-slate-50 text-slate-700 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all" to="/applications">
                     Watch Demo <Play className="w-5 h-5 fill-slate-700" />
-                  </button>
+                  </Link>
                 </div>
                 <div className="flex items-center justify-center lg:justify-start gap-4">
                   <div className="flex -space-x-2">
@@ -188,7 +179,7 @@ export default function HomeHero() {
                   <p className="text-sm text-slate-500 font-medium">Trusted by 10,000+ career-focused individuals</p>
                 </div>
               </div>
-              
+
               <div className="lg:w-1/2">
                 <div className="relative animate-float">
                   <div className="rounded-2xl border border-slate-200 shadow-2xl overflow-hidden bg-white">
@@ -230,7 +221,7 @@ export default function HomeHero() {
               <span className="text-primary font-bold text-xs uppercase tracking-widest">Real Results</span>
               <h2 className="text-3xl font-extrabold text-slate-900 mt-4">Growth Powered by Intelligence</h2>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6">
               {/* Time Saved Card */}
               <div className="md:col-span-2 lg:col-span-3 bento-card p-8 rounded-[24px] border border-slate-100 flex flex-col justify-between shadow-sm">
@@ -300,7 +291,7 @@ export default function HomeHero() {
               <span className="text-primary font-bold text-xs uppercase tracking-widest">How It Works</span>
               <h2 className="text-3xl font-extrabold text-slate-900 mt-4">Your Career Journey in 4 Simple Steps</h2>
             </div>
-            
+
             <div className="relative mb-20">
               <div className="absolute top-1/2 left-0 w-full h-px bg-slate-200 -translate-y-1/2 hidden lg:block"></div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
@@ -311,7 +302,7 @@ export default function HomeHero() {
                   <h3 className="font-bold text-slate-900 mb-2">1. Connect</h3>
                   <p className="text-xs text-slate-500 leading-relaxed px-4">Connect your Gmail or Outlook account in one click.</p>
                 </div>
-                
+
                 <div className="text-center flex flex-col items-center">
                   <div className="w-16 h-16 bg-white rounded-full border border-slate-100 shadow-sm flex items-center justify-center mb-6 relative">
                     <Sparkles className="w-6 h-6 text-purple-600" />
@@ -319,7 +310,7 @@ export default function HomeHero() {
                   <h3 className="font-bold text-slate-900 mb-2">2. AI Finds Opportunities</h3>
                   <p className="text-xs text-slate-500 leading-relaxed px-4">Our AI agents scan & detect relevant opportunities for you.</p>
                 </div>
-                
+
                 <div className="text-center flex flex-col items-center">
                   <div className="w-16 h-16 bg-white rounded-full border border-slate-100 shadow-sm flex items-center justify-center mb-6 relative">
                     <FileText className="w-6 h-6 text-orange-600" />
@@ -327,7 +318,7 @@ export default function HomeHero() {
                   <h3 className="font-bold text-slate-900 mb-2">3. We Apply for You</h3>
                   <p className="text-xs text-slate-500 leading-relaxed px-4">AI builds your resume, fills forms and applies automatically.</p>
                 </div>
-                
+
                 <div className="text-center flex flex-col items-center">
                   <div className="w-16 h-16 bg-white rounded-full border border-slate-100 shadow-sm flex items-center justify-center mb-6 relative">
                     <LineChart className="w-6 h-6 text-blue-600" />
@@ -337,7 +328,7 @@ export default function HomeHero() {
                 </div>
               </div>
             </div>
-            
+
             <div className="bg-purple-50/50 rounded-[24px] p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-12 border border-purple-100">
               <div className="flex items-center gap-8 lg:w-1/2">
                 <div className="w-32 h-32 flex-shrink-0 animate-float">
@@ -376,7 +367,7 @@ export default function HomeHero() {
             <h2 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-2">Recent Placements</h2>
             <p className="text-slate-900 font-bold">Join thousands who landed their dream roles</p>
           </div>
-          
+
           <div className="relative flex overflow-x-hidden group">
             <div className="animate-marquee whitespace-nowrap flex items-center py-4">
               {placements.concat(placements).map((p, idx) => (
@@ -401,7 +392,7 @@ export default function HomeHero() {
             <h2 className="text-3xl font-extrabold text-slate-900 mt-4 mb-4">Everything You Need To Stay Ahead</h2>
             <p className="text-slate-500">Powerful AI agents working 24*7 to simplify your job search</p>
           </div>
-          
+
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Feature 1 */}
             <div className="p-8 rounded-2xl border border-slate-100 bg-white hover:shadow-xl transition-shadow group">
@@ -411,7 +402,7 @@ export default function HomeHero() {
               <h3 className="text-xl font-bold text-slate-900 mb-3">Smart Opportunity Detection</h3>
               <p className="text-slate-500 text-sm leading-relaxed">AI scans your emails and finds internships, jobs, hackathons, scholarships & more.</p>
             </div>
-            
+
             {/* Feature 2 */}
             <div className="p-8 rounded-2xl border border-slate-100 bg-white hover:shadow-xl transition-shadow group">
               <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
@@ -420,7 +411,7 @@ export default function HomeHero() {
               <h3 className="text-xl font-bold text-slate-900 mb-3">AI Resume Builder</h3>
               <p className="text-slate-500 text-sm leading-relaxed">Create or optimize ATS-friendly resumes tailored to each opportunity automatically.</p>
             </div>
-            
+
             {/* Feature 3 */}
             <div className="p-8 rounded-2xl border border-slate-100 bg-white hover:shadow-xl transition-shadow group">
               <div className="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-green-600 group-hover:text-white transition-colors">
@@ -429,7 +420,7 @@ export default function HomeHero() {
               <h3 className="text-xl font-bold text-slate-900 mb-3">Auto Apply</h3>
               <p className="text-slate-500 text-sm leading-relaxed">AI fills application forms automatically and submits — you just relax!</p>
             </div>
-            
+
             {/* Feature 4 */}
             <div className="p-8 rounded-2xl border border-slate-100 bg-white hover:shadow-xl transition-shadow group">
               <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
@@ -438,7 +429,7 @@ export default function HomeHero() {
               <h3 className="text-xl font-bold text-slate-900 mb-3">Application Tracker</h3>
               <p className="text-slate-500 text-sm leading-relaxed">Track all your applications in one place with smart status updates and history.</p>
             </div>
-            
+
             {/* Feature 5 */}
             <div className="p-8 rounded-2xl border border-slate-100 bg-white hover:shadow-xl transition-shadow group">
               <div className="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-orange-600 group-hover:text-white transition-colors">
@@ -447,7 +438,7 @@ export default function HomeHero() {
               <h3 className="text-xl font-bold text-slate-900 mb-3">Career Analysis</h3>
               <p className="text-slate-500 text-sm leading-relaxed">Beautiful insights on your applications, success rate, responses & more.</p>
             </div>
-            
+
             {/* Feature 6 */}
             <div className="p-8 rounded-2xl border border-slate-100 bg-white hover:shadow-xl transition-shadow group">
               <div className="w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-red-600 group-hover:text-white transition-colors">
@@ -465,7 +456,7 @@ export default function HomeHero() {
             <span className="text-primary font-bold text-xs uppercase tracking-widest">Pricing</span>
             <h2 className="text-3xl font-extrabold text-slate-900 mt-4 mb-4">Simple, Transparent Pricing</h2>
           </div>
-          
+
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-8 items-stretch">
             {/* Free Tier */}
             <div className="pricing-card bg-white border border-slate-200 rounded-[24px] p-8 flex flex-col hover:shadow-lg transition-all">
@@ -489,7 +480,7 @@ export default function HomeHero() {
                 Get Started
               </Link>
             </div>
-            
+
             {/* Pro Tier */}
             <div className="pricing-card bg-white border-2 border-primary rounded-[24px] p-8 flex flex-col relative shadow-xl transition-all">
               <div className="absolute top-0 right-8 -translate-y-1/2 bg-primary text-white px-4 py-1 rounded-full text-xs font-bold uppercase">
@@ -518,7 +509,7 @@ export default function HomeHero() {
                 Get Started
               </Link>
             </div>
-            
+
             {/* Premium Tier */}
             <div className="pricing-card bg-slate-900 border border-slate-800 rounded-[24px] p-8 flex flex-col hover:shadow-lg transition-all text-white">
               <div className="mb-8">
@@ -551,11 +542,11 @@ export default function HomeHero() {
               <span className="text-primary font-bold text-xs uppercase tracking-widest">Support</span>
               <h2 className="text-3xl font-extrabold text-slate-900 mt-4">Frequently Asked Questions</h2>
             </div>
-            
+
             <div className="space-y-4">
               {faqs.map((faq, index) => (
                 <div key={index} className="bg-slate-50 border border-slate-100 rounded-xl overflow-hidden transition-all">
-                  <button 
+                  <button
                     onClick={() => toggleFaq(index)}
                     className="w-full flex items-center justify-between p-6 text-left font-bold text-slate-900 focus:outline-none"
                   >
@@ -570,7 +561,7 @@ export default function HomeHero() {
                 </div>
               ))}
             </div>
-            
+
             <div className="text-center mt-12">
               <p className="text-slate-500 text-sm mb-4">Still have questions?</p>
               <a className="inline-flex items-center gap-2 text-primary font-bold hover:underline transition-all" href="#">
@@ -604,7 +595,7 @@ export default function HomeHero() {
                 </a>
               </div>
             </div>
-            
+
             <div>
               <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">Product</h4>
               <ul className="space-y-4 text-sm">
@@ -613,7 +604,7 @@ export default function HomeHero() {
                 <li><a className="hover:text-primary transition-colors" href="#pricing">Pricing</a></li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">Company</h4>
               <ul className="space-y-4 text-sm">
@@ -622,15 +613,15 @@ export default function HomeHero() {
                 <li><a className="hover:text-primary transition-colors" href="#">Contact</a></li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="text-white font-bold mb-6 text-sm uppercase tracking-widest">Newsletter</h4>
               <p className="text-xs mb-6 text-slate-400">Get weekly AI career tips in your inbox.</p>
               <div className="flex flex-col gap-3">
-                <input 
-                  className="bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary text-white" 
-                  placeholder="Enter your email" 
-                  type="email" 
+                <input
+                  className="bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary text-white"
+                  placeholder="Enter your email"
+                  type="email"
                 />
                 <button className="bg-primary hover:bg-primary/95 text-white font-bold py-3 rounded-lg text-sm transition-all">
                   Subscribe
@@ -638,7 +629,7 @@ export default function HomeHero() {
               </div>
             </div>
           </div>
-          
+
           <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-slate-500 uppercase tracking-widest">
             <p>© 2026 ApplyZen. All rights reserved.</p>
             <div className="flex gap-8">

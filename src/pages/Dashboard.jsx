@@ -251,7 +251,7 @@ export default function Dashboard() {
           <div className={`${glassClass} rounded-2xl p-6`}>
             <div className="flex justify-between items-center mb-6">
               <h4 className="text-xl font-bold text-slate-900">Recent Activities</h4>
-              <Link className="text-primary text-sm font-bold hover:underline" to="/history">View All</Link>
+              <Link className="text-primary text-sm font-bold hover:underline" to="/analytics">View All</Link>
             </div>
             
             <div className="relative space-y-6 before:absolute before:left-[15px] before:top-2 before:bottom-2 before:w-[2px] before:bg-slate-200">
