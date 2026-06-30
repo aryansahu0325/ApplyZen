@@ -10,7 +10,12 @@ export const AuthProvider = ({ children }) => {
     const savedUser = localStorage.getItem('applyzen_current_user');
     if (savedUser) {
       try {
-        setUser(JSON.parse(savedUser));
+        const parsed = JSON.parse(savedUser);
+        if (parsed && typeof parsed === 'object' && parsed.email) {
+          setUser(parsed);
+        } else {
+          localStorage.removeItem('applyzen_current_user');
+        }
       } catch (e) {
         console.error('Error parsing current user from localStorage', e);
         localStorage.removeItem('applyzen_current_user');

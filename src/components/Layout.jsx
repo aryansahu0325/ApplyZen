@@ -117,6 +117,10 @@ export default function Layout() {
                         <span className="material-symbols-outlined text-[18px] opacity-70">help_outline</span>
                         Help Center
                       </button>
+                      <button onClick={logout} className="w-full flex items-center gap-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors">
+                        <span className="material-symbols-outlined text-[18px] opacity-70">logout</span>
+                        Log Out
+                      </button>
                     </div>
                   )}
                 </div>
@@ -198,6 +202,11 @@ export default function Layout() {
                 {link.label}
               </Link>
             ))}
+            <div className="h-px bg-slate-100 my-2 mx-3"></div>
+            <button onClick={logout} className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-red-600 hover:bg-red-50 text-left">
+              <span className="material-symbols-outlined text-[18px] opacity-70">logout</span>
+              Log Out
+            </button>
           </div>
         )}
       </header>

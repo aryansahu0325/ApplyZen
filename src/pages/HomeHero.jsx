@@ -162,7 +162,7 @@ export default function HomeHero() {
                   ApplyZen is your AI career copilot that finds opportunities, creates the perfect resume, fills applications automatically, and tracks everything in one place.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-12">
-                  <Link className="inline-flex items-center justify-center" to="/signup">
+                  <Link className="w-full sm:w-auto bg-primary hover:bg-primary/95 text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all shadow-md shadow-primary/10" to="/signup">
                     Get Started Free <ArrowRight className="w-5 h-5" />
                   </Link>
                   <Link className="w-full sm:w-auto border border-slate-200 hover:bg-slate-50 text-slate-700 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all" to="/applications">
@@ -206,7 +206,7 @@ export default function HomeHero() {
                   <span className="font-semibold text-slate-700">Gmail</span>
                 </div>
                 <div className="flex items-center gap-3 px-6 py-3 bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/d/df/Microsoft_Office_Outlook_%282018%E2%80%93present%29.svg" alt="Outlook" className="w-6 h-6" />
+                  <img src="/outlook.svg" alt="Outlook" className="w-6 h-6" />
                   <span className="font-semibold text-slate-700">Outlook</span>
                 </div>
               </div>
