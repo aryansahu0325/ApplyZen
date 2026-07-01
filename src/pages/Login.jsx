@@ -104,7 +104,7 @@ export default function Login() {
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between">
                   <label className="block text-sm font-semibold text-on-surface" htmlFor="password">Password</label>
-                  <Link className="text-xs font-semibold text-primary hover:text-primary-container transition-colors" to="/forgot-password">Forgot password?</Link>
+                  <Link className="text-xs font-semibold text-primary hover:text-primary-container transition-colors" to="#">Forgot password?</Link>
                 </div>
                 <div className="relative">
                   <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px] pointer-events-none">lock</span>

@@ -4,11 +4,15 @@ import HomeHero from './pages/HomeHero';
 import ProductDetail from './pages/ProductDetail';
 import Dashboard from './pages/Dashboard';
 import Applications from './pages/Applications';
+import Opportunities from './pages/Opportunities';
 import Resumes from './pages/Resumes';
 import Analytics from './pages/Analytics';
 import WorkflowMonitor from './pages/WorkflowMonitor';
 import CompanyProfile from './pages/CompanyProfile';
 import UserProfile from './pages/UserProfile';
+import Settings from './pages/Settings';
+import Notifications from './pages/Notifications';
+import HelpCenter from './pages/HelpCenter';
 import ApplicationStatus from './pages/ApplicationStatus';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
@@ -46,13 +50,17 @@ function App() {
           }>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/opportunities" element={<Opportunities />} />
             <Route path="/applications" element={<Applications />} />
+            <Route path="/status" element={<ApplicationStatus />} />
             <Route path="/resumes" element={<Resumes />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/notifications" element={<Notifications />} />
+            <Route path="/help-center" element={<HelpCenter />} />
             <Route path="/analytics" element={<Analytics />} />
             <Route path="/workflow" element={<WorkflowMonitor />} />
             <Route path="/company-profile" element={<CompanyProfile />} />
             <Route path="/career-profile" element={<UserProfile />} />
-            <Route path="/status" element={<ApplicationStatus />} />
           </Route>
         </Routes>
       </AuthProvider>

@@ -1,6 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Applications() {
+  const navigate = useNavigate();
   const glassClass = "bg-white/70 backdrop-blur-xl border border-white/50 shadow-sm";
 
   return (
@@ -45,7 +47,7 @@ export default function Applications() {
           
           <div className="flex flex-col gap-4 min-h-[500px]">
             {/* Card 1 */}
-            <div className={`${glassClass} p-4 rounded-2xl hover:border-blue-300 hover:shadow-md hover:shadow-blue-500/5 transition-all cursor-grab active:cursor-grabbing group`}>
+            <div className={`\${glassClass} p-4 rounded-2xl hover:border-blue-300 hover:shadow-md hover:shadow-blue-500/5 transition-all cursor-pointer group`} onClick={() => navigate('/status')}>
               <div className="flex justify-between items-start mb-4">
                 <div className="flex gap-3">
                   <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-slate-200 shrink-0 overflow-hidden shadow-sm">
@@ -71,7 +73,7 @@ export default function Applications() {
             </div>
 
             {/* Card 2 */}
-            <div className={`${glassClass} p-4 rounded-2xl hover:border-blue-300 hover:shadow-md hover:shadow-blue-500/5 transition-all cursor-grab active:cursor-grabbing group`}>
+            <div className={`\${glassClass} p-4 rounded-2xl hover:border-blue-300 hover:shadow-md hover:shadow-blue-500/5 transition-all cursor-pointer group`} onClick={() => navigate('/status')}>
               <div className="flex justify-between items-start mb-4">
                 <div className="flex gap-3">
                   <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-slate-200 shrink-0 overflow-hidden shadow-sm">
@@ -108,7 +110,7 @@ export default function Applications() {
           
           <div className="flex flex-col gap-4 min-h-[500px]">
             {/* Card 1 */}
-            <div className="bg-gradient-to-br from-white/90 to-orange-50/80 backdrop-blur-xl border border-orange-200 shadow-md p-4 rounded-2xl hover:border-orange-400 transition-all cursor-grab active:cursor-grabbing group">
+            <div className="bg-gradient-to-br from-white/90 to-orange-50/80 backdrop-blur-xl border border-orange-200 shadow-md p-4 rounded-2xl hover:border-orange-400 transition-all cursor-pointer group" onClick={() => navigate('/status')} onClick={() => navigate('/status')}>
               <div className="flex justify-between items-start mb-4">
                 <div className="flex gap-3">
                   <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-slate-200 shrink-0 overflow-hidden shadow-sm">
@@ -135,7 +137,7 @@ export default function Applications() {
             </div>
 
             {/* Card 2 */}
-            <div className={`${glassClass} p-4 rounded-2xl hover:border-orange-300 hover:shadow-md hover:shadow-orange-500/5 transition-all cursor-grab active:cursor-grabbing group`}>
+            <div className={`\${glassClass} p-4 rounded-2xl hover:border-orange-300 hover:shadow-md hover:shadow-orange-500/5 transition-all cursor-pointer group`} onClick={() => navigate('/status')}>
               <div className="flex justify-between items-start mb-3">
                 <div className="flex gap-3">
                   <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-slate-200 shrink-0 overflow-hidden shadow-sm">
@@ -169,7 +171,7 @@ export default function Applications() {
           
           <div className="flex flex-col gap-4 min-h-[500px]">
             {/* Special Offer Card */}
-            <div className="bg-gradient-to-br from-emerald-50 to-emerald-100/50 backdrop-blur-xl border-2 border-primary rounded-2xl shadow-lg shadow-primary/20 p-4 relative overflow-hidden group">
+            <div className="bg-gradient-to-br from-emerald-50 to-emerald-100/50 backdrop-blur-xl border-2 border-primary rounded-2xl shadow-lg shadow-primary/20 p-4 relative overflow-hidden group" onClick={() => navigate('/status')} cursor-pointer onClick={() => navigate('/status')}>
               <div className="absolute -right-8 -top-8 w-24 h-24 bg-primary/10 rotate-45 transform group-hover:scale-110 transition-transform duration-500"></div>
               
               <div className="flex justify-between items-start mb-4 relative z-10">
@@ -216,7 +218,7 @@ export default function Applications() {
           
           <div className="flex flex-col gap-4 min-h-[500px] opacity-75 hover:opacity-100 transition-opacity">
             {/* Card 1 */}
-            <div className={`${glassClass} p-4 rounded-2xl grayscale hover:grayscale-0 transition-all cursor-default`}>
+            <div className={`\${glassClass} p-4 rounded-2xl grayscale hover:grayscale-0 transition-all cursor-pointer`} onClick={() => navigate('/status')}>
               <div className="flex justify-between items-start mb-3">
                 <div className="flex gap-3">
                   <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-slate-200 shrink-0 overflow-hidden shadow-sm">
@@ -233,7 +235,7 @@ export default function Applications() {
             </div>
             
             {/* Card 2 */}
-            <div className={`${glassClass} p-4 rounded-2xl grayscale hover:grayscale-0 transition-all cursor-default`}>
+            <div className={`\${glassClass} p-4 rounded-2xl grayscale hover:grayscale-0 transition-all cursor-pointer`} onClick={() => navigate('/status')}>
               <div className="flex justify-between items-start">
                 <div className="flex gap-3">
                   <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-slate-200 shrink-0 overflow-hidden shadow-sm">
@@ -277,7 +279,7 @@ export default function Applications() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-200/60">
-                <tr className="hover:bg-white/60 transition-colors group cursor-pointer">
+                <tr className="hover:bg-white/60 transition-colors group cursor-pointer" onClick={() => navigate('/status')}>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center shrink-0 group-hover:bg-indigo-100 transition-colors">
@@ -302,7 +304,7 @@ export default function Applications() {
                   </td>
                 </tr>
                 
-                <tr className="hover:bg-white/60 transition-colors group cursor-pointer">
+                <tr className="hover:bg-white/60 transition-colors group cursor-pointer" onClick={() => navigate('/status')}>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0 group-hover:bg-blue-100 transition-colors">
