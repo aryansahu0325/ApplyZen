@@ -1,6 +1,10 @@
 import React from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 export default function UserProfile() {
+  const navigate = useNavigate();
+  const { user } = useAuth();
   const glassClass = "bg-white/70 backdrop-blur-xl border border-white/50 shadow-sm";
 
   return (
@@ -9,7 +13,10 @@ export default function UserProfile() {
       {/* Hero / Profile Header */}
       <section className={`${glassClass} rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden`}>
         <div className="absolute top-0 right-0 p-6">
-          <button className="px-6 py-2.5 bg-primary text-white rounded-xl font-bold flex items-center gap-2 hover:opacity-90 transition-all shadow-sm">
+          <button 
+            onClick={() => navigate('/settings')}
+            className="px-6 py-2.5 bg-primary text-white rounded-xl font-bold flex items-center gap-2 hover:opacity-90 transition-all shadow-sm"
+          >
             <span className="material-symbols-outlined">edit</span>
             Edit Profile
           </button>
@@ -17,16 +24,19 @@ export default function UserProfile() {
         <div className="flex flex-col md:flex-row items-center gap-8">
           <div className="relative group">
             <img 
-              alt="Aman Kumar Portrait" 
+              alt="User Avatar" 
               className="w-32 h-32 rounded-full border-4 border-white object-cover shadow-md" 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWechQuRFtBEvnmahFJj-H9FdAy0lfVc8ZDQ7cNdWcbtzAcZjI_9t9QCyYesyNjexgXL7LxKKgVwyQL-rUF2QeI_nU9u_pMlTQ11TWcYyI-FUf_8eEO2k6yg-PF-lb1dKjTaoVVeqa8I9Ke8W5ZOX5jnnKcDWu-MFk5a4B6-aCJPKb992B94exxp0ar2A8LgSUO6erPeTX6aDFbihKPxkZ9H9OnZ7i2j3NZ0uIdLFB4qa-WP6DlifiWgsmn2q_IMF0LdRrPdIPemLq"
+              src={user?.profileImage || "https://lh3.googleusercontent.com/aida-public/AB6AXuBWechQuRFtBEvnmahFJj-H9FdAy0lfVc8ZDQ7cNdWcbtzAcZjI_9t9QCyYesyNjexgXL7LxKKgVwyQL-rUF2QeI_nU9u_pMlTQ11TWcYyI-FUf_8eEO2k6yg-PF-lb1dKjTaoVVeqa8I9Ke8W5ZOX5jnnKcDWu-MFk5a4B6-aCJPKb992B94exxp0ar2A8LgSUO6erPeTX6aDFbihKPxkZ9H9OnZ7i2j3NZ0uIdLFB4qa-WP6DlifiWgsmn2q_IMF0LdRrPdIPemLq"}
             />
-            <div className="absolute bottom-0 right-0 bg-primary text-white p-1.5 rounded-full border-2 border-white cursor-pointer hover:scale-110 transition-transform shadow-sm">
+            <div 
+              onClick={() => navigate('/settings')}
+              className="absolute bottom-0 right-0 bg-primary text-white p-1.5 rounded-full border-2 border-white cursor-pointer hover:scale-110 transition-transform shadow-sm"
+            >
               <span className="material-symbols-outlined text-[16px]">photo_camera</span>
             </div>
           </div>
           <div className="text-center md:text-left">
-            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">Aman Kumar</h2>
+            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">{user?.fullName || "Aman Kumar"}</h2>
             <p className="text-lg text-primary font-bold">Senior Product Designer</p>
             <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-4">
               <div className="flex items-center gap-1.5 text-slate-500 font-bold text-sm">
@@ -35,7 +45,7 @@ export default function UserProfile() {
               </div>
               <div className="flex items-center gap-1.5 text-slate-500 font-bold text-sm">
                 <span className="material-symbols-outlined text-[18px]">mail</span>
-                aman.kumar@example.com
+                {user?.email || "aman.kumar@example.com"}
               </div>
               <div className="flex items-center gap-1.5 text-primary font-bold text-sm bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">
                 <span className="material-symbols-outlined text-[18px]">verified</span>
@@ -62,15 +72,15 @@ export default function UserProfile() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-1">
                 <label className="text-xs font-black text-slate-400 uppercase tracking-wider">Full Name</label>
-                <p className="text-base text-slate-800 font-bold">Aman Kumar</p>
+                <p className="text-base text-slate-800 font-bold">{user?.fullName || "Aman Kumar"}</p>
               </div>
               <div className="space-y-1">
                 <label className="text-xs font-black text-slate-400 uppercase tracking-wider">Email Address</label>
-                <p className="text-base text-slate-800 font-bold">aman.kumar@example.com</p>
+                <p className="text-base text-slate-800 font-bold">{user?.email || "aman.kumar@example.com"}</p>
               </div>
               <div className="space-y-1">
                 <label className="text-xs font-black text-slate-400 uppercase tracking-wider">Phone Number</label>
-                <p className="text-base text-slate-800 font-bold">+1 (555) 0123-4567</p>
+                <p className="text-base text-slate-800 font-bold">{user?.phone || "+1 (555) 0123-4567"}</p>
               </div>
               <div className="space-y-1">
                 <label className="text-xs font-black text-slate-400 uppercase tracking-wider">Location</label>
@@ -183,6 +193,22 @@ export default function UserProfile() {
                 <button className="text-xs font-bold text-red-500 hover:text-red-600 transition-colors bg-red-50 hover:bg-red-100 px-3 py-1.5 rounded-lg border border-red-100">Disconnect</button>
               </div>
 
+              {/* LeetCode */}
+              {user?.leetcode && (
+                <div className="flex items-center justify-between p-3 bg-white/50 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors animate-in slide-in-from-top-2 duration-250">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 flex items-center justify-center rounded-lg bg-white shadow-sm overflow-hidden p-1.5 shrink-0">
+                      <span className="material-symbols-outlined text-amber-500 text-[20px]">code</span>
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-slate-800">LeetCode</p>
+                      <span className="text-[10px] bg-emerald-100 text-primary px-1.5 py-0.5 rounded-md uppercase font-black border border-emerald-200">Connected</span>
+                    </div>
+                  </div>
+                  <button className="text-xs font-bold text-slate-500 hover:text-slate-700 bg-slate-50 hover:bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200 transition-colors">{user.leetcode}</button>
+                </div>
+              )}
+
               {/* Outlook */}
               <div className="flex items-center justify-between p-3 bg-white/50 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors grayscale opacity-60 hover:grayscale-0 hover:opacity-100">
                 <div className="flex items-center gap-3">
@@ -218,7 +244,10 @@ export default function UserProfile() {
               </div>
               
               <div className="pt-5 border-t border-slate-200">
-                <button className="w-full flex items-center justify-between py-2.5 px-4 bg-white/50 border border-slate-200 rounded-xl hover:bg-white hover:border-primary/50 transition-colors group">
+                <button 
+                  onClick={() => navigate('/settings')}
+                  className="w-full flex items-center justify-between py-2.5 px-4 bg-white/50 border border-slate-200 rounded-xl hover:bg-white hover:border-primary/50 transition-colors group"
+                >
                   <div className="flex items-center gap-3 text-slate-700">
                     <span className="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">key</span>
                     <span className="text-sm font-bold">Change Password</span>
@@ -227,7 +256,10 @@ export default function UserProfile() {
                 </button>
               </div>
               
-              <button className="w-full py-3 text-center text-sm font-bold text-red-500 border border-red-200 rounded-xl hover:bg-red-50 hover:border-red-300 transition-colors bg-white/50">
+              <button 
+                onClick={() => navigate('/settings')}
+                className="w-full py-3 text-center text-sm font-bold text-red-500 border border-red-200 rounded-xl hover:bg-red-50 hover:border-red-300 transition-colors bg-white/50"
+              >
                 Delete Account
               </button>
             </div>

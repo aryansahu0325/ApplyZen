@@ -68,8 +68,30 @@ export const AuthProvider = ({ children }) => {
     return true;
   };
 
+  const updateUserProfile = (updatedData) => {
+    if (!user) return;
+    const newUser = { ...user, ...updatedData };
+    localStorage.setItem('applyzen_current_user', JSON.stringify(newUser));
+    setUser(newUser);
+
+    // Also update in registered users database to persist
+    const savedUsers = localStorage.getItem('applyzen_users');
+    if (savedUsers) {
+      try {
+        const users = JSON.parse(savedUsers);
+        const index = users.findIndex(u => u.email.toLowerCase() === user.email.toLowerCase());
+        if (index !== -1) {
+          users[index] = { ...users[index], ...updatedData };
+          localStorage.setItem('applyzen_users', JSON.stringify(users));
+        }
+      } catch (e) {
+        console.error('Error updating profile in users list', e);
+      }
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, loading, login, signup, logout, loginAsGuest }}>
+    <AuthContext.Provider value={{ user, loading, login, signup, logout, loginAsGuest, updateUserProfile }}>
       {children}
     </AuthContext.Provider>
   );
