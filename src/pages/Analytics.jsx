@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { mockAnalytics } from '../mocks/mockData';
 
 export default function Analytics() {
     const [animate, setAnimate] = useState(false);
@@ -53,12 +54,12 @@ export default function Analytics() {
             </div>
           </div>
           <div className="flex items-baseline gap-1 relative z-10">
-            <span className="text-4xl font-extrabold text-slate-900">84</span>
+            <span className="text-4xl font-extrabold text-slate-900">{mockAnalytics.metrics.atsScore.value}</span>
             <span className="text-sm font-bold text-emerald-600">/ 100</span>
           </div>
           <div className="mt-4 flex items-center text-emerald-600 gap-1 relative z-10">
             <span className="material-symbols-outlined text-[16px]">trending_up</span>
-            <span className="text-xs font-bold">+12% vs last period</span>
+            <span className="text-xs font-bold">{mockAnalytics.metrics.atsScore.label}</span>
           </div>
         </div>
 
@@ -72,12 +73,12 @@ export default function Analytics() {
             </div>
           </div>
           <div className="flex items-baseline gap-1 relative z-10">
-            <span className="text-4xl font-extrabold text-slate-900">18.5</span>
+            <span className="text-4xl font-extrabold text-slate-900">{mockAnalytics.metrics.interviewRate.value}</span>
             <span className="text-sm font-bold text-blue-600">%</span>
           </div>
           <div className="mt-4 flex items-center text-emerald-600 gap-1 relative z-10">
             <span className="material-symbols-outlined text-[16px]">trending_up</span>
-            <span className="text-xs font-bold">+2.4% vs last period</span>
+            <span className="text-xs font-bold">{mockAnalytics.metrics.interviewRate.label}</span>
           </div>
         </div>
 
@@ -91,12 +92,12 @@ export default function Analytics() {
             </div>
           </div>
           <div className="flex items-baseline gap-1 relative z-10">
-            <span className="text-4xl font-extrabold text-slate-900">42</span>
+            <span className="text-4xl font-extrabold text-slate-900">{mockAnalytics.metrics.applicationsSent.value}</span>
             <span className="text-sm font-bold text-slate-500">this month</span>
           </div>
           <div className="mt-4 flex items-center text-orange-600 gap-1 relative z-10">
             <span className="material-symbols-outlined text-[16px]">trending_down</span>
-            <span className="text-xs font-bold">-5% vs last month</span>
+            <span className="text-xs font-bold">{mockAnalytics.metrics.applicationsSent.label}</span>
           </div>
         </div>
 
@@ -110,12 +111,12 @@ export default function Analytics() {
             </div>
           </div>
           <div className="flex items-baseline gap-1 relative z-10">
-            <span className="text-4xl font-extrabold text-slate-900">34</span>
+            <span className="text-4xl font-extrabold text-slate-900">{mockAnalytics.metrics.timeToOffer.value}</span>
             <span className="text-sm font-bold text-slate-500">Avg Days</span>
           </div>
           <div className="mt-4 flex items-center text-slate-400 gap-1 relative z-10">
             <span className="material-symbols-outlined text-[16px]">horizontal_rule</span>
-            <span className="text-xs font-bold">Stable performance</span>
+            <span className="text-xs font-bold">{mockAnalytics.metrics.timeToOffer.label}</span>
           </div>
         </div>
       </div>
@@ -137,28 +138,28 @@ export default function Analytics() {
               
               <div className="flex-1 flex flex-col items-center group">
                 <div className="w-full bg-slate-200 rounded-t-xl relative border border-slate-300 transition-all duration-1000 ease-out" style={{ height: animate ? '100%' : '0%' }}>
-                  <div className="absolute -top-8 left-1/2 -translate-x-1/2 font-extrabold text-slate-700">156</div>
+                  <div className="absolute -top-8 left-1/2 -translate-x-1/2 font-extrabold text-slate-700">{mockAnalytics.funnel.applied}</div>
                 </div>
                 <span className="text-xs sm:text-sm mt-3 font-bold text-slate-500">Applied</span>
               </div>
               
               <div className="flex-1 flex flex-col items-center group">
                 <div className="w-full bg-indigo-200 rounded-t-xl relative border border-indigo-300 transition-all duration-1000 ease-out delay-100" style={{ height: animate ? '65%' : '0%' }}>
-                  <div className="absolute -top-8 left-1/2 -translate-x-1/2 font-extrabold text-indigo-700">102</div>
+                  <div className="absolute -top-8 left-1/2 -translate-x-1/2 font-extrabold text-indigo-700">{mockAnalytics.funnel.screened}</div>
                 </div>
                 <span className="text-xs sm:text-sm mt-3 font-bold text-slate-500">Screened</span>
               </div>
               
               <div className="flex-1 flex flex-col items-center group">
                 <div className="w-full bg-emerald-200 rounded-t-xl relative border border-emerald-300 transition-all duration-1000 ease-out delay-200" style={{ height: animate ? '28%' : '0%' }}>
-                  <div className="absolute -top-8 left-1/2 -translate-x-1/2 font-extrabold text-emerald-700">29</div>
+                  <div className="absolute -top-8 left-1/2 -translate-x-1/2 font-extrabold text-emerald-700">{mockAnalytics.funnel.interview}</div>
                 </div>
                 <span className="text-xs sm:text-sm mt-3 font-bold text-slate-500">Interview</span>
               </div>
               
               <div className="flex-1 flex flex-col items-center group">
                 <div className="w-full bg-primary rounded-t-xl relative border border-primary/80 shadow-[0_-4px_15px_rgba(16,185,129,0.3)] transition-all duration-1000 ease-out delay-300" style={{ height: animate ? '8%' : '0%' }}>
-                  <div className="absolute -top-8 left-1/2 -translate-x-1/2 font-extrabold text-primary">4</div>
+                  <div className="absolute -top-8 left-1/2 -translate-x-1/2 font-extrabold text-primary">{mockAnalytics.funnel.offers}</div>
                 </div>
                 <span className="text-xs sm:text-sm mt-3 font-bold text-slate-500">Offers</span>
               </div>
@@ -175,40 +176,40 @@ export default function Analytics() {
               <div>
                 <div className="flex justify-between mb-2">
                   <span className="text-sm font-bold text-slate-700">LinkedIn</span>
-                  <span className="text-sm font-black text-slate-900">24%</span>
+                  <span className="text-sm font-black text-slate-900">{mockAnalytics.platforms.linkedin}%</span>
                 </div>
                 <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden border border-slate-200">
-                  <div className="bg-[#0077b5] h-full rounded-full transition-all duration-1000 ease-out" style={{ width: animate ? '24%' : '0%' }}></div>
+                  <div className="bg-[#0077b5] h-full rounded-full transition-all duration-1000 ease-out" style={{ width: animate ? `${mockAnalytics.platforms.linkedin}%` : '0%' }}></div>
                 </div>
               </div>
               
               <div>
                 <div className="flex justify-between mb-2">
                   <span className="text-sm font-bold text-slate-700">Glassdoor</span>
-                  <span className="text-sm font-black text-slate-900">12%</span>
+                  <span className="text-sm font-black text-slate-900">{mockAnalytics.platforms.glassdoor}%</span>
                 </div>
                 <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden border border-slate-200">
-                  <div className="bg-[#0caa41] h-full rounded-full transition-all duration-1000 ease-out delay-100" style={{ width: animate ? '12%' : '0%' }}></div>
+                  <div className="bg-[#0caa41] h-full rounded-full transition-all duration-1000 ease-out delay-100" style={{ width: animate ? `${mockAnalytics.platforms.glassdoor}%` : '0%' }}></div>
                 </div>
               </div>
               
               <div>
                 <div className="flex justify-between mb-2">
                   <span className="text-sm font-bold text-slate-700">Direct Apply</span>
-                  <span className="text-sm font-black text-slate-900">42%</span>
+                  <span className="text-sm font-black text-slate-900">{mockAnalytics.platforms.directApply}%</span>
                 </div>
                 <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden border border-slate-200">
-                  <div className="bg-primary h-full rounded-full transition-all duration-1000 ease-out delay-200" style={{ width: animate ? '42%' : '0%' }}></div>
+                  <div className="bg-primary h-full rounded-full transition-all duration-1000 ease-out delay-200" style={{ width: animate ? `${mockAnalytics.platforms.directApply}%` : '0%' }}></div>
                 </div>
               </div>
               
               <div>
                 <div className="flex justify-between mb-2">
                   <span className="text-sm font-bold text-slate-700">Referrals</span>
-                  <span className="text-sm font-black text-slate-900">68%</span>
+                  <span className="text-sm font-black text-slate-900">{mockAnalytics.platforms.referrals}%</span>
                 </div>
                 <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden border border-slate-200">
-                  <div className="bg-emerald-400 h-full rounded-full transition-all duration-1000 ease-out delay-300 shadow-[0_0_10px_rgba(52,211,153,0.8)]" style={{ width: animate ? '68%' : '0%' }}></div>
+                  <div className="bg-emerald-400 h-full rounded-full transition-all duration-1000 ease-out delay-300 shadow-[0_0_10px_rgba(52,211,153,0.8)]" style={{ width: animate ? `${mockAnalytics.platforms.referrals}%` : '0%' }}></div>
                 </div>
               </div>
             </div>
@@ -244,35 +245,35 @@ export default function Analytics() {
           <div className="space-y-8">
             {/* Range 1 */}
             <div className="flex items-center gap-4">
-              <span className="w-32 text-sm font-bold text-slate-700">Software Eng II</span>
+              <span className="w-32 text-sm font-bold text-slate-700">{mockAnalytics.salaries[0].role}</span>
               <div className="flex-1 relative h-6 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
                 <div className="absolute left-[15%] right-[25%] bg-emerald-100 h-full transition-all duration-1000 ease-out" style={{ width: animate ? '60%' : '0%' }}></div>
                 <div className="absolute left-[30%] right-[40%] bg-primary h-full transition-all duration-1000 ease-out delay-100" style={{ width: animate ? '30%' : '0%' }}></div>
                 <div className="absolute left-[50%] h-full w-[2px] bg-slate-900 z-10 shadow-sm"></div>
               </div>
-              <span className="w-24 text-right text-xs font-black text-slate-900">$120k-$165k</span>
+              <span className="w-24 text-right text-xs font-black text-slate-900">{mockAnalytics.salaries[0].range}</span>
             </div>
             
             {/* Range 2 */}
             <div className="flex items-center gap-4">
-              <span className="w-32 text-sm font-bold text-slate-700">Senior Product</span>
+              <span className="w-32 text-sm font-bold text-slate-700">{mockAnalytics.salaries[1].role}</span>
               <div className="flex-1 relative h-6 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
                 <div className="absolute left-[25%] right-[15%] bg-emerald-100 h-full transition-all duration-1000 ease-out" style={{ width: animate ? '60%' : '0%' }}></div>
                 <div className="absolute left-[40%] right-[30%] bg-primary h-full transition-all duration-1000 ease-out delay-100" style={{ width: animate ? '30%' : '0%' }}></div>
                 <div className="absolute left-[55%] h-full w-[2px] bg-slate-900 z-10 shadow-sm"></div>
               </div>
-              <span className="w-24 text-right text-xs font-black text-slate-900">$145k-$190k</span>
+              <span className="w-24 text-right text-xs font-black text-slate-900">{mockAnalytics.salaries[1].range}</span>
             </div>
             
             {/* Range 3 */}
             <div className="flex items-center gap-4">
-              <span className="w-32 text-sm font-bold text-slate-700">Frontend Dev</span>
+              <span className="w-32 text-sm font-bold text-slate-700">{mockAnalytics.salaries[2].role}</span>
               <div className="flex-1 relative h-6 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
                 <div className="absolute left-[10%] right-[40%] bg-emerald-100 h-full transition-all duration-1000 ease-out" style={{ width: animate ? '50%' : '0%' }}></div>
                 <div className="absolute left-[20%] right-[55%] bg-primary h-full transition-all duration-1000 ease-out delay-100" style={{ width: animate ? '25%' : '0%' }}></div>
                 <div className="absolute left-[40%] h-full w-[2px] bg-slate-900 z-10 shadow-sm"></div>
               </div>
-              <span className="w-24 text-right text-xs font-black text-slate-900">$100k-$135k</span>
+              <span className="w-24 text-right text-xs font-black text-slate-900">{mockAnalytics.salaries[2].range}</span>
             </div>
           </div>
         </div>
@@ -287,26 +288,18 @@ export default function Analytics() {
           </div>
           
           <div className="space-y-4 flex-1">
-            <div className="bg-white/80 p-4 rounded-xl border border-white shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex gap-3">
-                <span className="material-symbols-outlined text-orange-500 text-[20px] shrink-0" style={{ fontVariationSettings: '"FILL" 1' }}>bolt</span>
-                <p className="text-xs font-medium text-slate-700 leading-relaxed">Your response rate is <span className="font-bold text-primary">15% higher</span> when applying within the first 24 hours of a posting.</p>
+            {mockAnalytics.smartTips.map((tip, idx) => (
+              <div key={idx} className="bg-white/80 p-4 rounded-xl border border-white shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex gap-3">
+                  <span className={`material-symbols-outlined ${tip.color} text-[20px] shrink-0`} style={{ fontVariationSettings: tip.type === 'bolt' ? '"FILL" 1' : undefined }}>{tip.type}</span>
+                  <p className="text-xs font-medium text-slate-700 leading-relaxed">
+                    {tip.textPart1}
+                    <span className="font-bold text-primary">{tip.textBold}</span>
+                    {tip.textPart2}
+                  </p>
+                </div>
               </div>
-            </div>
-            
-            <div className="bg-white/80 p-4 rounded-xl border border-white shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex gap-3">
-                <span className="material-symbols-outlined text-blue-500 text-[20px] shrink-0">history</span>
-                <p className="text-xs font-medium text-slate-700 leading-relaxed">Applying on <span className="font-bold text-primary">Tuesdays</span> has yielded the most recruiter callbacks this month.</p>
-              </div>
-            </div>
-            
-            <div className="bg-white/80 p-4 rounded-xl border border-white shadow-sm hover:shadow-md transition-shadow">
-              <div className="flex gap-3">
-                <span className="material-symbols-outlined text-indigo-500 text-[20px] shrink-0">psychology</span>
-                <p className="text-xs font-medium text-slate-700 leading-relaxed">Roles mentioning <span className="font-bold text-primary">"Scalability"</span> match your current resume with 94% accuracy.</p>
-              </div>
-            </div>
+            ))}
           </div>
           
           <button className="mt-6 w-full bg-white border border-emerald-200 text-primary py-3 rounded-xl text-sm font-bold hover:bg-emerald-50 transition-colors shadow-sm">

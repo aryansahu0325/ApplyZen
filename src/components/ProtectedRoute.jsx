@@ -14,9 +14,7 @@ export default function ProtectedRoute({ children, publicOnly = false }) {
   }
 
   if (publicOnly) {
-    // TEMPORARY: Allow viewing Login/Signup pages even if logged in for testing purposes
-    // return user ? <Navigate to="/dashboard" replace /> : children;
-    return children;
+    return user ? <Navigate to="/dashboard" replace /> : children;
   }
 
   return user ? children : <Navigate to="/login" replace />;

@@ -4,37 +4,12 @@ import React, { useState, useEffect } from 'react';
 import OpportunityCard from '../components/opportunities/OpportunityCard';
 
 
-const defaultOpportunities = [
-  {
-    company: "Veridian AI",
-    role: "Senior Product Designer",
-    location: "Remote",
-    logo: "https://lh3.googleusercontent.com/aida/AP1WRLvzLbIyFu8PtSrj8nIDNi-ln9pFHpJgM0Rr3Iz_DwvXnu_RfthZA0B1HP-hVfPj3zs_l9FyOUz1vBvI4uN7AbiKkBGzOo823WvYXa3Hbw-mu2fWfUbeDtm6mGerLDjdcdqXx3TYe6a-bL2LWO2f4ahWYMcYBdQoM6qHdXA6wW3Pn_s4FLpxCxheKgwssEORy4D1T2JkWL8Lp7Y2mn2oDNKl7fJSXm4dbprHlzmZZIiEuf9iYZ2V31ujMIKv",
-    matchPercentage: 94,
-    skills: ["Figma", "SaaS", "AI Ethics"],
-    salary: "$140k - $180k",
-    deadline: "Oct 12",
-    source: "LinkedIn",
-    status: "Ready"
-  },
-  {
-    company: "Loomis Financial",
-    role: "Lead Frontend Architect",
-    location: "NYC / Hybrid",
-    logo: "https://lh3.googleusercontent.com/aida/AP1WRLtSUwH07h4GpXC75Ixdj0mwSI4JYx9yXrSbwHYkQ_4jL-8G7Z112Bam5ZbfcyuUanEUvB7seigJowueXR39qZXM7ac5LHWfGSCwFYSAXJSIWfCNdsmQhora8pfQyGYTlDf3nPhDYszI6eRrdLtW4NFKfkcEESkeLvznBLWSmM-u0YGaIN91wbGxAVsoYvQASrhyGQci6_mNb40R1eRMhS9qFnRbTUvNbLNBsnjYfDfWER6y1T-o--QYmr6I",
-    matchPercentage: 87,
-    skills: ["React", "TypeScript", "Next.js"],
-    salary: "$190k - $240k",
-    deadline: "Oct 28",
-    source: "Gmail Sync",
-    status: "Analyzed"
-  }
-];
+import { mockOpportunities } from '../mocks/mockData';
 
 export default function Opportunities() {
   const [opportunities, _setOpportunities] = useState(() => {
     const saved = localStorage.getItem('applyzen_opportunities');
-    return saved ? JSON.parse(saved) : defaultOpportunities;
+    return saved ? JSON.parse(saved) : mockOpportunities;
   });
 
   useEffect(() => {

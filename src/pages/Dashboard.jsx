@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { mockDashboardStats, mockDashboardOpportunities, mockDashboardActivities } from '../mocks/mockData';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Plus, Briefcase, TrendingUp, Send, Calendar, Award, XCircle, ExternalLink, Sparkles, Brain, ChevronRight, Edit3, CheckCircle, FileText, Mail, Contact, Bot } from 'lucide-react';
@@ -7,19 +8,31 @@ import { Plus, Briefcase, TrendingUp, Send, Calendar, Award, XCircle, ExternalLi
 export default function Dashboard() {
   const { user } = useAuth();
   const firstName = user?.fullName ? user.fullName.split(' ')[0] : 'Aryan';
+  const activityIcons = {
+    applied: <CheckCircle className="w-5 h-5 text-emerald-600" />,
+    interview: <Calendar className="w-5 h-5 text-blue-600" />,
+    optimized: <FileText className="w-5 h-5 text-indigo-600" />
+  };
 
-  const [opportunitiesCount, setOpportunitiesCount] = useState(128);
-  const [applicationsCount, setApplicationsCount] = useState(56);
-  const [interviewsCount, setInterviewsCount] = useState(12);
-  const [offersCount, setOffersCount] = useState(3);
-  const [rejectionsCount, setRejectionsCount] = useState(7);
+  const activityBgColors = {
+    applied: "bg-emerald-100 border-emerald-200",
+    interview: "bg-blue-100 border-blue-200",
+    optimized: "bg-indigo-100 border-indigo-200"
+  };
+
+
+  const [opportunitiesCount, setOpportunitiesCount] = useState(mockDashboardStats.opportunities);
+  const [applicationsCount, setApplicationsCount] = useState(mockDashboardStats.applications);
+  const [interviewsCount, setInterviewsCount] = useState(mockDashboardStats.interviews);
+  const [offersCount, setOffersCount] = useState(mockDashboardStats.offers);
+  const [rejectionsCount, setRejectionsCount] = useState(mockDashboardStats.rejections);
 
   useEffect(() => {
     // Load from local storage and update counts if they exist
     const savedOpps = localStorage.getItem('applyzen_opportunities');
     if (savedOpps) {
       const opps = JSON.parse(savedOpps);
-      setOpportunitiesCount(opps.length + 126); // Base 126 + current list
+      setOpportunitiesCount(opps.length + mockDashboardStats.offsets.opportunities); // Base 126 + current list
     }
 
     const savedApps = localStorage.getItem('applyzen_applications');
@@ -30,10 +43,10 @@ export default function Dashboard() {
       const offers = apps.filter(a => a.stage === 'Offer').length;
       const rejections = apps.filter(a => a.stage === 'Inactive' && a.status === 'Rejected').length;
 
-      setApplicationsCount(applied + 54); // Base 54 + current list
-      setInterviewsCount(interviewing + 10); // Base 10 + current list
-      setOffersCount(offers + 2); // Base 2 + current list
-      setRejectionsCount(rejections + 6); // Base 6 + current list
+      setApplicationsCount(applied + mockDashboardStats.offsets.applications); // Base 54 + current list
+      setInterviewsCount(interviewing + mockDashboardStats.offsets.interviews); // Base 10 + current list
+      setOffersCount(offers + mockDashboardStats.offsets.offers); // Base 2 + current list
+      setRejectionsCount(rejections + mockDashboardStats.offsets.rejections); // Base 6 + current list
     }
   }, []);
 
@@ -188,56 +201,23 @@ export default function Dashboard() {
             </div>
             
             <div className="space-y-3">
-              {/* Job 1 */}
-              <div className="flex items-center justify-between p-3 border border-slate-200/60 rounded-xl hover:bg-slate-50/50 bg-white/40 transition-colors group">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-white border border-slate-200 rounded-lg flex items-center justify-center p-1 shadow-sm">
-                    <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url("https://lh3.googleusercontent.com/aida-public/AB6AXuB6g8AVFT2-mysUZu3PRrxNNWj5zxnf6bh6rr-zF9DzDg23-I-ygsUgcGTMBuupHod7tMYZUnUAEmoUakx-8GDTZuD-evZRx2o9FV2QnqlDpq64WUlK6JV5inNyvEufxmO-RUKvPLiWRpaBfnfS8f4kXuzmRP1mxML33B9KQrz5kK9NnmMuBh5WKmKAvbAlodNpSuZAUpMLDFmSm-bCBIf-lsKSw3A7ms1CUBeISDvbUKGe6PIG5qX2SkR7WfrrmXBkT4cmcdK8kac7")` }}></div>
+              {mockDashboardOpportunities.map((job, idx) => (
+                <div key={idx} className="flex items-center justify-between p-3 border border-slate-200/60 rounded-xl hover:bg-slate-50/50 bg-white/40 transition-colors group">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-white border border-slate-200 rounded-lg flex items-center justify-center p-1 shadow-sm">
+                      <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url("${job.logo}")` }}></div>
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-slate-900">{job.role}</p>
+                      <p className="text-xs text-slate-500 font-medium">{job.company} • {job.location}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm font-bold text-slate-900">Software Engineering Intern</p>
-                    <p className="text-xs text-slate-500 font-medium">Google • Remote</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-6">
-                  <span className="bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full border border-emerald-100 hidden sm:block">95% Match</span>
-                  <button className="text-primary font-bold text-sm group-hover:translate-x-1 transition-transform inline-flex items-center">Apply <ExternalLink className="w-5 h-5 ml-1" /></button>
-                </div>
-              </div>
-
-              {/* Job 2 */}
-              <div className="flex items-center justify-between p-3 border border-slate-200/60 rounded-xl hover:bg-slate-50/50 bg-white/40 transition-colors group">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-white border border-slate-200 rounded-lg flex items-center justify-center p-1 shadow-sm">
-                    <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url("https://lh3.googleusercontent.com/aida-public/AB6AXuBlG1GTFgg1uHxvP6kLY6PtDOgq_vcjjJGJ2r4AzqNvbdGtctj8gJ2QSqZ9nQux2yWSS6HlQVNyl3CJnqDmzw-P5pxFg8mEpWJNCz-oeue4LMeWMvfwx2LkDKxxek1gty_AKpM57fGm2ihWDM8T6L2fN-BjMCXf0DdFjtDRwagD7-WlSlmeGx3jZAEtrx3KTWfx-WrjFEwu9yBISt6cuoKo0pW5DOxmg6R0lBfDgsAlvZBAHwMOsQSAKRMaUX7_mz1ROOPf6By1c6Rs")` }}></div>
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-slate-900">SDE Intern</p>
-                    <p className="text-xs text-slate-500 font-medium">Microsoft • India</p>
+                  <div className="flex items-center gap-6">
+                    <span className="bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full border border-emerald-100 hidden sm:block">{job.match}% Match</span>
+                    <button className="text-primary font-bold text-sm group-hover:translate-x-1 transition-transform inline-flex items-center">Apply <ExternalLink className="w-5 h-5 ml-1" /></button>
                   </div>
                 </div>
-                <div className="flex items-center gap-6">
-                  <span className="bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full border border-emerald-100 hidden sm:block">90% Match</span>
-                  <button className="text-primary font-bold text-sm group-hover:translate-x-1 transition-transform inline-flex items-center">Apply <ExternalLink className="w-5 h-5 ml-1" /></button>
-                </div>
-              </div>
-
-              {/* Job 3 (Amazon) */}
-              <div className="flex items-center justify-between p-3 border border-slate-200/60 rounded-xl hover:bg-slate-50/50 bg-white/40 transition-colors group">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-white border border-slate-200 rounded-lg flex items-center justify-center p-1 shadow-sm">
-                    <div className="w-full h-full bg-contain bg-no-repeat bg-center" style={{ backgroundImage: `url("https://lh3.googleusercontent.com/aida-public/AB6AXuCHVSCpOCQQdIgX9mKeACAyj1So1Ho1TDhKw2Bw2AwkurJGmIJyGxewqp_pew5FfoPvdj30fPGsaNkiPpw7mA-X_NEyq4L8PCLHiR8dhf2KFbhF-QGCdSXjA36dpbrx1GCCkcVf5jGkEe2_pjsk9Q9OimwC5-3REkEicVU0nMM_K-1pJYzf5pznRdbQ-O4MwRU2MdC2duLm-PBCLnGyOfwA4wfpVytdE1Cgx_35pbfjAsFbB-AoV2eMaRZ79q0KnEWfsb0lH1Wuyq0M")` }}></div>
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-slate-900">Frontend Developer Intern</p>
-                    <p className="text-xs text-slate-500 font-medium">Amazon • Bengaluru</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-6">
-                  <span className="bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full border border-emerald-100 hidden sm:block">88% Match</span>
-                  <button className="text-primary font-bold text-sm group-hover:translate-x-1 transition-transform inline-flex items-center">Apply <ExternalLink className="w-5 h-5 ml-1" /></button>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -286,48 +266,20 @@ export default function Dashboard() {
             </div>
             
             <div className="relative space-y-6 before:absolute before:left-[15px] before:top-2 before:bottom-2 before:w-[2px] before:bg-slate-200">
-              
-              {/* Activity 1 */}
-              <div className="flex gap-4 relative">
-                <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center z-10 shrink-0 border border-emerald-200">
-                  <CheckCircle className="w-5 h-5 text-emerald-600" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex justify-between items-start">
-                    <p className="text-sm font-bold text-slate-900 leading-tight">Applied to Google</p>
-                    <span className="text-[10px] text-slate-500 font-bold">2h ago</span>
+              {mockDashboardActivities.map((act, idx) => (
+                <div key={idx} className="flex gap-4 relative">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center z-10 shrink-0 border ${activityBgColors[act.type]}`}>
+                    {activityIcons[act.type]}
                   </div>
-                  <p className="text-xs text-slate-500 mt-1">Software Engineering Intern</p>
-                </div>
-              </div>
-              
-              {/* Activity 2 */}
-              <div className="flex gap-4 relative">
-                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center z-10 shrink-0 border border-blue-200">
-                  <Calendar className="w-5 h-5 text-blue-600" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex justify-between items-start">
-                    <p className="text-sm font-bold text-slate-900 leading-tight">Interview: Microsoft</p>
-                    <span className="text-[10px] text-slate-500 font-bold">5h ago</span>
+                  <div className="flex-1">
+                    <div className="flex justify-between items-start">
+                      <p className="text-sm font-bold text-slate-900 leading-tight">{act.title}</p>
+                      <span className="text-[10px] text-slate-500 font-bold">{act.timeAgo}</span>
+                    </div>
+                    <p className="text-xs text-slate-500 mt-1">{act.subtitle}</p>
                   </div>
-                  <p className="text-xs text-slate-500 mt-1">SDE Intern - Round 1</p>
                 </div>
-              </div>
-              
-              {/* Activity 3 */}
-              <div className="flex gap-4 relative">
-                <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center z-10 shrink-0 border border-indigo-200">
-                  <FileText className="w-5 h-5 text-indigo-600" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex justify-between items-start">
-                    <p className="text-sm font-bold text-slate-900 leading-tight">Resume Optimized</p>
-                    <span className="text-[10px] text-slate-500 font-bold">1d ago</span>
-                  </div>
-                  <p className="text-xs text-slate-500 mt-1">ATS Score improved: 72 → 92</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
