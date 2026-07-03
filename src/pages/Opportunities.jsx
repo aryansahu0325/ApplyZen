@@ -1,7 +1,46 @@
+import { RefreshCw, RotateCw, Briefcase, Clock, Send, Sparkles, Search, ArrowUpDown, CheckCircle2, AlertTriangle, Wand2, Brain, CheckSquare, Hourglass } from 'lucide-react';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import OpportunityCard from '../components/opportunities/OpportunityCard';
+
+
+const defaultOpportunities = [
+  {
+    company: "Veridian AI",
+    role: "Senior Product Designer",
+    location: "Remote",
+    logo: "https://lh3.googleusercontent.com/aida/AP1WRLvzLbIyFu8PtSrj8nIDNi-ln9pFHpJgM0Rr3Iz_DwvXnu_RfthZA0B1HP-hVfPj3zs_l9FyOUz1vBvI4uN7AbiKkBGzOo823WvYXa3Hbw-mu2fWfUbeDtm6mGerLDjdcdqXx3TYe6a-bL2LWO2f4ahWYMcYBdQoM6qHdXA6wW3Pn_s4FLpxCxheKgwssEORy4D1T2JkWL8Lp7Y2mn2oDNKl7fJSXm4dbprHlzmZZIiEuf9iYZ2V31ujMIKv",
+    matchPercentage: 94,
+    skills: ["Figma", "SaaS", "AI Ethics"],
+    salary: "$140k - $180k",
+    deadline: "Oct 12",
+    source: "LinkedIn",
+    status: "Ready"
+  },
+  {
+    company: "Loomis Financial",
+    role: "Lead Frontend Architect",
+    location: "NYC / Hybrid",
+    logo: "https://lh3.googleusercontent.com/aida/AP1WRLtSUwH07h4GpXC75Ixdj0mwSI4JYx9yXrSbwHYkQ_4jL-8G7Z112Bam5ZbfcyuUanEUvB7seigJowueXR39qZXM7ac5LHWfGSCwFYSAXJSIWfCNdsmQhora8pfQyGYTlDf3nPhDYszI6eRrdLtW4NFKfkcEESkeLvznBLWSmM-u0YGaIN91wbGxAVsoYvQASrhyGQci6_mNb40R1eRMhS9qFnRbTUvNbLNBsnjYfDfWER6y1T-o--QYmr6I",
+    matchPercentage: 87,
+    skills: ["React", "TypeScript", "Next.js"],
+    salary: "$190k - $240k",
+    deadline: "Oct 28",
+    source: "Gmail Sync",
+    status: "Analyzed"
+  }
+];
 
 export default function Opportunities() {
+  const [opportunities, _setOpportunities] = useState(() => {
+    const saved = localStorage.getItem('applyzen_opportunities');
+    return saved ? JSON.parse(saved) : defaultOpportunities;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('applyzen_opportunities', JSON.stringify(opportunities));
+  }, [opportunities]);
+
   return (
     <div className="animate-fadeIn">
       
@@ -13,13 +52,13 @@ export default function Opportunities() {
 </div>
 <div className="flex gap-3">
 <button className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-medium hover:bg-slate-50 transition-all">
-<span className="material-symbols-outlined text-[18px]">sync</span> Gmail
+<RefreshCw className="w-[18px] h-[18px]" /> Gmail
             </button>
 <button className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-medium hover:bg-slate-50 transition-all">
-<span className="material-symbols-outlined text-[18px]">sync</span> Outlook
+<RefreshCw className="w-[18px] h-[18px]" /> Outlook
             </button>
 <button className="flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg text-sm font-semibold hover:bg-emerald-600-hover transition-all shadow-sm shadow-emerald-500/20">
-<span className="material-symbols-outlined text-[18px]">refresh</span> Refresh
+<RotateCw className="w-[18px] h-[18px]" /> Refresh
             </button>
 </div>
 </div>
@@ -27,7 +66,7 @@ export default function Opportunities() {
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
 <div className="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
 <div className="flex justify-between items-center mb-4">
-<span className="material-symbols-outlined text-emerald-600 bg-emerald-50 p-2 rounded-lg">work</span>
+<Briefcase className="w-5 h-5 text-emerald-600 bg-emerald-50 p-2 rounded-lg" />
 <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">+12 new</span>
 </div>
 <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider">Total Opportunities</p>
@@ -35,7 +74,7 @@ export default function Opportunities() {
 </div>
 <div className="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
 <div className="flex justify-between items-center mb-4">
-<span className="material-symbols-outlined text-red-500 bg-red-50 p-2 rounded-lg">alarm</span>
+<Clock className="w-5 h-5 text-red-500 bg-red-50 p-2 rounded-lg" />
 <span className="text-xs font-bold text-red-500 bg-red-50 px-2 py-1 rounded-full">Urgent</span>
 </div>
 <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider">Approaching Deadlines</p>
@@ -43,7 +82,7 @@ export default function Opportunities() {
 </div>
 <div className="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
 <div className="flex justify-between items-center mb-4">
-<span className="material-symbols-outlined text-gray-600 bg-gray-100 p-2 rounded-lg">send</span>
+<Send className="w-5 h-5 text-gray-600 bg-gray-100 p-2 rounded-lg" />
 <span className="text-xs font-bold text-gray-600 bg-gray-50 px-2 py-1 rounded-full">In Progress</span>
 </div>
 <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider">Applied</p>
@@ -51,7 +90,7 @@ export default function Opportunities() {
 </div>
 <div className="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
 <div className="flex justify-between items-center mb-4">
-<span className="material-symbols-outlined text-emerald-600 bg-emerald-50 p-2 rounded-lg">auto_awesome</span>
+<Sparkles className="w-5 h-5 text-emerald-600 bg-emerald-50 p-2 rounded-lg" />
 <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">90%+ Match</span>
 </div>
 <p className="text-slate-500 text-xs font-semibold uppercase tracking-wider">High AI Match</p>
@@ -61,7 +100,7 @@ export default function Opportunities() {
 {/* Filter Bar */}
 <div className="bg-white border border-slate-200 p-3 rounded-lg shadow-sm mb-6 flex flex-wrap gap-4 items-center">
 <div className="flex-1 min-w-[200px] relative">
-<span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-[18px]">search</span>
+<Search className="w-[18px] h-[18px] absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
 <input className="w-full bg-slate-50 border-none rounded-lg pl-10 pr-4 py-2 text-sm" placeholder="Search company or role..." type="text" />
 </div>
 <div className="flex gap-2">
@@ -83,118 +122,17 @@ export default function Opportunities() {
 </div>
 <div className="h-8 w-[1px] bg-slate-200 mx-2 hidden lg:block"></div>
 <button className="flex items-center gap-2 px-4 py-2 hover:bg-slate-50 border border-slate-200 rounded-lg transition-all text-sm font-medium">
-<span className="material-symbols-outlined text-[18px]">sort</span> Sort
+<ArrowUpDown className="w-[18px] h-[18px]" /> Sort
         </button>
 </div>
 <div className="flex gap-6 items-start">
 {/* Opportunity Grid */}
 <div className="flex-1 grid grid-cols-1 xl:grid-cols-2 gap-6">
-{/* Opportunity Card 1 */}
-<div className="bg-white p-6 rounded-lg border border-slate-200 hover:border-emerald-400 hover:shadow-md transition-all group cursor-pointer relative overflow-hidden" style={{"transform":"translateY(0px)"}}>
-<div className="absolute top-0 left-0 w-1 h-full bg-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-<div className="flex justify-between items-start mb-6">
-<div className="flex gap-6">
-<div className="w-12 h-12 bg-white rounded-lg shadow-sm border border-slate-200 flex items-center justify-center overflow-hidden">
-<img className="w-10 h-10 object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLvzLbIyFu8PtSrj8nIDNi-ln9pFHpJgM0Rr3Iz_DwvXnu_RfthZA0B1HP-hVfPj3zs_l9FyOUz1vBvI4uN7AbiKkBGzOo823WvYXa3Hbw-mu2fWfUbeDtm6mGerLDjdcdqXx3TYe6a-bL2LWO2f4ahWYMcYBdQoM6qHdXA6wW3Pn_s4FLpxCxheKgwssEORy4D1T2JkWL8Lp7Y2mn2oDNKl7fJSXm4dbprHlzmZZIiEuf9iYZ2V31ujMIKv" alt="Aether Labs Logo" />
-</div>
-<div>
-<h4 className="font-bold text-lg text-slate-900">Senior Product Designer</h4>
-<p className="text-slate-500 text-sm">Veridian AI • Remote</p>
-</div>
-</div>
-<div className="relative w-12 h-12">
-<svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-<circle className="text-outline" cx="18" cy="18" fill="none" r="16" stroke="currentColor" strokeWidth="3"></circle>
-<circle className="text-emerald-600" cx="18" cy="18" fill="none" r="16" stroke="currentColor" strokeDasharray="94, 100" strokeLinecap="round" strokeWidth="3"></circle>
-</svg>
-<div className="absolute inset-0 flex items-center justify-center">
-<span className="text-[10px] font-bold text-emerald-600">94%</span>
-</div>
-</div>
-</div>
-<div className="flex flex-wrap gap-2 mb-6">
-<span className="px-2 py-1 bg-slate-50 text-slate-500 text-[11px] font-semibold rounded-md">Figma</span>
-<span className="px-2 py-1 bg-slate-50 text-slate-500 text-[11px] font-semibold rounded-md">SaaS</span>
-<span className="px-2 py-1 bg-slate-50 text-slate-500 text-[11px] font-semibold rounded-md">AI Ethics</span>
-</div>
-<div className="grid grid-cols-2 gap-4 mb-6 text-[13px]">
-<div className="flex items-center gap-2 text-slate-500">
-<span className="material-symbols-outlined text-[18px]">currency_exchange</span>
-<span className="">$140k - $180k</span>
-</div>
-<div className="flex items-center gap-2 text-red-500 font-medium">
-<span className="material-symbols-outlined text-[18px]">event</span>
-<span className="">Oct 12</span>
-</div>
-<div className="flex items-center gap-2 text-slate-500">
-<span className="material-symbols-outlined text-[18px]">source</span>
-<span className="">LinkedIn</span>
-</div>
-<div className="flex items-center gap-2 text-emerald-600 font-bold">
-<span className="material-symbols-outlined text-[18px]" style={{"fontVariationSettings":"'FILL' 1"}}>check_circle</span>
-<span className="">Ready</span>
-</div>
-</div>
-<div className="flex gap-2">
-<button className="flex-1 py-2 rounded-lg bg-slate-50 text-slate-900 text-sm font-semibold hover:bg-slate-200 transition-all">View JD</button>
-<button className="flex-1 py-2 rounded-lg bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-600-hover transition-all">Apply Now</button>
-</div>
-</div>
-{/* Opportunity Card 2 */}
-<div className="bg-white p-6 rounded-lg border border-slate-200 hover:border-emerald-400 hover:shadow-md transition-all group cursor-pointer relative overflow-hidden" style={{"transform":"translateY(0px)"}}>
-<div className="absolute top-0 left-0 w-1 h-full bg-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-<div className="flex justify-between items-start mb-6">
-<div className="flex gap-6">
-<div className="w-12 h-12 bg-white rounded-lg shadow-sm border border-slate-200 flex items-center justify-center overflow-hidden">
-<img className="w-10 h-10 object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLtSUwH07h4GpXC75Ixdj0mwSI4JYx9yXrSbwHYkQ_4jL-8G7Z112Bam5ZbfcyuUanEUvB7seigJowueXR39qZXM7ac5LHWfGSCwFYSAXJSIWfCNdsmQhora8pfQyGYTlDf3nPhDYszI6eRrdLtW4NFKfkcEESkeLvznBLWSmM-u0YGaIN91wbGxAVsoYvQASrhyGQci6_mNb40R1eRMhS9qFnRbTUvNbLNBsnjYfDfWER6y1T-o--QYmr6I" alt="Prisma Labs Logo" />
-</div>
-<div>
-<h4 className="font-bold text-lg text-slate-900">Lead Frontend Architect</h4>
-<p className="text-slate-500 text-sm">Loomis Financial • NYC / Hybrid</p>
-</div>
-</div>
-<div className="relative w-12 h-12">
-<svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-<circle className="text-outline" cx="18" cy="18" fill="none" r="16" stroke="currentColor" strokeWidth="3"></circle>
-<circle className="text-emerald-600" cx="18" cy="18" fill="none" r="16" stroke="currentColor" strokeDasharray="87, 100" strokeLinecap="round" strokeWidth="3"></circle>
-</svg>
-<div className="absolute inset-0 flex items-center justify-center">
-<span className="text-[10px] font-bold text-emerald-600">87%</span>
-</div>
-</div>
-</div>
-<div className="flex flex-wrap gap-2 mb-6">
-<span className="px-2 py-1 bg-slate-50 text-slate-500 text-[11px] font-semibold rounded-md">React</span>
-<span className="px-2 py-1 bg-slate-50 text-slate-500 text-[11px] font-semibold rounded-md">TypeScript</span>
-<span className="px-2 py-1 bg-slate-50 text-slate-500 text-[11px] font-semibold rounded-md">Next.js</span>
-</div>
-<div className="grid grid-cols-2 gap-4 mb-6 text-[13px]">
-<div className="flex items-center gap-2 text-slate-500">
-<span className="material-symbols-outlined text-[18px]">currency_exchange</span>
-<span className="">$190k - $240k</span>
-</div>
-<div className="flex items-center gap-2 text-slate-500 font-medium">
-<span className="material-symbols-outlined text-[18px]">event</span>
-<span className="">Oct 28</span>
-</div>
-<div className="flex items-center gap-2 text-slate-500">
-<span className="material-symbols-outlined text-[18px]">source</span>
-<span className="">Gmail Sync</span>
-</div>
-<div className="flex items-center gap-2 text-gray-600 font-bold">
-<span className="material-symbols-outlined text-[18px]">analytics</span>
-<span className="">Analyzed</span>
-</div>
-</div>
-<div className="flex gap-2">
-<button className="flex-1 py-2 rounded-lg bg-slate-50 text-slate-900 text-sm font-semibold hover:bg-slate-200 transition-all">View JD</button>
-<button className="flex-1 py-2 rounded-lg bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-600-hover transition-all flex items-center justify-center gap-2">
-<span className="material-symbols-outlined text-[18px]">bolt</span> Resume
-                    </button>
-</div>
-</div>
-</div>
-{/* Right Analysis Panel */}
+          {opportunities.map((opp, idx) => (
+            <OpportunityCard key={idx} {...opp} />
+          ))}
+        </div>
+      {/* Right Analysis Panel */}
 <aside className="hidden lg:block w-80 bg-white border border-slate-200 rounded-lg shadow-sm p-6 sticky top-[88px]">
 <div className="flex justify-between items-center mb-6">
 <h3 className="font-bold text-slate-900">Match Analysis</h3>
@@ -213,14 +151,14 @@ export default function Opportunities() {
 <div className="space-y-4">
 <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest">Key Indicators</p>
 <div className="flex items-start gap-3">
-<span className="material-symbols-outlined text-emerald-500 text-[20px]">check_circle</span>
+<CheckCircle2 className="w-[20px] h-[20px] text-emerald-500" />
 <div>
 <p className="text-sm font-bold text-slate-900">Strong Skill Overlap</p>
 <p className="text-xs text-slate-500 mt-0.5">Proficiency in Design Systems matches 100% of core JD.</p>
 </div>
 </div>
 <div className="flex items-start gap-3">
-<span className="material-symbols-outlined text-amber-500 text-[20px]">warning</span>
+<AlertTriangle className="w-[20px] h-[20px] text-amber-500" />
 <div>
 <p className="text-sm font-bold text-slate-900">Domain Gap</p>
 <p className="text-xs text-slate-500 mt-0.5">Fintech experience is not prominent in resume.</p>
@@ -238,7 +176,7 @@ export default function Opportunities() {
 <div className="pt-6 border-t border-slate-200">
 <p className="text-xs text-center text-slate-500 mb-4">Estimated completion: <strong>4 mins</strong></p>
 <button className="w-full py-2.5 bg-slate-900 text-white rounded-lg text-sm font-bold hover:opacity-90 transition-all flex items-center justify-center gap-2 shadow-sm">
-<span className="material-symbols-outlined text-[18px]">auto_fix_high</span> Optimize All
+<Wand2 className="w-[18px] h-[18px]" /> Optimize All
                     </button>
 </div>
 </div>
@@ -257,7 +195,7 @@ export default function Opportunities() {
 <div className="flex justify-between relative z-10">
 <div className="flex flex-col items-center gap-2">
 <div className="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-md ring-4 ring-white">
-<span className="material-symbols-outlined text-[20px]">search_check</span>
+<Search className="w-[20px] h-[20px]" />
 </div>
 <div className="text-center">
 <p className="font-bold text-xs">Detected</p>
@@ -266,7 +204,7 @@ export default function Opportunities() {
 </div>
 <div className="flex flex-col items-center gap-2">
 <div className="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-md ring-4 ring-white">
-<span className="material-symbols-outlined text-[20px]">psychology</span>
+<Brain className="w-[20px] h-[20px]" />
 </div>
 <div className="text-center">
 <p className="font-bold text-xs">Analyzed</p>
@@ -275,7 +213,7 @@ export default function Opportunities() {
 </div>
 <div className="flex flex-col items-center gap-2">
 <div className="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-lg ring-4 ring-white">
-<span className="material-symbols-outlined text-[20px]">task_alt</span>
+<CheckSquare className="w-[20px] h-[20px]" />
 </div>
 <div className="text-center">
 <p className="font-bold text-xs text-emerald-600">Ready</p>
@@ -284,7 +222,7 @@ export default function Opportunities() {
 </div>
 <div className="flex flex-col items-center gap-2">
 <div className="w-10 h-10 rounded-full bg-slate-50 text-slate-500 flex items-center justify-center shadow-sm ring-4 ring-white">
-<span className="material-symbols-outlined text-[20px]">hourglass_empty</span>
+<Hourglass className="w-[20px] h-[20px]" />
 </div>
 <div className="text-center">
 <p className="font-bold text-xs text-slate-500">Waiting</p>

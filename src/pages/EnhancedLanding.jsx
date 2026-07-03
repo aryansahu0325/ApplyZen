@@ -2,6 +2,9 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import LandingFooter from '../components/landing/LandingFooter';
+import FeaturesSection from '../components/landing/FeaturesSection';
+import PricingSection from '../components/landing/PricingSection';
+import FaqSection from '../components/landing/FaqSection';
 
 export default function EnhancedLanding() {
   const navigate = useNavigate();
@@ -245,169 +248,11 @@ export default function EnhancedLanding() {
           </div>
         </section>
         {/* BEGIN: Features Grid */}
-        <section className="py-24 bg-white" id="features">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
-            <span className="text-primary font-bold text-xs uppercase tracking-widest">Core Capabilities</span>
-            <h2 className="text-3xl font-extrabold text-slate-900 mt-4 mb-4">Everything You Need To Stay Ahead</h2>
-            <p className="text-slate-500">Powerful AI agents working 24*7 to simplify your job search</p>
-          </div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div className="p-8 rounded-custom border border-slate-100 bg-white hover:shadow-xl transition-shadow group">
-              <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-purple-600 group-hover:text-white transition-colors">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Smart Opportunity Detection</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">AI scans your emails and finds internships, jobs, hackathons, scholarships &amp; more.</p>
-            </div>
-            {/* Feature 2 */}
-            <div className="p-8 rounded-custom border border-slate-100 bg-white hover:shadow-xl transition-shadow group">
-              <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">AI Resume Builder</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">Create or optimize ATS-friendly resumes tailored to each opportunity automatically.</p>
-            </div>
-            {/* Feature 3 */}
-            <div className="p-8 rounded-custom border border-slate-100 bg-white hover:shadow-xl transition-shadow group">
-              <div className="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-green-600 group-hover:text-white transition-colors">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Auto Apply</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">AI fills application forms automatically and submits — you just relax!</p>
-            </div>
-            {/* Feature 4 */}
-            <div className="p-8 rounded-custom border border-slate-100 bg-white hover:shadow-xl transition-shadow group">
-              <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Application Tracker</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">Track all your applications in one place with smart status updates and history.</p>
-            </div>
-            {/* Feature 5 */}
-            <div className="p-8 rounded-custom border border-slate-100 bg-white hover:shadow-xl transition-shadow group">
-              <div className="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-orange-600 group-hover:text-white transition-colors">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Career Analysis</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">Beautiful insights on your applications, success rate, responses &amp; more.</p>
-            </div>
-            {/* Feature 6 */}
-            <div className="p-8 rounded-custom border border-slate-100 bg-white hover:shadow-xl transition-shadow group">
-              <div className="w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-red-600 group-hover:text-white transition-colors">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Smart Reminders</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">Never miss a deadline again. Get reminders for deadlines and follow-ups via push/email.</p>
-            </div></div>
-        </section>
+        <FeaturesSection />
         {/* BEGIN: Pricing Section */}
-        <section className="py-24 bg-slate-50" id="pricing">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
-            <span className="text-primary font-bold text-xs uppercase tracking-widest">Pricing</span>
-            <h2 className="text-3xl font-extrabold text-slate-900 mt-4 mb-4">Simple, Transparent Pricing</h2>
-          </div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-8 items-stretch">
-            {/* Free Tier */}
-            <div className="pricing-card bg-white border border-slate-200 rounded-[24px] p-8 flex flex-col hover:shadow-lg">
-              <div className="mb-8">
-                <h3 className="text-xl font-bold mb-2 text-slate-900">Free</h3>
-                <p className="text-slate-500 text-xs mb-6">Get started for free</p>
-                <div className="flex items-baseline">
-                  <span className="text-3xl font-extrabold">₹0</span>
-                  <span className="text-slate-500 text-sm ml-1">/month</span>
-                </div>
-              </div>
-              <ul className="space-y-4 mb-8 flex-grow">
-                <li className="flex items-center gap-3 text-sm text-slate-600">
-                  <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>
-                  Up to 10 applications / mo
-                </li>
-                <li className="flex items-center gap-3 text-sm text-slate-600">
-                  <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>
-                  AI Resume Builder (Basic)
-                </li>
-              </ul>
-              <button className="w-full py-3 border border-slate-200 rounded-custom text-sm font-bold text-slate-600 hover:bg-slate-50 transition-colors">Get Started</button>
-            </div>
-            {/* Pro Tier */}
-            <div className="pricing-card bg-white border-2 border-primary rounded-[24px] p-8 flex flex-col relative shadow-xl">
-              <div className="absolute top-0 right-8 -translate-y-1/2 bg-primary text-white px-4 py-1 rounded-full text-xs font-bold uppercase">Most Popular</div>
-              <div className="mb-8">
-                <h3 className="text-xl font-bold mb-2 text-slate-900">Pro</h3>
-                <p className="text-slate-500 text-xs mb-6">For serious job seekers</p>
-                <div className="flex items-baseline">
-                  <span className="text-3xl font-extrabold text-primary">₹499</span>
-                  <span className="text-slate-500 text-sm ml-1">/month</span>
-                </div>
-              </div>
-              <ul className="space-y-4 mb-8 flex-grow">
-                <li className="flex items-center gap-3 text-sm text-slate-600">
-                  <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>
-                  Unlimited applications
-                </li>
-                <li className="flex items-center gap-3 text-sm text-slate-600">
-                  <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>
-                  Auto Apply AI
-                </li>
-                <li className="flex items-center gap-3 text-sm text-slate-600">
-                  <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>
-                  Priority AI Agent support
-                </li>
-              </ul>
-              <button className="w-full py-3 bg-primary rounded-custom text-sm font-bold text-white hover:bg-primary-dark transition-colors shadow-lg shadow-primary/20">Get Started</button>
-            </div>
-            {/* Premium Tier */}
-            <div className="pricing-card bg-slate-900 border border-slate-800 rounded-[24px] p-8 flex flex-col hover:shadow-lg text-white">
-              <div className="mb-8">
-                <h3 className="text-xl font-bold mb-2">Premium</h3>
-                <p className="text-slate-400 text-xs mb-6">For professionals</p>
-                <div className="flex items-baseline">
-                  <span className="text-3xl font-extrabold">₹999</span>
-                  <span className="text-slate-400 text-sm ml-1">/month</span>
-                </div>
-              </div>
-              <ul className="space-y-4 mb-8 flex-grow">
-                <li className="flex items-center gap-3 text-sm text-slate-300">
-                  <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>
-                  Everything in Pro
-                </li>
-                <li className="flex items-center gap-3 text-sm text-slate-300">
-                  <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path></svg>
-                  LinkedIn integration <span className="text-[8px] bg-primary/20 text-primary px-1.5 py-0.5 rounded ml-1">COMING SOON</span>
-                </li>
-              </ul>
-              <button className="w-full py-3 bg-white/10 rounded-custom text-sm font-bold text-white hover:bg-white/20 transition-colors">Get Started</button>
-            </div>
-          </div>
-        </section>
+        <PricingSection />
         {/* BEGIN: FAQ Section */}
-        <section className="py-24 bg-white">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <span className="text-primary font-bold text-xs uppercase tracking-widest">Support</span>
-              <h2 className="text-3xl font-extrabold text-slate-900 mt-4">Frequently Asked Questions</h2>
-            </div>
-            <div className="space-y-4">
-              <div className="bg-slate-50 border border-slate-100 rounded-custom overflow-hidden">
-                <button className="w-full flex items-center justify-between p-6 text-left font-bold text-slate-900">
-                  What is ApplyZen?
-                  <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-                </button>
-              </div>
-              <div className="bg-slate-50 border border-slate-100 rounded-custom overflow-hidden">
-                <button className="w-full flex items-center justify-between p-6 text-left font-bold text-slate-900">
-                  Is my data safe?
-                  <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-                </button>
-              </div>
-              <div className="bg-slate-50 border border-slate-100 rounded-custom overflow-hidden"><button className="w-full flex items-center justify-between p-6 text-left font-bold text-slate-900">Which platforms do you support?<svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg></button><div className="px-6 pb-6 text-sm text-slate-600">We support all major job boards including LinkedIn, Indeed, Glassdoor, and niche career sites.</div></div><div className="bg-slate-50 border border-slate-100 rounded-custom overflow-hidden"><button className="w-full flex items-center justify-between p-6 text-left font-bold text-slate-900">Can I review applications before they are submitted?<svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg></button><div className="px-6 pb-6 text-sm text-slate-600">Yes, you can choose between "Auto-Pilot" for full automation or "Review Mode" to approve each application before it goes out.</div></div><div className="bg-slate-50 border border-slate-100 rounded-custom overflow-hidden"><button className="w-full flex items-center justify-between p-6 text-left font-bold text-slate-900">Does ApplyZen help with cover letters?<svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg></button><div className="px-6 pb-6 text-sm text-slate-600">Absolutely. Our AI generates tailored cover letters for every single application, matching your voice and the job requirements.</div></div></div>
-            <div className="text-center mt-12">
-              <p className="text-slate-500 text-sm mb-4">Still have questions?</p>
-              <a className="inline-flex items-center gap-2 text-primary font-bold hover:underline" href="#">Contact Support <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg></a>
-            </div>
-          </div>
-        </section>
+        <FaqSection />
       </main>
       <LandingFooter />
       {/* Fixed Chat Widget */}

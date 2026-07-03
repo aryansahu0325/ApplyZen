@@ -25,6 +25,7 @@ export default function LandingFooter() {
               <ul className="space-y-4 text-sm">
                 <li className=""><a className="hover:text-primary transition-colors" href="#">Features</a></li>
                 <li className=""><a className="hover:text-primary transition-colors" href="#">Roadmap</a></li>
+                <li className=""><a className="hover:text-primary transition-colors" href="#">How It Works</a></li>
                 <li className=""><a className="hover:text-primary transition-colors" href="#">Pricing</a></li>
               </ul>
             </div>

@@ -1,3 +1,4 @@
+import { Edit3, Camera, MapPin, Mail, BadgeCheck, User, Briefcase, Link, Code, Lock, Key, ChevronRight } from 'lucide-react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -16,7 +17,7 @@ export default function UserProfile() {
             onClick={() => navigate('/settings')}
             className="px-6 py-2.5 bg-primary text-white rounded-xl font-bold flex items-center gap-2 hover:opacity-90 transition-all shadow-sm"
           >
-            <span className="material-symbols-outlined">edit</span>
+            <Edit3 className="w-5 h-5" />
             Edit Profile
           </button>
         </div>
@@ -31,7 +32,7 @@ export default function UserProfile() {
               onClick={() => navigate('/settings')}
               className="absolute bottom-0 right-0 bg-primary text-white p-1.5 rounded-full border-2 border-white cursor-pointer hover:scale-110 transition-transform shadow-sm"
             >
-              <span className="material-symbols-outlined text-[16px]">photo_camera</span>
+              <Camera className="w-[16px] h-[16px]" />
             </div>
           </div>
           <div className="text-center md:text-left">
@@ -39,15 +40,15 @@ export default function UserProfile() {
             <p className="text-lg text-primary font-bold">Senior Product Designer</p>
             <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-4">
               <div className="flex items-center gap-1.5 text-slate-500 font-bold text-sm">
-                <span className="material-symbols-outlined text-[18px]">location_on</span>
+                <MapPin className="w-[18px] h-[18px]" />
                 San Francisco, CA
               </div>
               <div className="flex items-center gap-1.5 text-slate-500 font-bold text-sm">
-                <span className="material-symbols-outlined text-[18px]">mail</span>
+                <Mail className="w-[18px] h-[18px]" />
                 {user?.email || "aman.kumar@example.com"}
               </div>
               <div className="flex items-center gap-1.5 text-primary font-bold text-sm bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">
-                <span className="material-symbols-outlined text-[18px]">verified</span>
+                <BadgeCheck className="w-[18px] h-[18px]" />
                 Profile Verified
               </div>
             </div>
@@ -64,7 +65,7 @@ export default function UserProfile() {
           <div className={`glass-card rounded-2xl p-6`}>
             <div className="flex items-center justify-between mb-6 border-b border-slate-200 pb-4">
               <h3 className="text-xl font-extrabold text-slate-900 flex items-center gap-2">
-                <span className="material-symbols-outlined text-primary text-[24px]">person</span>
+                <User className="w-[24px] h-[24px] text-primary" />
                 Personal Information
               </h3>
             </div>
@@ -98,7 +99,7 @@ export default function UserProfile() {
           <div className={`glass-card rounded-2xl p-6`}>
             <div className="flex items-center justify-between mb-6 border-b border-slate-200 pb-4">
               <h3 className="text-xl font-extrabold text-slate-900 flex items-center gap-2">
-                <span className="material-symbols-outlined text-primary text-[24px]">work</span>
+                <Briefcase className="w-[24px] h-[24px] text-primary" />
                 Professional Information
               </h3>
             </div>
@@ -146,7 +147,7 @@ export default function UserProfile() {
           {/* Connected Accounts */}
           <div className={`glass-card rounded-2xl p-6`}>
             <h3 className="text-xl font-extrabold text-slate-900 flex items-center gap-2 mb-6">
-              <span className="material-symbols-outlined text-primary text-[24px]">link</span>
+              <Link className="w-[24px] h-[24px] text-primary" />
               Connected Accounts
             </h3>
             <div className="space-y-3">
@@ -197,7 +198,7 @@ export default function UserProfile() {
                 <div className="flex items-center justify-between p-3 bg-white/50 border border-slate-200 rounded-xl hover:border-slate-300 transition-colors animate-in slide-in-from-top-2 duration-250">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 flex items-center justify-center rounded-lg bg-white shadow-sm overflow-hidden p-1.5 shrink-0">
-                      <span className="material-symbols-outlined text-amber-500 text-[20px]">code</span>
+                      <Code className="w-[20px] h-[20px] text-amber-500" />
                     </div>
                     <div>
                       <p className="text-sm font-bold text-slate-800">LeetCode</p>
@@ -227,7 +228,7 @@ export default function UserProfile() {
           {/* Security Section */}
           <div className={`glass-card rounded-2xl p-6`}>
             <h3 className="text-xl font-extrabold text-slate-900 flex items-center gap-2 mb-6">
-              <span className="material-symbols-outlined text-primary text-[24px]">security</span>
+              <Lock className="w-[24px] h-[24px] text-primary" />
               Security
             </h3>
             <div className="space-y-6">
@@ -248,10 +249,10 @@ export default function UserProfile() {
                   className="w-full flex items-center justify-between py-2.5 px-4 bg-white/50 border border-slate-200 rounded-xl hover:bg-white hover:border-primary/50 transition-colors group"
                 >
                   <div className="flex items-center gap-3 text-slate-700">
-                    <span className="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">key</span>
+                    <Key className="w-5 h-5 text-slate-400 group-hover:text-primary transition-colors" />
                     <span className="text-sm font-bold">Change Password</span>
                   </div>
-                  <span className="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">chevron_right</span>
+                  <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-primary transition-colors" />
                 </button>
               </div>
               

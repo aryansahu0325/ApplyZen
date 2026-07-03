@@ -1,3 +1,4 @@
+import { Cpu, Check, Flag, Info, Shield, Maximize2 } from 'lucide-react';
 import React from 'react';
 
 export default function WorkflowMonitor() {
@@ -30,7 +31,7 @@ export default function WorkflowMonitor() {
             <div className="flex items-center gap-lg">
               <div className="relative">
                 <div className="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center">
-                  <span className="material-symbols-outlined text-[32px]">memory</span>
+                  <Cpu className="w-[32px] h-[32px]" />
                 </div>
                 <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-secondary text-white rounded-full flex items-center justify-center text-[10px] font-bold">
                   AI
@@ -59,7 +60,7 @@ export default function WorkflowMonitor() {
             {/* Step 1: Completed */}
             <div className="relative pb-xl group">
               <div className="absolute -left-[37px] top-0 w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center z-10">
-                <span className="material-symbols-outlined text-[14px]" style={{ fontVariationSettings: "'wght' 700" }}>check</span>
+                <Check className="w-[14px] h-[14px]" />
               </div>
               <div className="flex items-start gap-lg bg-surface-container-lowest p-md rounded-lg border border-outline-variant/20 hover:border-primary/30 transition-all shadow-sm">
                 <div className="flex-1">
@@ -73,7 +74,7 @@ export default function WorkflowMonitor() {
             {/* Step 2: Completed */}
             <div className="relative pb-xl group">
               <div className="absolute -left-[37px] top-0 w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center z-10">
-                <span className="material-symbols-outlined text-[14px]" style={{ fontVariationSettings: "'wght' 700" }}>check</span>
+                <Check className="w-[14px] h-[14px]" />
               </div>
               <div className="flex items-start gap-lg bg-surface-container-lowest p-md rounded-lg border border-outline-variant/20 hover:border-primary/30 transition-all shadow-sm">
                 <div className="flex-1">
@@ -136,7 +137,7 @@ export default function WorkflowMonitor() {
             {/* Step 6: Final */}
             <div className="relative">
               <div className="absolute -left-[37px] top-0 w-6 h-6 bg-surface-container border-2 border-outline-variant/60 rounded-full flex items-center justify-center z-10">
-                <span className="material-symbols-outlined text-[14px] text-outline">flag</span>
+                <Flag className="w-[14px] h-[14px] text-outline" />
               </div>
               <div className="flex items-start gap-lg opacity-30 p-md rounded-lg border border-transparent">
                 <div className="flex-1">
@@ -150,7 +151,7 @@ export default function WorkflowMonitor() {
           {/* Footer Info */}
           <div className="mt-xl pt-lg border-t border-outline-variant/20 flex justify-between items-center text-outline text-xs font-medium">
             <div className="flex items-center gap-sm">
-              <span className="material-symbols-outlined text-[18px]">info</span>
+              <Info className="w-[18px] h-[18px]" />
               <p>This process usually takes 2-3 minutes</p>
             </div>
             <div>
@@ -180,7 +181,7 @@ export default function WorkflowMonitor() {
               <div className="flex justify-between py-xs">
                 <span className="text-outline font-semibold">Data Privacy</span>
                 <span className="text-primary font-bold flex items-center gap-1">
-                  <span className="material-symbols-outlined text-[14px]" style={{ fontVariationSettings: "'FILL' 1" }}>shield</span>
+                  <Shield className="w-[14px] h-[14px]" />
                   Encrypted
                 </span>
               </div>
@@ -195,7 +196,7 @@ export default function WorkflowMonitor() {
               <div className="aspect-video bg-black/40 rounded-lg border border-white/10 flex items-center justify-center mb-md group cursor-zoom-in relative">
                 <img className="w-full h-full object-cover rounded-lg opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Agent interface preview" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdP-1za8c_NAf6z0bqLhRWCDzq-STKJRkZOg1C2JzC96T2U7xraDqd_8mzMn_Sb8ZPK-N0xbzi7uzWOoowk5IPR7Di_38JmHUVGB-zw7pVjgQdL4xe5YZLq-Jxgq0LUFTuutggycMXL1khfXZf1MQ5-2LA422pzR4xHTuCEWAaPCgmh7Wqf-etbwl49HZRqbnyCMYnsR1Q3_Q6N6PyQwN4FvyWbgX6G3LpGYWqfN1pYV-E5DlOjIuy_1dWty4ibcaZ2vfVE50ClsXW"/>
                 <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="material-symbols-outlined text-[48px] text-white">fullscreen</span>
+                  <Maximize2 className="w-[48px] h-[48px] text-white" />
                   <p className="text-xs font-semibold text-white mt-xs">Expand Browser View</p>
                 </div>
               </div>

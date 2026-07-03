@@ -1,29 +1,27 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import LandingFooter from '../components/landing/LandingFooter';
+import FeaturesSection from '../components/landing/FeaturesSection';
+import PricingSection from '../components/landing/PricingSection';
+import FaqSection from '../components/landing/FaqSection';
 import {
   ArrowRight,
   Play,
   Mail,
-  Check,
-  ChevronDown,
   Sparkles,
-  MessageSquare,
-  Search,
   FileText,
   Zap,
   TrendingUp,
-  Bell,
-  CheckCircle2,
   Menu,
   X,
-  LineChart
+  LineChart,
+  MessageSquare
 } from 'lucide-react';
 
 
 export default function HomeHero() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeFaq, setActiveFaq] = useState(null);
+  
 
   const placements = [
     { name: 'Software Engineer', company: 'Meta', bg: 'bg-blue-600', letter: 'M' },
@@ -33,32 +31,9 @@ export default function HomeHero() {
     { name: 'Frontend Dev', company: 'Spotify', bg: 'bg-emerald-600', letter: 'S' }
   ];
 
-  const faqs = [
-    {
-      q: "What is ApplyZen?",
-      a: "ApplyZen is your AI career copilot that scans your email and finds jobs, builds tailored resumes, fills applications, and tracks everything in one place."
-    },
-    {
-      q: "Is my data safe?",
-      a: "Yes. ApplyZen takes privacy seriously. Your credential keys and resume details are fully encrypted and only used to scan career communications with your permission."
-    },
-    {
-      q: "Which platforms do you support?",
-      a: "We support all major job boards including LinkedIn, Indeed, Glassdoor, and niche career sites."
-    },
-    {
-      q: "Can I review applications before they are submitted?",
-      a: "Absolutely. You can choose between 'Auto-Pilot' for full automation or 'Review Mode' to approve each application before it goes out."
-    },
-    {
-      q: "Does ApplyZen help with cover letters?",
-      a: "Yes. Our AI generates high-quality, tailored cover letters for every application, matching your background to the job requirements."
-    }
-  ];
+  
 
-  const toggleFaq = (index) => {
-    setActiveFaq(activeFaq === index ? null : index);
-  };
+  
 
   return (
     <div className="bg-white text-slate-900 min-h-screen font-sans">
@@ -386,190 +361,13 @@ export default function HomeHero() {
         </section>
 
         {/* Features Grid */}
-        <section className="py-24 bg-white" id="features">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
-            <span className="text-primary font-bold text-xs uppercase tracking-widest">Core Capabilities</span>
-            <h2 className="text-3xl font-extrabold text-slate-900 mt-4 mb-4">Everything You Need To Stay Ahead</h2>
-            <p className="text-slate-500">Powerful AI agents working 24*7 to simplify your job search</p>
-          </div>
-
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div className="p-8 rounded-2xl border border-slate-100 bg-white hover:shadow-xl transition-shadow group">
-              <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-purple-600 group-hover:text-white transition-colors">
-                <Search className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Smart Opportunity Detection</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">AI scans your emails and finds internships, jobs, hackathons, scholarships & more.</p>
-            </div>
-
-            {/* Feature 2 */}
-            <div className="p-8 rounded-2xl border border-slate-100 bg-white hover:shadow-xl transition-shadow group">
-              <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                <FileText className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">AI Resume Builder</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">Create or optimize ATS-friendly resumes tailored to each opportunity automatically.</p>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="p-8 rounded-2xl border border-slate-100 bg-white hover:shadow-xl transition-shadow group">
-              <div className="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-green-600 group-hover:text-white transition-colors">
-                <Zap className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Auto Apply</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">AI fills application forms automatically and submits — you just relax!</p>
-            </div>
-
-            {/* Feature 4 */}
-            <div className="p-8 rounded-2xl border border-slate-100 bg-white hover:shadow-xl transition-shadow group">
-              <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
-                <CheckCircle2 className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Application Tracker</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">Track all your applications in one place with smart status updates and history.</p>
-            </div>
-
-            {/* Feature 5 */}
-            <div className="p-8 rounded-2xl border border-slate-100 bg-white hover:shadow-xl transition-shadow group">
-              <div className="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-orange-600 group-hover:text-white transition-colors">
-                <LineChart className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Career Analysis</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">Beautiful insights on your applications, success rate, responses & more.</p>
-            </div>
-
-            {/* Feature 6 */}
-            <div className="p-8 rounded-2xl border border-slate-100 bg-white hover:shadow-xl transition-shadow group">
-              <div className="w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center mb-6 group-hover:bg-red-600 group-hover:text-white transition-colors">
-                <Bell className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Smart Reminders</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">Never miss a deadline again. Get reminders for deadlines and follow-ups via push/email.</p>
-            </div>
-          </div>
-        </section>
+        <FeaturesSection />
 
         {/* Pricing Section */}
-        <section className="py-24 bg-slate-50" id="pricing">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
-            <span className="text-primary font-bold text-xs uppercase tracking-widest">Pricing</span>
-            <h2 className="text-3xl font-extrabold text-slate-900 mt-4 mb-4">Simple, Transparent Pricing</h2>
-          </div>
-
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-8 items-stretch">
-            {/* Free Tier */}
-            <div className="pricing-card bg-white border border-slate-200 rounded-[24px] p-8 flex flex-col hover:shadow-lg transition-all">
-              <div className="mb-8">
-                <h3 className="text-xl font-bold mb-2 text-slate-900">Free Tier</h3>
-                <p className="text-slate-500 text-xs mb-6">Get started for free</p>
-                <div className="flex items-baseline">
-                  <span className="text-3xl font-extrabold">₹0</span>
-                  <span className="text-slate-500 text-sm ml-1">/month</span>
-                </div>
-              </div>
-              <ul className="space-y-4 mb-8 flex-grow">
-                <li className="flex items-center gap-3 text-sm text-slate-600">
-                  <Check className="w-4 h-4 text-primary" /> Up to 10 applications / mo
-                </li>
-                <li className="flex items-center gap-3 text-sm text-slate-600">
-                  <Check className="w-4 h-4 text-primary" /> AI Resume Builder (Basic)
-                </li>
-              </ul>
-              <Link to="/product/free" className="w-full py-3 text-center border border-slate-200 rounded-lg text-sm font-bold text-slate-600 hover:bg-slate-50 transition-colors">
-                Get Started
-              </Link>
-            </div>
-
-            {/* Pro Tier */}
-            <div className="pricing-card bg-white border-2 border-primary rounded-[24px] p-8 flex flex-col relative shadow-xl transition-all">
-              <div className="absolute top-0 right-8 -translate-y-1/2 bg-primary text-white px-4 py-1 rounded-full text-xs font-bold uppercase">
-                Most Popular
-              </div>
-              <div className="mb-8">
-                <h3 className="text-xl font-bold mb-2 text-slate-900">Pro Plan</h3>
-                <p className="text-slate-500 text-xs mb-6">For serious job seekers</p>
-                <div className="flex items-baseline">
-                  <span className="text-3xl font-extrabold text-primary">₹499</span>
-                  <span className="text-slate-500 text-sm ml-1">/month</span>
-                </div>
-              </div>
-              <ul className="space-y-4 mb-8 flex-grow">
-                <li className="flex items-center gap-3 text-sm text-slate-600">
-                  <Check className="w-4 h-4 text-primary" /> Unlimited applications
-                </li>
-                <li className="flex items-center gap-3 text-sm text-slate-600">
-                  <Check className="w-4 h-4 text-primary" /> Auto Apply AI Agent
-                </li>
-                <li className="flex items-center gap-3 text-sm text-slate-600">
-                  <Check className="w-4 h-4 text-primary" /> Priority AI Agent support
-                </li>
-              </ul>
-              <Link to="/product/pro" className="w-full py-3 text-center bg-primary rounded-lg text-sm font-bold text-white hover:bg-primary/95 transition-colors shadow-lg shadow-primary/20">
-                Get Started
-              </Link>
-            </div>
-
-            {/* Premium Tier */}
-            <div className="pricing-card bg-slate-900 border border-slate-800 rounded-[24px] p-8 flex flex-col hover:shadow-lg transition-all text-white">
-              <div className="mb-8">
-                <h3 className="text-xl font-bold mb-2">Premium Plan</h3>
-                <p className="text-slate-400 text-xs mb-6">For professionals</p>
-                <div className="flex items-baseline">
-                  <span className="text-3xl font-extrabold">₹999</span>
-                  <span className="text-slate-400 text-sm ml-1">/month</span>
-                </div>
-              </div>
-              <ul className="space-y-4 mb-8 flex-grow">
-                <li className="flex items-center gap-3 text-sm text-slate-300">
-                  <Check className="w-4 h-4 text-primary" /> Everything in Pro
-                </li>
-                <li className="flex items-center gap-3 text-sm text-slate-300">
-                  <Check className="w-4 h-4 text-primary" /> LinkedIn integration <span className="text-[8px] bg-primary/20 text-primary px-1.5 py-0.5 rounded ml-1 font-bold">COMING SOON</span>
-                </li>
-              </ul>
-              <Link to="/product/premium" className="w-full py-3 text-center bg-white/10 rounded-lg text-sm font-bold text-white hover:bg-white/20 transition-colors">
-                Get Started
-              </Link>
-            </div>
-          </div>
-        </section>
+        <PricingSection />
 
         {/* FAQ Section */}
-        <section className="py-24 bg-white">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <span className="text-primary font-bold text-xs uppercase tracking-widest">Support</span>
-              <h2 className="text-3xl font-extrabold text-slate-900 mt-4">Frequently Asked Questions</h2>
-            </div>
-
-            <div className="space-y-4">
-              {faqs.map((faq, index) => (
-                <div key={index} className="bg-slate-50 border border-slate-100 rounded-xl overflow-hidden transition-all">
-                  <button
-                    onClick={() => toggleFaq(index)}
-                    className="w-full flex items-center justify-between p-6 text-left font-bold text-slate-900 focus:outline-none"
-                  >
-                    <span>{faq.q}</span>
-                    <ChevronDown className={`w-5 h-5 text-slate-400 transition-transform duration-300 ${activeFaq === index ? 'rotate-180' : ''}`} />
-                  </button>
-                  {activeFaq === index && (
-                    <div className="px-6 pb-6 text-sm text-slate-600 leading-relaxed animate-pulse-subtle">
-                      {faq.a}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-
-            <div className="text-center mt-12">
-              <p className="text-slate-500 text-sm mb-4">Still have questions?</p>
-              <a className="inline-flex items-center gap-2 text-primary font-bold hover:underline transition-all" href="#">
-                Contact Support <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
-        </section>
+        <FaqSection />
       </main>
 
       <LandingFooter />

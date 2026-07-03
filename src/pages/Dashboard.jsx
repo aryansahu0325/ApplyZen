@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Plus, Briefcase, TrendingUp, Send, Calendar, Award, XCircle, ExternalLink, Sparkles, Brain, ChevronRight, Edit3, CheckCircle, FileText, Mail, Contact, Bot } from 'lucide-react';
@@ -7,6 +7,36 @@ import { Plus, Briefcase, TrendingUp, Send, Calendar, Award, XCircle, ExternalLi
 export default function Dashboard() {
   const { user } = useAuth();
   const firstName = user?.fullName ? user.fullName.split(' ')[0] : 'Aryan';
+
+  const [opportunitiesCount, setOpportunitiesCount] = useState(128);
+  const [applicationsCount, setApplicationsCount] = useState(56);
+  const [interviewsCount, setInterviewsCount] = useState(12);
+  const [offersCount, setOffersCount] = useState(3);
+  const [rejectionsCount, setRejectionsCount] = useState(7);
+
+  useEffect(() => {
+    // Load from local storage and update counts if they exist
+    const savedOpps = localStorage.getItem('applyzen_opportunities');
+    if (savedOpps) {
+      const opps = JSON.parse(savedOpps);
+      setOpportunitiesCount(opps.length + 126); // Base 126 + current list
+    }
+
+    const savedApps = localStorage.getItem('applyzen_applications');
+    if (savedApps) {
+      const apps = JSON.parse(savedApps);
+      const applied = apps.filter(a => a.stage === 'Applied').length;
+      const interviewing = apps.filter(a => a.stage === 'Interviewing').length;
+      const offers = apps.filter(a => a.stage === 'Offer').length;
+      const rejections = apps.filter(a => a.stage === 'Inactive' && a.status === 'Rejected').length;
+
+      setApplicationsCount(applied + 54); // Base 54 + current list
+      setInterviewsCount(interviewing + 10); // Base 10 + current list
+      setOffersCount(offers + 2); // Base 2 + current list
+      setRejectionsCount(rejections + 6); // Base 6 + current list
+    }
+  }, []);
+
 
   
   return (
@@ -33,7 +63,7 @@ export default function Dashboard() {
           </div>
           <div className="relative z-10">
             <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Total Opportunities</p>
-            <h3 className="text-3xl font-extrabold text-slate-900 mt-1">128</h3>
+            <h3 className="text-3xl font-extrabold text-slate-900 mt-1">{opportunitiesCount}</h3>
             <div className="flex items-center text-emerald-600 text-xs font-bold gap-1 mt-2">
               <TrendingUp className="w-5 h-5" /> +12 this week
             </div>
@@ -48,7 +78,7 @@ export default function Dashboard() {
           </div>
           <div className="relative z-10">
             <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Applications Submitted</p>
-            <h3 className="text-3xl font-extrabold text-slate-900 mt-1">56</h3>
+            <h3 className="text-3xl font-extrabold text-slate-900 mt-1">{applicationsCount}</h3>
             <div className="flex items-center text-emerald-600 text-xs font-bold gap-1 mt-2">
               <TrendingUp className="w-5 h-5" /> +8 this week
             </div>
@@ -63,7 +93,7 @@ export default function Dashboard() {
           </div>
           <div className="relative z-10">
             <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Interviews</p>
-            <h3 className="text-3xl font-extrabold text-slate-900 mt-1">12</h3>
+            <h3 className="text-3xl font-extrabold text-slate-900 mt-1">{interviewsCount}</h3>
             <div className="flex items-center text-emerald-600 text-xs font-bold gap-1 mt-2">
               <TrendingUp className="w-5 h-5" /> +3 this week
             </div>
@@ -78,7 +108,7 @@ export default function Dashboard() {
           </div>
           <div className="relative z-10">
             <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Offers</p>
-            <h3 className="text-3xl font-extrabold text-slate-900 mt-1">3</h3>
+            <h3 className="text-3xl font-extrabold text-slate-900 mt-1">{offersCount}</h3>
             <div className="bg-orange-100 text-orange-700 text-[10px] uppercase tracking-widest font-bold px-2 py-0.5 rounded-full inline-block mt-2">
               🎉 Congrats!
             </div>
@@ -93,7 +123,7 @@ export default function Dashboard() {
           </div>
           <div className="relative z-10">
             <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Rejections</p>
-            <h3 className="text-3xl font-extrabold text-slate-900 mt-1">7</h3>
+            <h3 className="text-3xl font-extrabold text-slate-900 mt-1">{rejectionsCount}</h3>
             <p className="text-xs text-slate-500 mt-2 font-medium">This month</p>
           </div>
         </div>
