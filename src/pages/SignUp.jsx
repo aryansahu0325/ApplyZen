@@ -29,6 +29,7 @@ export default function SignUp() {
         setError(res.message);
       }
     } catch (err) {
+      console.error(err);
       setError('An unexpected error occurred. Please try again.');
     } finally {
       setIsSubmitting(false);

@@ -110,7 +110,7 @@ export default function Applications() {
           
           <div className="flex flex-col gap-4 min-h-[500px]">
             {/* Card 1 */}
-            <div className="bg-gradient-to-br from-white/90 to-orange-50/80 backdrop-blur-xl border border-orange-200 shadow-md p-4 rounded-2xl hover:border-orange-400 transition-all cursor-pointer group" onClick={() => navigate('/status')} onClick={() => navigate('/status')}>
+            <div className="bg-gradient-to-br from-white/90 to-orange-50/80 backdrop-blur-xl border border-orange-200 shadow-md p-4 rounded-2xl hover:border-orange-400 transition-all cursor-pointer group" onClick={() => navigate('/status')}>
               <div className="flex justify-between items-start mb-4">
                 <div className="flex gap-3">
                   <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-slate-200 shrink-0 overflow-hidden shadow-sm">
@@ -171,7 +171,7 @@ export default function Applications() {
           
           <div className="flex flex-col gap-4 min-h-[500px]">
             {/* Special Offer Card */}
-            <div className="bg-gradient-to-br from-emerald-50 to-emerald-100/50 backdrop-blur-xl border-2 border-primary rounded-2xl shadow-lg shadow-primary/20 p-4 relative overflow-hidden group" onClick={() => navigate('/status')} cursor-pointer onClick={() => navigate('/status')}>
+            <div className="bg-gradient-to-br from-emerald-50 to-emerald-100/50 backdrop-blur-xl border-2 border-primary rounded-2xl shadow-lg shadow-primary/20 p-4 relative overflow-hidden group cursor-pointer" onClick={() => navigate('/status')}>
               <div className="absolute -right-8 -top-8 w-24 h-24 bg-primary/10 rotate-45 transform group-hover:scale-110 transition-transform duration-500"></div>
               
               <div className="flex justify-between items-start mb-4 relative z-10">

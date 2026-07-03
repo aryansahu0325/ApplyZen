@@ -1,10 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
 import { 
-  Search, 
-  Bell, 
-  Settings, 
   ChevronRight, 
   Briefcase, 
   MapPin, 
@@ -12,25 +8,15 @@ import {
   Calendar, 
   Users, 
   TrendingUp, 
-  Plus, 
-  LayoutDashboard, 
-  FileText, 
-  LineChart, 
-  Users2, 
-  HelpCircle, 
-  LogOut, 
   Edit2, 
   Info,
   DollarSign,
   ArrowLeft,
-  Award,
-  ChevronDown
+  Award
 } from 'lucide-react';
 
 export default function ProductDetail() {
-  const { user } = useAuth();
   const { id } = useParams();
-  const [activeTab, setActiveTab] = useState('overview');
 
   // Dynamic product tier details dictionary
   const productData = {

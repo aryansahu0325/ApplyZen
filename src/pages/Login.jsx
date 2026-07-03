@@ -23,6 +23,7 @@ export default function Login() {
         setError('Invalid email or password. Please check your credentials and try again.');
       }
     } catch (err) {
+      console.error(err);
       setError('An unexpected error occurred. Please try again.');
     } finally {
       setIsSubmitting(false);
