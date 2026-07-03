@@ -1,8 +1,7 @@
 import React from 'react';
 
 export default function Resumes() {
-  const glassClass = "bg-white/70 backdrop-blur-xl border border-white/50 shadow-sm";
-
+  
   return (
     <div className="space-y-8 animate-fadeIn pb-8">
       {/* Page Header & Action */}
@@ -12,7 +11,7 @@ export default function Resumes() {
           <p className="text-lg text-slate-600">Manage your professional identity and optimize for ATS algorithms.</p>
         </div>
         <div className="flex gap-3">
-          <button className={`${glassClass} px-6 h-12 rounded-xl text-sm font-bold text-slate-700 hover:bg-white/90 transition-colors flex items-center gap-2`}>
+          <button className={`glass-card px-6 h-12 rounded-xl text-sm font-bold text-slate-700 hover:bg-white/90 transition-colors flex items-center gap-2`}>
             <span className="material-symbols-outlined text-[20px]">upload_file</span>
             Import PDF
           </button>
@@ -49,7 +48,7 @@ export default function Resumes() {
 
         {/* Stats Sidebar */}
         <div className="lg:col-span-4 flex flex-col gap-6">
-          <div className={`${glassClass} p-6 rounded-2xl relative overflow-hidden group`}>
+          <div className={`glass-card p-6 rounded-2xl relative overflow-hidden group`}>
             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-10 -mt-10 opacity-50 group-hover:opacity-100 transition-opacity"></div>
             
             <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4 relative z-10">Market Readiness</h4>
@@ -82,7 +81,7 @@ export default function Resumes() {
             </div>
           </div>
 
-          <div className={`${glassClass} p-6 rounded-2xl`}>
+          <div className={`glass-card p-6 rounded-2xl`}>
             <div className="flex justify-between items-center mb-6">
               <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider">Upcoming Deadlines</h4>
               <span className="material-symbols-outlined text-slate-400 text-[20px] cursor-pointer hover:text-slate-700">more_horiz</span>
@@ -127,7 +126,7 @@ export default function Resumes() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             
             {/* Resume Card 1 */}
-            <div className={`${glassClass} rounded-2xl group flex flex-col p-2 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all cursor-pointer`}>
+            <div className={`glass-card rounded-2xl group flex flex-col p-2 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all cursor-pointer`}>
               <div className="aspect-[3/4] bg-slate-100/50 rounded-xl relative p-4 group-hover:bg-slate-100 transition-colors overflow-hidden border border-slate-200/50">
                 <div className="w-full h-full bg-white shadow-sm border border-slate-200 overflow-hidden rounded-lg p-4 flex flex-col gap-2">
                   <div className="w-1/2 h-2.5 bg-slate-200 rounded"></div>
@@ -179,7 +178,7 @@ export default function Resumes() {
             </div>
 
             {/* Resume Card 2 */}
-            <div className={`${glassClass} rounded-2xl group flex flex-col p-2 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all cursor-pointer`}>
+            <div className={`glass-card rounded-2xl group flex flex-col p-2 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all cursor-pointer`}>
               <div className="aspect-[3/4] bg-slate-100/50 rounded-xl relative p-4 group-hover:bg-slate-100 transition-colors overflow-hidden border border-slate-200/50">
                 <div className="w-full h-full bg-white shadow-sm border border-slate-200 overflow-hidden rounded-lg p-4 flex flex-col gap-2">
                   <div className="w-2/3 h-2.5 bg-slate-200 rounded"></div>

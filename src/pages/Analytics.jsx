@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 export default function Analytics() {
-  const glassClass = "bg-white/70 backdrop-blur-xl border border-white/50 shadow-sm";
-  const [animate, setAnimate] = useState(false);
+    const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
     // Trigger animations slightly after mount for visual effect
@@ -22,13 +21,13 @@ export default function Analytics() {
         
         <div className="flex flex-col items-end gap-2">
           <div className="flex gap-3 w-full sm:w-auto">
-            <select className={`${glassClass} rounded-xl text-sm font-bold text-slate-700 px-4 py-2.5 outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer min-w-[160px] appearance-none bg-no-repeat`} style={{ backgroundImage: 'url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2394a3b8%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E")', backgroundPosition: 'right 1rem center', backgroundSize: '0.65em auto' }}>
+            <select className={`glass-card rounded-xl text-sm font-bold text-slate-700 px-4 py-2.5 outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer min-w-[160px] appearance-none bg-no-repeat`} style={{ backgroundImage: 'url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2394a3b8%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E")', backgroundPosition: 'right 1rem center', backgroundSize: '0.65em auto' }}>
               <option>This Month</option>
               <option defaultValue>Last 3 Months</option>
               <option>Year to Date</option>
               <option>All Time</option>
             </select>
-            <select className={`${glassClass} rounded-xl text-sm font-bold text-slate-700 px-4 py-2.5 outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer min-w-[160px] appearance-none bg-no-repeat`} style={{ backgroundImage: 'url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2394a3b8%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E")', backgroundPosition: 'right 1rem center', backgroundSize: '0.65em auto' }}>
+            <select className={`glass-card rounded-xl text-sm font-bold text-slate-700 px-4 py-2.5 outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer min-w-[160px] appearance-none bg-no-repeat`} style={{ backgroundImage: 'url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2394a3b8%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E")', backgroundPosition: 'right 1rem center', backgroundSize: '0.65em auto' }}>
               <option>All Role Types</option>
               <option>Full-time</option>
               <option>Contract</option>
@@ -45,7 +44,7 @@ export default function Analytics() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         
         {/* Metric 1 */}
-        <div className={`${glassClass} p-6 rounded-2xl hover:border-primary/30 hover:shadow-md transition-all group cursor-default relative overflow-hidden`}>
+        <div className={`glass-card p-6 rounded-2xl hover:border-primary/30 hover:shadow-md transition-all group cursor-default relative overflow-hidden`}>
           <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity"></div>
           <div className="flex items-center justify-between mb-2 relative z-10">
             <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Avg ATS Score</span>
@@ -64,7 +63,7 @@ export default function Analytics() {
         </div>
 
         {/* Metric 2 */}
-        <div className={`${glassClass} p-6 rounded-2xl hover:border-blue-500/30 hover:shadow-md transition-all group cursor-default relative overflow-hidden`}>
+        <div className={`glass-card p-6 rounded-2xl hover:border-blue-500/30 hover:shadow-md transition-all group cursor-default relative overflow-hidden`}>
           <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity"></div>
           <div className="flex items-center justify-between mb-2 relative z-10">
             <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Interview Rate</span>
@@ -83,7 +82,7 @@ export default function Analytics() {
         </div>
 
         {/* Metric 3 */}
-        <div className={`${glassClass} p-6 rounded-2xl hover:border-indigo-500/30 hover:shadow-md transition-all group cursor-default relative overflow-hidden`}>
+        <div className={`glass-card p-6 rounded-2xl hover:border-indigo-500/30 hover:shadow-md transition-all group cursor-default relative overflow-hidden`}>
           <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-500/10 rounded-full blur-2xl -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity"></div>
           <div className="flex items-center justify-between mb-2 relative z-10">
             <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Applications Sent</span>
@@ -102,7 +101,7 @@ export default function Analytics() {
         </div>
 
         {/* Metric 4 */}
-        <div className={`${glassClass} p-6 rounded-2xl hover:border-purple-500/30 hover:shadow-md transition-all group cursor-default relative overflow-hidden`}>
+        <div className={`glass-card p-6 rounded-2xl hover:border-purple-500/30 hover:shadow-md transition-all group cursor-default relative overflow-hidden`}>
           <div className="absolute top-0 right-0 w-24 h-24 bg-purple-500/10 rounded-full blur-2xl -mr-8 -mt-8 opacity-0 group-hover:opacity-100 transition-opacity"></div>
           <div className="flex items-center justify-between mb-2 relative z-10">
             <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Time-to-Offer</span>
@@ -125,7 +124,7 @@ export default function Analytics() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
         
         {/* Application Success Funnel */}
-        <div className={`lg:col-span-2 ${glassClass} p-6 rounded-2xl flex flex-col`}>
+        <div className={`lg:col-span-2 glass-card p-6 rounded-2xl flex flex-col`}>
           <div className="flex items-center justify-between mb-8">
             <h3 className="text-xl font-bold text-slate-900">Application Success Funnel</h3>
             <button className="text-slate-400 hover:text-slate-700 transition-colors">
@@ -168,7 +167,7 @@ export default function Analytics() {
         </div>
 
         {/* Success Rate by Platform */}
-        <div className={`${glassClass} p-6 rounded-2xl flex flex-col justify-between`}>
+        <div className={`glass-card p-6 rounded-2xl flex flex-col justify-between`}>
           <div>
             <h3 className="text-xl font-bold text-slate-900 mb-6">Platform Performance</h3>
             <div className="space-y-6">
@@ -224,7 +223,7 @@ export default function Analytics() {
         </div>
 
         {/* Salary Insights */}
-        <div className={`lg:col-span-2 ${glassClass} p-6 rounded-2xl`}>
+        <div className={`lg:col-span-2 glass-card p-6 rounded-2xl`}>
           <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4">
             <div>
               <h3 className="text-xl font-bold text-slate-900">Salary Range Insights</h3>

@@ -5,13 +5,12 @@ import { useAuth } from '../context/AuthContext';
 export default function UserProfile() {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const glassClass = "bg-white/70 backdrop-blur-xl border border-white/50 shadow-sm";
-
+  
   return (
     <div className="space-y-8 animate-fadeIn pb-8 max-w-[1400px] mx-auto">
       
       {/* Hero / Profile Header */}
-      <section className={`${glassClass} rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden`}>
+      <section className={`glass-card rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden`}>
         <div className="absolute top-0 right-0 p-6">
           <button 
             onClick={() => navigate('/settings')}
@@ -62,7 +61,7 @@ export default function UserProfile() {
         <div className="lg:col-span-2 space-y-8">
           
           {/* Personal Info */}
-          <div className={`${glassClass} rounded-2xl p-6`}>
+          <div className={`glass-card rounded-2xl p-6`}>
             <div className="flex items-center justify-between mb-6 border-b border-slate-200 pb-4">
               <h3 className="text-xl font-extrabold text-slate-900 flex items-center gap-2">
                 <span className="material-symbols-outlined text-primary text-[24px]">person</span>
@@ -96,7 +95,7 @@ export default function UserProfile() {
           </div>
 
           {/* Professional Info */}
-          <div className={`${glassClass} rounded-2xl p-6`}>
+          <div className={`glass-card rounded-2xl p-6`}>
             <div className="flex items-center justify-between mb-6 border-b border-slate-200 pb-4">
               <h3 className="text-xl font-extrabold text-slate-900 flex items-center gap-2">
                 <span className="material-symbols-outlined text-primary text-[24px]">work</span>
@@ -145,7 +144,7 @@ export default function UserProfile() {
         <div className="space-y-8">
           
           {/* Connected Accounts */}
-          <div className={`${glassClass} rounded-2xl p-6`}>
+          <div className={`glass-card rounded-2xl p-6`}>
             <h3 className="text-xl font-extrabold text-slate-900 flex items-center gap-2 mb-6">
               <span className="material-symbols-outlined text-primary text-[24px]">link</span>
               Connected Accounts
@@ -226,7 +225,7 @@ export default function UserProfile() {
           </div>
 
           {/* Security Section */}
-          <div className={`${glassClass} rounded-2xl p-6`}>
+          <div className={`glass-card rounded-2xl p-6`}>
             <h3 className="text-xl font-extrabold text-slate-900 flex items-center gap-2 mb-6">
               <span className="material-symbols-outlined text-primary text-[24px]">security</span>
               Security

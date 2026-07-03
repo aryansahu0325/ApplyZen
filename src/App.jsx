@@ -22,6 +22,7 @@ const ApplicationStatus = React.lazy(() => import('./pages/ApplicationStatus'));
 const Login = React.lazy(() => import('./pages/Login'));
 const SignUp = React.lazy(() => import('./pages/SignUp'));
 const EnhancedLanding = React.lazy(() => import('./pages/EnhancedLanding'));
+const NotFound = React.lazy(() => import('./pages/NotFound'));
 
 function App() {
   return (
@@ -70,6 +71,9 @@ function App() {
                 <Route path="/company-profile" element={<CompanyProfile />} />
                 <Route path="/career-profile" element={<UserProfile />} />
               </Route>
+
+              {/* Catch-all Route for 404 Not Found */}
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
         </AuthProvider>

@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Applications() {
   const navigate = useNavigate();
-  const glassClass = "bg-white/70 backdrop-blur-xl border border-white/50 shadow-sm";
-
+  
   return (
     <div className="space-y-8 animate-fadeIn pb-8 max-w-[1400px] mx-auto">
       
@@ -20,7 +19,7 @@ export default function Applications() {
           <p className="text-lg text-slate-600 max-w-xl">Manage and track your active job searches. Move cards across stages as your interview process evolves.</p>
         </div>
         <div className="flex gap-3">
-          <button className={`${glassClass} px-6 h-12 rounded-xl text-sm font-bold text-slate-700 hover:bg-white/90 transition-colors flex items-center gap-2`}>
+          <button className={`glass-card px-6 h-12 rounded-xl text-sm font-bold text-slate-700 hover:bg-white/90 transition-colors flex items-center gap-2`}>
             <span className="material-symbols-outlined text-[20px]">filter_list</span>
             Filter
           </button>
@@ -47,7 +46,7 @@ export default function Applications() {
           
           <div className="flex flex-col gap-4 min-h-[500px]">
             {/* Card 1 */}
-            <div className={`\${glassClass} p-4 rounded-2xl hover:border-blue-300 hover:shadow-md hover:shadow-blue-500/5 transition-all cursor-pointer group`} onClick={() => navigate('/status')}>
+            <div className={`glass-card p-4 rounded-2xl hover:border-blue-300 hover:shadow-md hover:shadow-blue-500/5 transition-all cursor-pointer group`} onClick={() => navigate('/status')}>
               <div className="flex justify-between items-start mb-4">
                 <div className="flex gap-3">
                   <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-slate-200 shrink-0 overflow-hidden shadow-sm">
@@ -73,7 +72,7 @@ export default function Applications() {
             </div>
 
             {/* Card 2 */}
-            <div className={`\${glassClass} p-4 rounded-2xl hover:border-blue-300 hover:shadow-md hover:shadow-blue-500/5 transition-all cursor-pointer group`} onClick={() => navigate('/status')}>
+            <div className={`glass-card p-4 rounded-2xl hover:border-blue-300 hover:shadow-md hover:shadow-blue-500/5 transition-all cursor-pointer group`} onClick={() => navigate('/status')}>
               <div className="flex justify-between items-start mb-4">
                 <div className="flex gap-3">
                   <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-slate-200 shrink-0 overflow-hidden shadow-sm">
@@ -137,7 +136,7 @@ export default function Applications() {
             </div>
 
             {/* Card 2 */}
-            <div className={`\${glassClass} p-4 rounded-2xl hover:border-orange-300 hover:shadow-md hover:shadow-orange-500/5 transition-all cursor-pointer group`} onClick={() => navigate('/status')}>
+            <div className={`glass-card p-4 rounded-2xl hover:border-orange-300 hover:shadow-md hover:shadow-orange-500/5 transition-all cursor-pointer group`} onClick={() => navigate('/status')}>
               <div className="flex justify-between items-start mb-3">
                 <div className="flex gap-3">
                   <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-slate-200 shrink-0 overflow-hidden shadow-sm">
@@ -218,7 +217,7 @@ export default function Applications() {
           
           <div className="flex flex-col gap-4 min-h-[500px] opacity-75 hover:opacity-100 transition-opacity">
             {/* Card 1 */}
-            <div className={`\${glassClass} p-4 rounded-2xl grayscale hover:grayscale-0 transition-all cursor-pointer`} onClick={() => navigate('/status')}>
+            <div className={`glass-card p-4 rounded-2xl grayscale hover:grayscale-0 transition-all cursor-pointer`} onClick={() => navigate('/status')}>
               <div className="flex justify-between items-start mb-3">
                 <div className="flex gap-3">
                   <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-slate-200 shrink-0 overflow-hidden shadow-sm">
@@ -235,7 +234,7 @@ export default function Applications() {
             </div>
             
             {/* Card 2 */}
-            <div className={`\${glassClass} p-4 rounded-2xl grayscale hover:grayscale-0 transition-all cursor-pointer`} onClick={() => navigate('/status')}>
+            <div className={`glass-card p-4 rounded-2xl grayscale hover:grayscale-0 transition-all cursor-pointer`} onClick={() => navigate('/status')}>
               <div className="flex justify-between items-start">
                 <div className="flex gap-3">
                   <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center border border-slate-200 shrink-0 overflow-hidden shadow-sm">
@@ -265,7 +264,7 @@ export default function Applications() {
           <button className="text-primary text-sm font-bold hover:underline">View All Activity</button>
         </div>
         
-        <div className={`${glassClass} rounded-2xl overflow-hidden`}>
+        <div className={`glass-card rounded-2xl overflow-hidden`}>
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left min-w-[800px]">
               <thead className="bg-slate-50/50 border-b border-slate-200">

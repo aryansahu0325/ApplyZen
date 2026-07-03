@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { Plus, Briefcase, TrendingUp, Send, Calendar, Award, XCircle, ExternalLink, Sparkles, Brain, ChevronRight, Edit3, CheckCircle, FileText, Mail, Contact, Bot } from 'lucide-react';
+
 
 export default function Dashboard() {
   const { user } = useAuth();
   const firstName = user?.fullName ? user.fullName.split(' ')[0] : 'Aryan';
 
-  const glassClass = "bg-white/70 backdrop-blur-xl border border-white/50 shadow-sm";
-
+  
   return (
     <div className="space-y-8 animate-fadeIn pb-8">
       {/* Welcome Header */}
@@ -17,7 +18,7 @@ export default function Dashboard() {
           <p className="text-lg text-slate-600">Here's what's happening with your career journey today.</p>
         </div>
         <button className="bg-primary text-white font-bold py-3 px-8 rounded-xl flex items-center gap-2 shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform active:scale-95">
-          <span className="material-symbols-outlined">add</span>
+          <Plus className="w-5 h-5" />
           Add Opportunity
         </button>
       </div>
@@ -25,55 +26,55 @@ export default function Dashboard() {
       {/* Metrics Row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         {/* Card 1 */}
-        <div className={`${glassClass} p-6 rounded-2xl flex flex-col gap-2 relative overflow-hidden group`}>
+        <div className={`glass-card p-6 rounded-2xl flex flex-col gap-2 relative overflow-hidden group`}>
           <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-50 rounded-full blur-2xl -mr-8 -mt-8 opacity-50 group-hover:opacity-80 transition-opacity"></div>
           <div className="w-8 h-8 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-600 relative z-10 border border-indigo-100">
-            <span className="material-symbols-outlined text-[20px]" style={{ fontVariationSettings: '"FILL" 1' }}>work</span>
+            <Briefcase className="w-5 h-5" />
           </div>
           <div className="relative z-10">
             <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Total Opportunities</p>
             <h3 className="text-3xl font-extrabold text-slate-900 mt-1">128</h3>
             <div className="flex items-center text-emerald-600 text-xs font-bold gap-1 mt-2">
-              <span className="material-symbols-outlined text-[14px]">trending_up</span> +12 this week
+              <TrendingUp className="w-5 h-5" /> +12 this week
             </div>
           </div>
         </div>
 
         {/* Card 2 */}
-        <div className={`${glassClass} p-6 rounded-2xl flex flex-col gap-2 relative overflow-hidden group`}>
+        <div className={`glass-card p-6 rounded-2xl flex flex-col gap-2 relative overflow-hidden group`}>
           <div className="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-full blur-2xl -mr-8 -mt-8 opacity-50 group-hover:opacity-80 transition-opacity"></div>
           <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 relative z-10 border border-blue-100">
-            <span className="material-symbols-outlined text-[20px]" style={{ fontVariationSettings: '"FILL" 1' }}>send</span>
+            <Send className="w-5 h-5" />
           </div>
           <div className="relative z-10">
             <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Applications Submitted</p>
             <h3 className="text-3xl font-extrabold text-slate-900 mt-1">56</h3>
             <div className="flex items-center text-emerald-600 text-xs font-bold gap-1 mt-2">
-              <span className="material-symbols-outlined text-[14px]">trending_up</span> +8 this week
+              <TrendingUp className="w-5 h-5" /> +8 this week
             </div>
           </div>
         </div>
 
         {/* Card 3 */}
-        <div className={`${glassClass} p-6 rounded-2xl flex flex-col gap-2 relative overflow-hidden group`}>
+        <div className={`glass-card p-6 rounded-2xl flex flex-col gap-2 relative overflow-hidden group`}>
           <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-50 rounded-full blur-2xl -mr-8 -mt-8 opacity-50 group-hover:opacity-80 transition-opacity"></div>
           <div className="w-8 h-8 bg-emerald-50 rounded-lg flex items-center justify-center text-emerald-600 relative z-10 border border-emerald-100">
-            <span className="material-symbols-outlined text-[20px]" style={{ fontVariationSettings: '"FILL" 1' }}>event</span>
+            <Calendar className="w-5 h-5" />
           </div>
           <div className="relative z-10">
             <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Interviews</p>
             <h3 className="text-3xl font-extrabold text-slate-900 mt-1">12</h3>
             <div className="flex items-center text-emerald-600 text-xs font-bold gap-1 mt-2">
-              <span className="material-symbols-outlined text-[14px]">trending_up</span> +3 this week
+              <TrendingUp className="w-5 h-5" /> +3 this week
             </div>
           </div>
         </div>
 
         {/* Card 4 */}
-        <div className={`${glassClass} p-6 rounded-2xl flex flex-col gap-2 relative overflow-hidden group`}>
+        <div className={`glass-card p-6 rounded-2xl flex flex-col gap-2 relative overflow-hidden group`}>
           <div className="absolute top-0 right-0 w-24 h-24 bg-orange-50 rounded-full blur-2xl -mr-8 -mt-8 opacity-50 group-hover:opacity-80 transition-opacity"></div>
           <div className="w-8 h-8 bg-orange-50 rounded-lg flex items-center justify-center text-orange-600 relative z-10 border border-orange-100">
-            <span className="material-symbols-outlined text-[20px]" style={{ fontVariationSettings: '"FILL" 1' }}>military_tech</span>
+            <Award className="w-5 h-5" />
           </div>
           <div className="relative z-10">
             <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Offers</p>
@@ -85,10 +86,10 @@ export default function Dashboard() {
         </div>
 
         {/* Card 5 */}
-        <div className={`${glassClass} p-6 rounded-2xl flex flex-col gap-2 relative overflow-hidden group`}>
+        <div className={`glass-card p-6 rounded-2xl flex flex-col gap-2 relative overflow-hidden group`}>
           <div className="absolute top-0 right-0 w-24 h-24 bg-rose-50 rounded-full blur-2xl -mr-8 -mt-8 opacity-50 group-hover:opacity-80 transition-opacity"></div>
           <div className="w-8 h-8 bg-rose-50 rounded-lg flex items-center justify-center text-rose-600 relative z-10 border border-rose-100">
-            <span className="material-symbols-outlined text-[20px]" style={{ fontVariationSettings: '"FILL" 1' }}>cancel</span>
+            <XCircle className="w-5 h-5" />
           </div>
           <div className="relative z-10">
             <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mt-1">Rejections</p>
@@ -105,7 +106,7 @@ export default function Dashboard() {
         <div className="col-span-12 lg:col-span-8 space-y-6">
           
           {/* Application Overview Chart Card */}
-          <div className={`${glassClass} rounded-2xl relative overflow-hidden h-[340px] p-6`}>
+          <div className={`glass-card rounded-2xl relative overflow-hidden h-[340px] p-6`}>
             <div className="flex justify-between items-center mb-6">
               <h4 className="text-xl font-bold text-slate-900">Application Overview</h4>
               <select className="bg-white/50 border border-slate-200 text-xs font-bold rounded-lg py-1.5 px-3 outline-none focus:ring-1 focus:ring-primary text-slate-700">
@@ -150,7 +151,7 @@ export default function Dashboard() {
           </div>
 
           {/* Top Opportunities */}
-          <div className={`${glassClass} rounded-2xl p-6`}>
+          <div className={`glass-card rounded-2xl p-6`}>
             <div className="flex justify-between items-center mb-6">
               <h4 className="text-xl font-bold text-slate-900">Top Opportunities</h4>
               <Link className="text-primary text-sm font-bold hover:underline" to="/opportunities">View All</Link>
@@ -170,7 +171,7 @@ export default function Dashboard() {
                 </div>
                 <div className="flex items-center gap-6">
                   <span className="bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full border border-emerald-100 hidden sm:block">95% Match</span>
-                  <button className="text-primary font-bold text-sm group-hover:translate-x-1 transition-transform inline-flex items-center">Apply <span className="material-symbols-outlined text-[16px] ml-1">open_in_new</span></button>
+                  <button className="text-primary font-bold text-sm group-hover:translate-x-1 transition-transform inline-flex items-center">Apply <ExternalLink className="w-5 h-5 ml-1" /></button>
                 </div>
               </div>
 
@@ -187,7 +188,7 @@ export default function Dashboard() {
                 </div>
                 <div className="flex items-center gap-6">
                   <span className="bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full border border-emerald-100 hidden sm:block">90% Match</span>
-                  <button className="text-primary font-bold text-sm group-hover:translate-x-1 transition-transform inline-flex items-center">Apply <span className="material-symbols-outlined text-[16px] ml-1">open_in_new</span></button>
+                  <button className="text-primary font-bold text-sm group-hover:translate-x-1 transition-transform inline-flex items-center">Apply <ExternalLink className="w-5 h-5 ml-1" /></button>
                 </div>
               </div>
 
@@ -204,7 +205,7 @@ export default function Dashboard() {
                 </div>
                 <div className="flex items-center gap-6">
                   <span className="bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full border border-emerald-100 hidden sm:block">88% Match</span>
-                  <button className="text-primary font-bold text-sm group-hover:translate-x-1 transition-transform inline-flex items-center">Apply <span className="material-symbols-outlined text-[16px] ml-1">open_in_new</span></button>
+                  <button className="text-primary font-bold text-sm group-hover:translate-x-1 transition-transform inline-flex items-center">Apply <ExternalLink className="w-5 h-5 ml-1" /></button>
                 </div>
               </div>
             </div>
@@ -217,7 +218,7 @@ export default function Dashboard() {
           {/* AI Career Assistant */}
           <div className="bg-white/70 backdrop-blur-xl border border-white/80 rounded-2xl shadow-sm bg-gradient-to-br from-emerald-50/90 to-teal-50/90 p-6">
             <div className="flex items-center gap-2 mb-4">
-              <span className="material-symbols-outlined text-emerald-600 text-[24px]" style={{ fontVariationSettings: '"FILL" 1' }}>auto_awesome</span>
+              <Sparkles className="w-5 h-5 text-emerald-600" />
               <h4 className="text-xl font-bold text-slate-900">AI Assistant</h4>
             </div>
             
@@ -232,23 +233,23 @@ export default function Dashboard() {
             <div className="space-y-2">
               <button className="w-full flex justify-between items-center bg-white/80 p-2.5 px-4 rounded-lg border border-white hover:border-emerald-400 group transition-all">
                 <div className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-emerald-500 text-[18px]">psychology</span>
+                  <Brain className="w-5 h-5 text-emerald-500" />
                   <span className="text-xs font-bold text-slate-700">Optimize Resume</span>
                 </div>
-                <span className="material-symbols-outlined text-slate-400 group-hover:translate-x-1 transition-transform text-[18px]">chevron_right</span>
+                <ChevronRight className="w-5 h-5 text-slate-400 group-hover:translate-x-1 transition-transform" />
               </button>
               <button className="w-full flex justify-between items-center bg-white/80 p-2.5 px-4 rounded-lg border border-white hover:border-emerald-400 group transition-all">
                 <div className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-emerald-500 text-[18px]">edit_note</span>
+                  <Edit3 className="w-5 h-5 text-emerald-500" />
                   <span className="text-xs font-bold text-slate-700">Cover Letter</span>
                 </div>
-                <span className="material-symbols-outlined text-slate-400 group-hover:translate-x-1 transition-transform text-[18px]">chevron_right</span>
+                <ChevronRight className="w-5 h-5 text-slate-400 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </div>
 
           {/* Recent Activities Timeline */}
-          <div className={`${glassClass} rounded-2xl p-6`}>
+          <div className={`glass-card rounded-2xl p-6`}>
             <div className="flex justify-between items-center mb-6">
               <h4 className="text-xl font-bold text-slate-900">Recent Activities</h4>
               <Link className="text-primary text-sm font-bold hover:underline" to="/analytics">View All</Link>
@@ -259,7 +260,7 @@ export default function Dashboard() {
               {/* Activity 1 */}
               <div className="flex gap-4 relative">
                 <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center z-10 shrink-0 border border-emerald-200">
-                  <span className="material-symbols-outlined text-emerald-600 text-[16px]">check_circle</span>
+                  <CheckCircle className="w-5 h-5 text-emerald-600" />
                 </div>
                 <div className="flex-1">
                   <div className="flex justify-between items-start">
@@ -273,7 +274,7 @@ export default function Dashboard() {
               {/* Activity 2 */}
               <div className="flex gap-4 relative">
                 <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center z-10 shrink-0 border border-blue-200">
-                  <span className="material-symbols-outlined text-blue-600 text-[16px]">calendar_today</span>
+                  <Calendar className="w-5 h-5 text-blue-600" />
                 </div>
                 <div className="flex-1">
                   <div className="flex justify-between items-start">
@@ -287,7 +288,7 @@ export default function Dashboard() {
               {/* Activity 3 */}
               <div className="flex gap-4 relative">
                 <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center z-10 shrink-0 border border-indigo-200">
-                  <span className="material-symbols-outlined text-indigo-600 text-[16px]">description</span>
+                  <FileText className="w-5 h-5 text-indigo-600" />
                 </div>
                 <div className="flex-1">
                   <div className="flex justify-between items-start">
@@ -307,7 +308,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-12 gap-6 items-stretch">
         
         {/* Application Status (Donut Chart) */}
-        <div className={`col-span-12 lg:col-span-6 ${glassClass} rounded-2xl p-6 flex flex-col`}>
+        <div className={`col-span-12 lg:col-span-6 glass-card rounded-2xl p-6 flex flex-col`}>
           <div className="mb-6">
             <h4 className="text-xl font-bold text-slate-900">Application Status</h4>
           </div>
@@ -365,7 +366,7 @@ export default function Dashboard() {
         {/* Connected Accounts & Automation Mode */}
         <div className="col-span-12 lg:col-span-6 flex flex-col justify-between gap-6">
           {/* Connected Accounts */}
-          <div className={`${glassClass} rounded-2xl p-6 flex-1 flex flex-col justify-between`}>
+          <div className={`glass-card rounded-2xl p-6 flex-1 flex flex-col justify-between`}>
             <div>
               <div className="flex justify-between items-center mb-4">
                 <h4 className="text-xl font-bold text-slate-900">Connected Accounts</h4>
@@ -374,7 +375,7 @@ export default function Dashboard() {
               <div className="space-y-2">
                 <div className="flex items-center justify-between py-2 border-b border-slate-100 last:border-0">
                   <div className="flex items-center gap-3">
-                    <span className="material-symbols-outlined text-[#db4437] text-[24px]">mail</span>
+                    <Mail className="w-5 h-5 text-[#db4437]" />
                     <div>
                       <p className="text-sm font-bold text-slate-900 leading-tight">Gmail</p>
                       <p className="text-[10px] text-emerald-600 font-bold flex items-center gap-1 mt-1">
@@ -387,7 +388,7 @@ export default function Dashboard() {
 
                 <div className="flex items-center justify-between py-2">
                   <div className="flex items-center gap-3">
-                    <span className="material-symbols-outlined text-[#0078d4] text-[24px]">contact_mail</span>
+                    <Contact className="w-5 h-5 text-[#0078d4]" />
                     <div>
                       <p className="text-sm font-bold text-slate-900 leading-tight">Outlook</p>
                       <p className="text-[10px] text-emerald-600 font-bold flex items-center gap-1 mt-1">
@@ -413,7 +414,7 @@ export default function Dashboard() {
             </div>
             
             <div className="w-12 h-12 shrink-0 relative z-10 flex items-center justify-center bg-white/10 rounded-full">
-              <span className="material-symbols-outlined text-white text-[28px]" style={{ fontVariationSettings: '"FILL" 1' }}>smart_toy</span>
+              <Bot className="w-5 h-5 text-white" />
             </div>
           </div>
         </div>

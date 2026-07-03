@@ -1,6 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, Outlet } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { 
+  LayoutDashboard, 
+  Briefcase, 
+  Folder, 
+  FileText, 
+  User, 
+  BarChart2, 
+  Activity, 
+  HelpCircle, 
+  Settings, 
+  LogOut, 
+  Zap, 
+  ChevronsLeft, 
+  ChevronsRight,
+  Menu,
+  Search,
+  Bell,
+  X
+} from 'lucide-react';
 
 export default function Layout() {
   const { user, logout } = useAuth();
@@ -11,21 +30,21 @@ export default function Layout() {
   const isActive = (path) => location.pathname === path;
 
   const mainLinks = [
-    { label: 'Dashboard', path: '/dashboard', icon: 'dashboard' },
-    { label: 'Opportunities', path: '/opportunities', icon: 'work' },
-    { label: 'Applications', path: '/applications', icon: 'folder' },
-    { label: 'Resumes', path: '/resumes', icon: 'description' },
+    { label: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
+    { label: 'Opportunities', path: '/opportunities', icon: Briefcase },
+    { label: 'Applications', path: '/applications', icon: Folder },
+    { label: 'Resumes', path: '/resumes', icon: FileText },
   ];
 
   const moreLinks = [
-    { label: 'Career Profile', path: '/career-profile', icon: 'person' },
-    { label: 'Analytics', path: '/analytics', icon: 'analytics' },
-    { label: 'Workflow Monitor', path: '/workflow', icon: 'monitoring' },
+    { label: 'Career Profile', path: '/career-profile', icon: User },
+    { label: 'Analytics', path: '/analytics', icon: BarChart2 },
+    { label: 'Workflow Monitor', path: '/workflow', icon: Activity },
   ];
   
   const bottomLinks = [
-    { label: 'Help Center', path: '/help-center', icon: 'help_outline' },
-    { label: 'Settings', path: '/settings', icon: 'settings' },
+    { label: 'Help Center', path: '/help-center', icon: HelpCircle },
+    { label: 'Settings', path: '/settings', icon: Settings },
   ];
 
   const navLinkClass = (path, isMobile = false) => {
@@ -54,7 +73,7 @@ export default function Layout() {
         <div className={`h-16 flex items-center border-b border-slate-100 shrink-0 ${isSidebarCollapsed ? 'justify-center px-0' : 'px-6 justify-between'}`}>
           <Link to="/dashboard" className="flex items-center gap-2">
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shadow-sm shrink-0">
-              <span className="material-symbols-outlined text-white text-[20px]" style={{ fontVariationSettings: '"FILL" 1' }}>bolt</span>
+              <Zap className="w-5 h-5 text-white" fill="currentColor" />
             </div>
             {!isSidebarCollapsed && <span className="text-xl font-bold tracking-tight text-slate-900 truncate">ApplyZen</span>}
           </Link>
@@ -63,7 +82,7 @@ export default function Layout() {
               onClick={() => setIsSidebarCollapsed(true)}
               className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
             >
-              <span className="material-symbols-outlined text-[20px]">keyboard_double_arrow_left</span>
+              <ChevronsLeft className="w-5 h-5" />
             </button>
           )}
         </div>
@@ -76,7 +95,7 @@ export default function Layout() {
                onClick={() => setIsSidebarCollapsed(false)}
                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors mx-auto mb-2"
              >
-               <span className="material-symbols-outlined text-[20px]">keyboard_double_arrow_right</span>
+               <ChevronsRight className="w-5 h-5" />
              </button>
           )}
 
@@ -84,12 +103,15 @@ export default function Layout() {
           <div className="w-full">
             {!isSidebarCollapsed && <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-3 mb-2">Main</p>}
             <nav className="flex flex-col gap-1 w-full">
-              {mainLinks.map((link) => (
-                <Link key={link.path} to={link.path} className={navLinkClass(link.path)} title={isSidebarCollapsed ? link.label : ""}>
-                  <span className={`material-symbols-outlined text-[18px] ${isActive(link.path) ? '' : 'opacity-70'}`}>{link.icon}</span>
-                  {!isSidebarCollapsed && <span>{link.label}</span>}
-                </Link>
-              ))}
+              {mainLinks.map((link) => {
+                const Icon = link.icon;
+                return (
+                  <Link key={link.path} to={link.path} className={navLinkClass(link.path)} title={isSidebarCollapsed ? link.label : ""}>
+                    <Icon className={`w-[18px] h-[18px] ${isActive(link.path) ? '' : 'opacity-70'}`} />
+                    {!isSidebarCollapsed && <span>{link.label}</span>}
+                  </Link>
+                );
+              })}
             </nav>
           </div>
 
@@ -97,12 +119,15 @@ export default function Layout() {
           <div className="w-full">
             {!isSidebarCollapsed && <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-3 mb-2">More Tools</p>}
             <nav className="flex flex-col gap-1 w-full">
-              {moreLinks.map((link) => (
-                <Link key={link.path} to={link.path} className={navLinkClass(link.path)} title={isSidebarCollapsed ? link.label : ""}>
-                  <span className={`material-symbols-outlined text-[18px] ${isActive(link.path) ? '' : 'opacity-70'}`}>{link.icon}</span>
-                  {!isSidebarCollapsed && <span>{link.label}</span>}
-                </Link>
-              ))}
+              {moreLinks.map((link) => {
+                const Icon = link.icon;
+                return (
+                  <Link key={link.path} to={link.path} className={navLinkClass(link.path)} title={isSidebarCollapsed ? link.label : ""}>
+                    <Icon className={`w-[18px] h-[18px] ${isActive(link.path) ? '' : 'opacity-70'}`} />
+                    {!isSidebarCollapsed && <span>{link.label}</span>}
+                  </Link>
+                );
+              })}
             </nav>
           </div>
         </div>
@@ -110,18 +135,21 @@ export default function Layout() {
         {/* Bottom Section (Help, Settings, Profile) */}
         <div className={`py-4 border-t border-slate-100 flex flex-col shrink-0 ${isSidebarCollapsed ? 'px-2 items-center gap-2' : 'px-4 gap-1'}`}>
           <nav className="flex flex-col gap-1 w-full mb-2">
-            {bottomLinks.map((link) => (
-              <Link key={link.path} to={link.path} className={navLinkClass(link.path)} title={isSidebarCollapsed ? link.label : ""}>
-                <span className={`material-symbols-outlined text-[18px] ${isActive(link.path) ? '' : 'opacity-70'}`}>{link.icon}</span>
-                {!isSidebarCollapsed && <span>{link.label}</span>}
-              </Link>
-            ))}
+            {bottomLinks.map((link) => {
+              const Icon = link.icon;
+              return (
+                <Link key={link.path} to={link.path} className={navLinkClass(link.path)} title={isSidebarCollapsed ? link.label : ""}>
+                  <Icon className={`w-[18px] h-[18px] ${isActive(link.path) ? '' : 'opacity-70'}`} />
+                  {!isSidebarCollapsed && <span>{link.label}</span>}
+                </Link>
+              );
+            })}
             <button 
               onClick={logout} 
               title={isSidebarCollapsed ? "Log Out" : ""}
               className={`flex items-center text-sm font-medium text-red-600 hover:bg-red-50 text-left transition-colors cursor-pointer rounded-lg ${isSidebarCollapsed ? 'justify-center px-0 py-3 mx-2' : 'gap-3 px-3 py-2.5'}`}
             >
-              <span className="material-symbols-outlined text-[18px] opacity-70">logout</span>
+              <LogOut className="w-[18px] h-[18px] opacity-70" />
               {!isSidebarCollapsed && <span>Log Out</span>}
             </button>
           </nav>
@@ -160,11 +188,11 @@ export default function Layout() {
               className="p-2 -ml-2 text-slate-500 hover:bg-slate-100 rounded-lg"
               onClick={() => setMobileMenuOpen(true)}
             >
-              <span className="material-symbols-outlined">menu</span>
+              <Menu className="w-5 h-5" />
             </button>
             <Link to="/dashboard" className="flex items-center gap-2">
               <div className="w-7 h-7 bg-primary rounded-lg flex items-center justify-center shadow-sm">
-                <span className="material-symbols-outlined text-white text-[18px]" style={{ fontVariationSettings: '"FILL" 1' }}>bolt</span>
+                <Zap className="w-4 h-4 text-white" fill="currentColor" />
               </div>
             </Link>
           </div>
@@ -177,14 +205,14 @@ export default function Layout() {
             {/* Search Bar */}
             <div className="hidden md:flex items-center">
               <div className="flex items-center bg-slate-100/80 border border-slate-200/60 rounded-full px-3 py-1.5 w-72 focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary/30 transition-all">
-                <span className="material-symbols-outlined text-slate-400 text-[18px] mr-2">search</span>
+                <Search className="w-[18px] h-[18px] text-slate-400 mr-2" />
                 <input className="bg-transparent border-none focus:ring-0 text-sm w-full outline-none placeholder:text-slate-400" placeholder="Search..." type="text" />
                 <span className="text-[10px] text-slate-400 font-mono px-1.5 border border-slate-200 rounded bg-white shadow-sm ml-2">⌘K</span>
               </div>
             </div>
 
             <Link to="/notifications" className="relative p-2 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-full transition-colors block">
-              <span className="material-symbols-outlined">notifications</span>
+              <Bell className="w-5 h-5" />
               <span className="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-primary rounded-full border-2 border-white"></span>
             </Link>
             <div className="h-6 w-px bg-slate-200 mx-1 hidden sm:block"></div>
@@ -204,13 +232,13 @@ export default function Layout() {
               {/* Header */}
               <div className="h-16 flex items-center justify-between px-6 border-b border-slate-100 shrink-0">
                 <Link to="/dashboard" className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shadow-sm">
-                    <span className="material-symbols-outlined text-white text-[20px]" style={{ fontVariationSettings: '"FILL" 1' }}>bolt</span>
+                  <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shadow-sm shrink-0">
+                    <Zap className="w-5 h-5 text-white" fill="currentColor" />
                   </div>
-                  <span className="text-xl font-bold tracking-tight text-slate-900">ApplyZen</span>
+                  <span className="text-xl font-bold tracking-tight text-slate-900 truncate">ApplyZen</span>
                 </Link>
                 <button className="p-2 -mr-2 text-slate-500 hover:bg-slate-100 rounded-lg" onClick={() => setMobileMenuOpen(false)}>
-                  <span className="material-symbols-outlined">close</span>
+                  <X className="w-5 h-5" />
                 </button>
               </div>
 
@@ -218,29 +246,35 @@ export default function Layout() {
               <div className="flex-1 overflow-y-auto px-4 py-6 flex flex-col gap-6">
                 <div>
                   <div className="flex items-center bg-slate-100 border border-slate-200 rounded-lg px-3 py-2 w-full mb-6">
-                    <span className="material-symbols-outlined text-slate-400 text-[18px] mr-2">search</span>
+                    <Search className="w-[18px] h-[18px] text-slate-400 mr-2" />
                     <input className="bg-transparent border-none focus:ring-0 text-sm w-full outline-none placeholder:text-slate-400" placeholder="Search anything..." type="text" />
                   </div>
                   <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-3 mb-2">Main</p>
-                  <nav className="flex flex-col gap-1">
-                    {mainLinks.map((link) => (
-                      <Link key={link.path} to={link.path} className={navLinkClass(link.path, true)}>
-                        <span className={`material-symbols-outlined text-[18px] ${isActive(link.path) ? '' : 'opacity-70'}`}>{link.icon}</span>
-                        {link.label}
-                      </Link>
-                    ))}
+                  <nav className="flex flex-col gap-1 w-full">
+                    {mainLinks.map((link) => {
+                      const Icon = link.icon;
+                      return (
+                        <Link key={link.path} to={link.path} onClick={() => setMobileMenuOpen(false)} className={navLinkClass(link.path, true)}>
+                          <Icon className={`w-[18px] h-[18px] ${isActive(link.path) ? '' : 'opacity-70'}`} />
+                          <span>{link.label}</span>
+                        </Link>
+                      );
+                    })}
                   </nav>
                 </div>
 
                 <div>
                   <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-3 mb-2">More Tools</p>
-                  <nav className="flex flex-col gap-1">
-                    {moreLinks.map((link) => (
-                      <Link key={link.path} to={link.path} className={navLinkClass(link.path, true)}>
-                        <span className={`material-symbols-outlined text-[18px] ${isActive(link.path) ? '' : 'opacity-70'}`}>{link.icon}</span>
-                        {link.label}
-                      </Link>
-                    ))}
+                  <nav className="flex flex-col gap-1 w-full">
+                    {moreLinks.map((link) => {
+                      const Icon = link.icon;
+                      return (
+                        <Link key={link.path} to={link.path} onClick={() => setMobileMenuOpen(false)} className={navLinkClass(link.path, true)}>
+                          <Icon className={`w-[18px] h-[18px] ${isActive(link.path) ? '' : 'opacity-70'}`} />
+                          <span>{link.label}</span>
+                        </Link>
+                      );
+                    })}
                   </nav>
                 </div>
               </div>
@@ -248,14 +282,17 @@ export default function Layout() {
               {/* Bottom Nav */}
               <div className="px-4 py-4 border-t border-slate-100 flex flex-col gap-1 shrink-0 bg-slate-50">
                 <nav className="flex flex-col gap-1 mb-2">
-                  {bottomLinks.map((link) => (
-                    <Link key={link.path} to={link.path} className={navLinkClass(link.path, true)}>
-                      <span className={`material-symbols-outlined text-[18px] ${isActive(link.path) ? '' : 'opacity-70'}`}>{link.icon}</span>
-                      {link.label}
-                    </Link>
-                  ))}
+                  {bottomLinks.map((link) => {
+                    const Icon = link.icon;
+                    return (
+                      <Link key={link.path} to={link.path} onClick={() => setMobileMenuOpen(false)} className={navLinkClass(link.path, true)}>
+                        <Icon className={`w-[18px] h-[18px] ${isActive(link.path) ? '' : 'opacity-70'}`} />
+                        <span>{link.label}</span>
+                      </Link>
+                    );
+                  })}
                   <button onClick={logout} className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-red-600 hover:bg-red-50 text-left transition-colors cursor-pointer">
-                    <span className="material-symbols-outlined text-[18px] opacity-70">logout</span>
+                    <LogOut className="w-[18px] h-[18px] opacity-70" />
                     Log Out
                   </button>
                 </nav>

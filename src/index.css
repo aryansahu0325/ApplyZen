@@ -12,6 +12,12 @@
   }
 }
 
+@layer components {
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-white/50 shadow-sm;
+  }
+}
+
 body {
   font-family: 'Inter', sans-serif;
   background-color: #f8f9ff;
