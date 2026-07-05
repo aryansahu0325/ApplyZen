@@ -18,6 +18,8 @@ const UserProfile = React.lazy(() => import('./pages/UserProfile'));
 const Settings = React.lazy(() => import('./pages/Settings'));
 const Notifications = React.lazy(() => import('./pages/Notifications'));
 const HelpCenter = React.lazy(() => import('./pages/HelpCenter'));
+const CommunityForum = React.lazy(() => import('./pages/CommunityForum'));
+const Troubleshoot = React.lazy(() => import('./pages/Troubleshoot'));
 const ApplicationStatus = React.lazy(() => import('./pages/ApplicationStatus'));
 const Login = React.lazy(() => import('./pages/Login'));
 const SignUp = React.lazy(() => import('./pages/SignUp'));
@@ -66,6 +68,8 @@ function App() {
                 <Route path="/settings" element={<Settings />} />
                 <Route path="/notifications" element={<Notifications />} />
                 <Route path="/help-center" element={<HelpCenter />} />
+                <Route path="/forum" element={<CommunityForum />} />
+                <Route path="/troubleshoot" element={<Troubleshoot />} />
                 <Route path="/analytics" element={<Analytics />} />
                 <Route path="/workflow" element={<WorkflowMonitor />} />
                 <Route path="/company-profile" element={<CompanyProfile />} />

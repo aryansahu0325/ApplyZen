@@ -71,7 +71,7 @@ export default function Layout() {
       <aside className={`hidden md:flex flex-col bg-white border-r border-slate-200 h-full transition-all duration-300 ${isSidebarCollapsed ? 'w-20' : 'w-64'}`}>
         {/* Logo Area */}
         <div className={`h-16 flex items-center border-b border-slate-100 shrink-0 ${isSidebarCollapsed ? 'justify-center px-0' : 'px-6 justify-between'}`}>
-          <Link to="/dashboard" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shadow-sm shrink-0">
               <Zap className="w-5 h-5 text-white" fill="currentColor" />
             </div>
@@ -190,7 +190,7 @@ export default function Layout() {
             >
               <Menu className="w-5 h-5" />
             </button>
-            <Link to="/dashboard" className="flex items-center gap-2">
+            <Link to="/" className="flex items-center gap-2">
               <div className="w-7 h-7 bg-primary rounded-lg flex items-center justify-center shadow-sm">
                 <Zap className="w-4 h-4 text-white" fill="currentColor" />
               </div>
@@ -231,7 +231,7 @@ export default function Layout() {
             <div className="relative flex-1 flex flex-col max-w-xs w-full bg-white shadow-2xl h-full animate-in slide-in-from-left">
               {/* Header */}
               <div className="h-16 flex items-center justify-between px-6 border-b border-slate-100 shrink-0">
-                <Link to="/dashboard" className="flex items-center gap-2">
+                <Link to="/" className="flex items-center gap-2">
                   <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shadow-sm shrink-0">
                     <Zap className="w-5 h-5 text-white" fill="currentColor" />
                   </div>

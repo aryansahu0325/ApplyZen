@@ -64,7 +64,7 @@ const CATEGORIES_DATA = [
     icon: Hammer,
     iconColor: "text-red-500",
     bgIcon: "bg-red-50/80",
-    link: "/status"
+    link: "/troubleshoot"
   },
   {
     title: "Community Forum",
@@ -72,7 +72,7 @@ const CATEGORIES_DATA = [
     icon: Users,
     iconColor: "text-amber-500",
     bgIcon: "bg-amber-50/80",
-    link: "/career-profile"
+    link: "/forum"
   }
 ];
 
