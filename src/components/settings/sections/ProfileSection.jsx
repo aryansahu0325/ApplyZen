@@ -3,7 +3,7 @@ import { useAuth } from '../../../context/AuthContext';
 
 export default function ProfileSection() {
   const { user, updateUserProfile } = useAuth();
-  
+
   const fileInputRef = useRef(null);
   const [profileSuccess, setProfileSuccess] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -12,6 +12,11 @@ export default function ProfileSection() {
     fullName: '',
     email: '',
     phone: '',
+    location: '',
+    bio: '',
+    currentRole: '',
+    industry: '',
+    experience: '',
     linkedin: '',
     github: '',
     leetcode: ''
@@ -23,6 +28,11 @@ export default function ProfileSection() {
         fullName: user.fullName || 'Alex Rivera',
         email: user.email || 'alex.rivera@zen.ai',
         phone: user.phone || '+1 (555) 123-4567',
+        location: user.location || 'San Francisco, CA, USA',
+        bio: user.bio || 'I am a results-driven Senior Product Designer with over 8 years of experience building scalable design systems and user-centric mobile applications. Passionate about AI integration in everyday workflows and bridging the gap between engineering and creative direction. Currently optimizing career transition paths at ApplyZen.',
+        currentRole: user.currentRole || 'Senior Product Designer',
+        industry: user.industry || 'Technology / SaaS',
+        experience: user.experience || '8.5 Years',
         linkedin: user.linkedin || '',
         github: user.github || '',
         leetcode: user.leetcode || ''
@@ -50,6 +60,9 @@ export default function ProfileSection() {
       reader.readAsDataURL(file);
     }
   };
+
+  const inputClass = (editing) =>
+    `w-full border border-slate-300 dark:border-slate-600 rounded-lg p-3 text-sm text-black focus:outline-none focus:ring-1 focus:ring-emerald-500 ${!editing ? 'opacity-70 cursor-not-allowed bg-slate-50' : 'bg-white'}`;
 
   return (
     <section className="glass-card border border-slate-200/80 dark:border-slate-800/80 rounded-xl overflow-hidden shadow-sm">
@@ -108,11 +121,12 @@ export default function ProfileSection() {
             )}
           </div>
           <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Row 1: Full Name & Email */}
             <div className="space-y-2">
               <label className="text-xs font-semibold text-slate-500">Full Name</label>
               <input
                 disabled={!isEditing}
-                className={`w-full border border-slate-300 dark:border-slate-600 rounded-lg p-3 text-sm text-black focus:outline-none focus:ring-1 focus:ring-emerald-500 ${!isEditing ? 'opacity-70 cursor-not-allowed bg-slate-50' : 'bg-white'}`}
+                className={inputClass(isEditing)}
                 type="text"
                 value={profileForm.fullName}
                 onChange={(e) => setProfileForm({ ...profileForm, fullName: e.target.value })}
@@ -122,38 +136,90 @@ export default function ProfileSection() {
               <label className="text-xs font-semibold text-slate-500">Email Address</label>
               <input
                 disabled={!isEditing}
-                className={`w-full border border-slate-300 dark:border-slate-600 rounded-lg p-3 text-sm text-black focus:outline-none focus:ring-1 focus:ring-emerald-500 ${!isEditing ? 'opacity-70 cursor-not-allowed bg-slate-50' : 'bg-white'}`}
+                className={inputClass(isEditing)}
                 type="email"
                 value={profileForm.email}
                 onChange={(e) => setProfileForm({ ...profileForm, email: e.target.value })}
               />
             </div>
+
+            {/* Row 2: Phone & Location */}
             <div className="space-y-2">
               <label className="text-xs font-semibold text-slate-500">Phone Number</label>
               <input
                 disabled={!isEditing}
-                className={`w-full border border-slate-300 dark:border-slate-600 rounded-lg p-3 text-sm text-black focus:outline-none focus:ring-1 focus:ring-emerald-500 ${!isEditing ? 'opacity-70 cursor-not-allowed bg-slate-50' : 'bg-white'}`}
+                className={inputClass(isEditing)}
                 type="text"
                 value={profileForm.phone || ''}
                 onChange={(e) => setProfileForm({ ...profileForm, phone: e.target.value })}
               />
             </div>
             <div className="space-y-2">
+              <label className="text-xs font-semibold text-slate-500">Location</label>
+              <input
+                disabled={!isEditing}
+                className={inputClass(isEditing)}
+                type="text"
+                placeholder="e.g. San Francisco, CA, USA"
+                value={profileForm.location}
+                onChange={(e) => setProfileForm({ ...profileForm, location: e.target.value })}
+              />
+            </div>
+
+            {/* Row 3: Current Role & Industry */}
+            <div className="space-y-2">
+              <label className="text-xs font-semibold text-slate-500">Current Role</label>
+              <input
+                disabled={!isEditing}
+                className={inputClass(isEditing)}
+                type="text"
+                placeholder="e.g. Senior Product Designer"
+                value={profileForm.currentRole}
+                onChange={(e) => setProfileForm({ ...profileForm, currentRole: e.target.value })}
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="text-xs font-semibold text-slate-500">Industry</label>
+              <input
+                disabled={!isEditing}
+                className={inputClass(isEditing)}
+                type="text"
+                placeholder="e.g. Technology / SaaS"
+                value={profileForm.industry}
+                onChange={(e) => setProfileForm({ ...profileForm, industry: e.target.value })}
+              />
+            </div>
+
+            {/* Row 4: Experience & LinkedIn */}
+            <div className="space-y-2">
+              <label className="text-xs font-semibold text-slate-500">Experience</label>
+              <input
+                disabled={!isEditing}
+                className={inputClass(isEditing)}
+                type="text"
+                placeholder="e.g. 8.5 Years"
+                value={profileForm.experience}
+                onChange={(e) => setProfileForm({ ...profileForm, experience: e.target.value })}
+              />
+            </div>
+            <div className="space-y-2">
               <label className="text-xs font-semibold text-slate-500">LinkedIn URL</label>
               <input
                 disabled={!isEditing}
-                className={`w-full border border-slate-300 dark:border-slate-600 rounded-lg p-3 text-sm text-black focus:outline-none focus:ring-1 focus:ring-emerald-500 ${!isEditing ? 'opacity-70 cursor-not-allowed bg-slate-50' : 'bg-white'}`}
+                className={inputClass(isEditing)}
                 placeholder="linkedin.com/in/username"
                 type="url"
                 value={profileForm.linkedin}
                 onChange={(e) => setProfileForm({ ...profileForm, linkedin: e.target.value })}
               />
             </div>
+
+            {/* Row 5: GitHub & LeetCode */}
             <div className="space-y-2">
               <label className="text-xs font-semibold text-slate-500">GitHub Username</label>
               <input
                 disabled={!isEditing}
-                className={`w-full border border-slate-300 dark:border-slate-600 rounded-lg p-3 text-sm text-black focus:outline-none focus:ring-1 focus:ring-emerald-500 ${!isEditing ? 'opacity-70 cursor-not-allowed bg-slate-50' : 'bg-white'}`}
+                className={inputClass(isEditing)}
                 placeholder="github.com/username"
                 type="text"
                 value={profileForm.github}
@@ -164,13 +230,27 @@ export default function ProfileSection() {
               <label className="text-xs font-semibold text-slate-500">LeetCode Username</label>
               <input
                 disabled={!isEditing}
-                className={`w-full border border-slate-300 dark:border-slate-600 rounded-lg p-3 text-sm text-black focus:outline-none focus:ring-1 focus:ring-emerald-500 ${!isEditing ? 'opacity-70 cursor-not-allowed bg-slate-50' : 'bg-white'}`}
+                className={inputClass(isEditing)}
                 placeholder="leetcode.com/username"
                 type="text"
                 value={profileForm.leetcode}
                 onChange={(e) => setProfileForm({ ...profileForm, leetcode: e.target.value })}
               />
             </div>
+
+            {/* Row 6: Bio - full width */}
+            <div className="md:col-span-2 space-y-2">
+              <label className="text-xs font-semibold text-slate-500">Bio</label>
+              <textarea
+                disabled={!isEditing}
+                className={`${inputClass(isEditing)} min-h-[100px] resize-y`}
+                placeholder="Tell us about yourself..."
+                value={profileForm.bio}
+                onChange={(e) => setProfileForm({ ...profileForm, bio: e.target.value })}
+                rows={4}
+              />
+            </div>
+
             {isEditing ? (
               <div className="md:col-span-2 flex items-center justify-end gap-3 pt-2">
                 <button
@@ -180,6 +260,11 @@ export default function ProfileSection() {
                       fullName: '',
                       email: '',
                       phone: '',
+                      location: '',
+                      bio: '',
+                      currentRole: '',
+                      industry: '',
+                      experience: '',
                       linkedin: '',
                       github: '',
                       leetcode: ''
@@ -198,6 +283,11 @@ export default function ProfileSection() {
                         fullName: user.fullName || 'Alex Rivera',
                         email: user.email || 'alex.rivera@zen.ai',
                         phone: user.phone || '+1 (555) 123-4567',
+                        location: user.location || 'San Francisco, CA, USA',
+                        bio: user.bio || '',
+                        currentRole: user.currentRole || 'Senior Product Designer',
+                        industry: user.industry || 'Technology / SaaS',
+                        experience: user.experience || '8.5 Years',
                         linkedin: user.linkedin || '',
                         github: user.github || '',
                         leetcode: user.leetcode || ''

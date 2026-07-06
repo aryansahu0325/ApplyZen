@@ -10,7 +10,7 @@ export default function ThemeStorageSection() {
   const [coverLettersSize, setCoverLettersSize] = useState(12.1);
   const [cacheSize, setCacheSize] = useState(4.5);
   const [storageLimit, setStorageLimit] = useState(100); // 100 MB default
-  
+
   const [isStorageModalOpen, setIsStorageModalOpen] = useState(false);
 
   const handleThemeChange = (newTheme) => {
@@ -78,7 +78,7 @@ export default function ThemeStorageSection() {
                 <div className="h-full bg-emerald-600" style={{ "width": `${((resumesSize + coverLettersSize + cacheSize) / storageLimit) * 100}%` }}></div>
               </div>
               <p className="text-xs text-slate-555">Includes 12 resume variants and 85 generated cover letters.</p>
-              <button 
+              <button
                 onClick={() => setIsStorageModalOpen(true)}
                 className="text-emerald-600 font-bold text-xs flex items-center gap-xs hover:underline"
               >

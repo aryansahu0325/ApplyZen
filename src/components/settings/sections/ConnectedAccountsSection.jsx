@@ -8,8 +8,8 @@ export default function ConnectedAccountsSection() {
         <h3 className="font-black text-black text-sm uppercase tracking-wider">Connected Accounts</h3>
       </div>
       <div className="p-8">
-         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div 
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div
             onClick={() => window.open('https://accounts.google.com/signin', '_blank')}
             className="p-4 rounded-xl border border-primary bg-emerald-600/5 flex flex-col gap-4 relative hover:border-emerald-600/50 transition-colors cursor-pointer group shadow-sm"
           >
@@ -24,7 +24,7 @@ export default function ConnectedAccountsSection() {
               <p className="text-xs text-slate-500">Synced 2m ago</p>
             </div>
           </div>
-          <div 
+          <div
             onClick={() => window.open('https://outlook.live.com', '_blank')}
             className="p-4 rounded-xl border border-red-200 dark:border-red-800 bg-red-500/5 flex flex-col gap-4 hover:border-red-500/40 transition-colors cursor-pointer group shadow-sm"
           >
@@ -39,7 +39,7 @@ export default function ConnectedAccountsSection() {
               <p className="text-xs text-red-500/80">Tap to connect</p>
             </div>
           </div>
-          <div 
+          <div
             onClick={() => window.open('https://web.whatsapp.com', '_blank')}
             className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 flex flex-col gap-4 relative overflow-hidden hover:border-emerald-600/40 transition-colors cursor-pointer group shadow-sm animate-pulse-slow"
           >

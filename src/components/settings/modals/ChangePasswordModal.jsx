@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../context/AuthContext';
 
@@ -45,7 +46,7 @@ export default function ChangePasswordModal({ onClose }) {
     }, 1500);
   };
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in duration-200">
       <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl max-w-md w-full overflow-hidden shadow-2xl p-6 sm:p-8 animate-in zoom-in-95 duration-200 relative text-slate-900 dark:text-slate-100">
         <button
@@ -64,18 +65,18 @@ export default function ChangePasswordModal({ onClose }) {
 
         <form onSubmit={handlePasswordChangeSubmit} className="space-y-4">
           {passwordError && (
-            <div className="p-3 bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900 text-red-700 dark:text-red-400 text-xs rounded-lg flex items-center gap-2">
+            <div className="p-3 bg-red-55 dark:bg-red-950/20 border border-red-200 dark:border-red-900 text-red-700 dark:text-red-400 text-xs rounded-lg flex items-center gap-2">
               <span className="material-symbols-outlined text-sm">error</span> {passwordError}
             </div>
           )}
           {passwordSuccess && (
-            <div className="p-3 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900 text-emerald-600 dark:text-emerald-400 text-xs rounded-lg flex items-center gap-2">
+            <div className="p-3 bg-emerald-55 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900 text-emerald-600 dark:text-emerald-400 text-xs rounded-lg flex items-center gap-2">
               <span className="material-symbols-outlined text-sm">check_circle</span> Password updated successfully!
             </div>
           )}
 
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-555">Current Password</label>
+            <label className="text-xs font-semibold text-slate-500">Current Password</label>
             <div className="relative">
               <input
                 type={showOldPassword ? "text" : "password"}
@@ -96,7 +97,7 @@ export default function ChangePasswordModal({ onClose }) {
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-555">New Password</label>
+            <label className="text-xs font-semibold text-slate-500">New Password</label>
             <div className="relative">
               <input
                 type={showNewPassword ? "text" : "password"}
@@ -117,7 +118,7 @@ export default function ChangePasswordModal({ onClose }) {
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-555">Confirm New Password</label>
+            <label className="text-xs font-semibold text-slate-500">Confirm New Password</label>
             <div className="relative">
               <input
                 type={showConfirmPassword ? "text" : "password"}
@@ -198,6 +199,7 @@ export default function ChangePasswordModal({ onClose }) {
           </div>
         </form>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

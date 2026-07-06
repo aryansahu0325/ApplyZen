@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 
 export default function StorageManagementModal({
   resumesSize,
@@ -27,7 +28,7 @@ export default function StorageManagementModal({
     }, 1500);
   };
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in duration-200">
       <div className={`bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl ${upgradeStep === 'plans' ? 'max-w-4xl' : 'max-w-lg'} w-full overflow-hidden shadow-2xl p-6 sm:p-8 animate-in zoom-in-95 duration-200 relative text-slate-900 dark:text-slate-100`}>
         <button
@@ -409,6 +410,7 @@ export default function StorageManagementModal({
           </div>
         )}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
