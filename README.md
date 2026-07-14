@@ -149,20 +149,20 @@ ApplyZen follows a multi-agent architecture.
 
 # 📂 Project Structure
 
-```
+```text
 ApplyZen/
-
-├── frontend/
-├── backend/
-├── ai-service/
-├── browser/
-├── docs/
-├── infrastructure/
-├── shared/
-├── tests/
-├── .github/
-├── README.md
-└── LICENSE
+│
+├── frontend/           # React + Vite Frontend application
+├── backend/            # Node.js + Express Backend application
+├── ai-service/         # FastAPI AI agent system
+├── shared/             # Shared schemas, utilities, and configs
+├── infrastructure/     # Infrastructure config (terraform, k8s, etc.)
+├── docs/               # System documentation & requirements
+├── scripts/            # Development and deployment helper scripts
+├── docker/             # Docker configuration files
+├── .github/            # GitHub Actions CI/CD workflows
+├── README.md           # This project readme
+└── docker-compose.yml  # Local multi-container Docker compose configuration
 ```
 
 ---
