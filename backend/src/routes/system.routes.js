@@ -6,6 +6,7 @@
  */
 
 import { Router } from 'express';
+import { getDatabaseStatus } from '../database/index.js';
 
 const router = Router();
 
@@ -21,11 +22,14 @@ router.get('/', (req, res) => {
 
 /**
  * GET /health
- * Operational uptime health check route.
+ * Operational uptime health check route exposing server and database status.
  */
 router.get('/health', (req, res) => {
+  const dbStatus = getDatabaseStatus();
+
   res.status(200).json({
     status: 'UP',
+    database: dbStatus,
   });
 });
 
