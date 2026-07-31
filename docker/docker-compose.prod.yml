@@ -1,0 +1,5 @@
+# ApplyZen - Production Docker Compose Setup
+# Designed for staging/production deployments:
+# Sets up application services using production Dockerfiles.
+# Uses managed cloud database endpoints (MongoDB Atlas) rather than spinning up a local db container.
+# Disables bind mounts, locks versions, and binds port bindings behind Nginx reverse proxy.

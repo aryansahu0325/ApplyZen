@@ -1,0 +1,4 @@
+# ApplyZen - Development Docker Compose Setup
+# Designed for local development:
+# Sets up local database (MongoDB), cache (Redis), message queue (RabbitMQ), Express Backend, Python AI Service, and React Frontend.
+# Configures bind mounts (volumes) to support hot-reloading for code changes.
