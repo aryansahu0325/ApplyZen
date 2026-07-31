@@ -2,7 +2,7 @@
  * Central Application Configuration.
  *
  * Consolidates environment variables and default application settings.
- * Prepared for future integration of MongoDB, JWT, OAuth, Cloudinary, Redis, and RabbitMQ.
+ * Prepared for MongoDB, JWT, OAuth, Cloudinary, Redis, and RabbitMQ.
  */
 
 import dotenv from 'dotenv';
@@ -12,15 +12,18 @@ const config = Object.freeze({
   env: process.env.NODE_ENV || 'development',
   port: parseInt(process.env.PORT || '5000', 10),
 
-  // Database Configuration Placeholder
+  // Database Configuration
   database: {
     uri: process.env.MONGODB_URI || '',
   },
 
-  // Authentication Configuration Placeholder
+  // Authentication & Security Configuration
   auth: {
-    jwtSecret: process.env.JWT_SECRET || '',
-    jwtExpiresIn: process.env.JWT_EXPIRES_IN || '7d',
+    jwtAccessSecret: process.env.JWT_SECRET || 'dev_jwt_access_secret_key_123456789',
+    jwtAccessExpiresIn: process.env.JWT_ACCESS_EXPIRES_IN || '15m',
+    jwtRefreshSecret: process.env.JWT_REFRESH_SECRET || 'dev_jwt_refresh_secret_key_987654321',
+    jwtRefreshExpiresIn: process.env.JWT_REFRESH_EXPIRES_IN || '7d',
+    cookieMaxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
     oauth: {
       google: {
         clientId: process.env.GOOGLE_CLIENT_ID || '',

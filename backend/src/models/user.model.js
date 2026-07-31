@@ -68,13 +68,10 @@ const userSchema = new mongoose.Schema(
 );
 
 // Indexes
-// 1. Email Unique Index for fast lookup and database-enforced uniqueness
-userSchema.index({ email: 1 }, { unique: true });
-
-// 2. Provider Single-Field Index for analytics and filtering by auth source
+// 1. Single-Field Index on provider for analytics and auth source filtering
 userSchema.index({ provider: 1 });
 
-// 3. Compound Index (provider + providerId) for sub-millisecond OAuth authentication lookups
+// 2. Compound Index (provider + providerId) for sub-millisecond OAuth authentication lookups
 userSchema.index({ provider: 1, providerId: 1 });
 
 const User = mongoose.models.User || mongoose.model('User', userSchema);
