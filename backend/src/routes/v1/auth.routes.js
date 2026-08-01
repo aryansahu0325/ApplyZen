@@ -44,22 +44,45 @@ router.post('/logout', (req, res, next) => authController.logout(req, res, next)
 router.get('/me', authenticate, (req, res, next) => authController.getMe(req, res, next));
 
 /**
+ * Dynamic Google OAuth Route Handlers
+ * Wrapped dynamically to prevent 'Unknown authentication strategy "google"' 
+ * from crashing the server at boot if Google credentials are not set.
+ */
+const handleGoogleAuth = (req, res, next) => {
+  if (!passport._strategies || !passport._strategies.google) {
+    return res.status(501).json({
+      success: false,
+      message: 'Google OAuth is not configured on this server.',
+    });
+  }
+  return passport.authenticate('google', { scope: ['profile', 'email'], session: false })(req, res, next);
+};
+
+const handleGoogleCallback = (req, res, next) => {
+  if (!passport._strategies || !passport._strategies.google) {
+    return res.status(501).json({
+      success: false,
+      message: 'Google OAuth is not configured on this server.',
+    });
+  }
+  return passport.authenticate('google', {
+    failureRedirect: `${config.frontendUrl}/auth/login`,
+    session: false,
+  })(req, res, next);
+};
+
+/**
  * GET /api/v1/auth/google
  * Redirect user to Google Login consent screen.
  */
-router.get(
-  '/google',
-  passport.authenticate('google', { scope: ['profile', 'email'], session: false })
-);
+router.get('/google', handleGoogleAuth);
 
 /**
  * GET /api/v1/auth/google/callback
  * Google callback URI for passport authentication, followed by token setting and redirect.
  */
-router.get(
-  '/google/callback',
-  passport.authenticate('google', { failureRedirect: `${config.frontendUrl}/auth/login`, session: false }),
-  (req, res, next) => authController.googleCallback(req, res, next)
+router.get('/google/callback', handleGoogleCallback, (req, res, next) =>
+  authController.googleCallback(req, res, next)
 );
 
 export default router;
