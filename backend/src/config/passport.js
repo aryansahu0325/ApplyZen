@@ -19,34 +19,30 @@ import authService from '../services/auth.service.js';
  * It delegates all user resolution logic to authService.handleGoogleAuth().
  */
 
-console.log("CLIENT ID:", config.auth.oauth.google.clientId);
-console.log("CLIENT SECRET:", config.auth.oauth.google.clientSecret);
-console.log("CALLBACK:", config.auth.oauth.google.callbackUrl);
+const { clientId, clientSecret, callbackUrl } = config.auth.oauth.google;
 
-passport.use(
-  new GoogleStrategy(
-    {
-      clientID: config.auth.oauth.google.clientId,
-      clientSecret: config.auth.oauth.google.clientSecret,
-      callbackURL: config.auth.oauth.google.callbackUrl,
-      scope: ['profile', 'email'],
-    },
-    async (accessToken, refreshToken, profile, done) => {
-      try {
-        // Delegate all user lookup, linking, creation, and token generation to AuthService
-        const authData = await authService.handleGoogleAuth(profile);
-
-        // Pass resolved authData (user and tokens) to Passport — done(error, authData)
-        return done(null, authData);
-      } catch (error) {
-        // Pass error to Passport — triggers failureRedirect or next(err)
-        return done(error, null);
+if (clientId && clientSecret && !clientId.includes('your_google_client_id')) {
+  passport.use(
+    new GoogleStrategy(
+      {
+        clientID: clientId,
+        clientSecret: clientSecret,
+        callbackURL: callbackUrl,
+        scope: ['profile', 'email'],
+      },
+      async (accessToken, refreshToken, profile, done) => {
+        try {
+          const authData = await authService.handleGoogleAuth(profile);
+          return done(null, authData);
+        } catch (error) {
+          return done(error, null);
+        }
       }
-    }
-  )
-);
+    )
+  );
+  console.log('[INFO] Google OAuth strategy registered successfully.');
+} else {
+  console.warn('[WARN] Google OAuth Client ID/Secret not configured or using placeholders. Google OAuth strategy disabled.');
+}
 
 export default passport;
-console.log("CLIENT ID:", config.auth.oauth.google.clientId);
-console.log("CLIENT SECRET:", config.auth.oauth.google.clientSecret);
-console.log("CALLBACK:", config.auth.oauth.google.callbackUrl);

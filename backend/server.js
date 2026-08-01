@@ -10,14 +10,14 @@ import { logger } from './src/config/logger.js';
 import { connectDatabase, disconnectDatabase } from './src/database/index.js';
 import app from './src/app.js';
 
-const PORT = config.port || 5000;
+const PORT = process.env.PORT || config.port || 5000;
 
 const startServer = async () => {
   // 1. Establish Database Connection
   await connectDatabase();
 
   // 2. Start Express HTTP Server
-  const server = app.listen(PORT, () => {
+  const server = app.listen(PORT, '0.0.0.0', () => {
     logger.info(`ApplyZen Backend running in ${config.env} mode on port ${PORT}`);
   });
 
