@@ -1,23 +1,21 @@
 import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { getCurrentUser } from '../api/client';
 
 /**
  * AuthSuccess Page.
  *
  * Handles the post-OAuth redirect from the backend.
  *
- * After Google OAuth completes, the backend sets HttpOnly cookies
- * (accessToken and refreshToken) and redirects the browser here.
+ * After Google OAuth completes, the backend redirects here with
+ * the access token, refresh token, and user data as URL query params.
+ * (HttpOnly cookies cannot be used cross-origin between Railway and Vercel.)
  *
  * Responsibilities:
- *  1. Call GET /api/v1/auth/me (cookies are sent automatically).
- *  2. If successful, save the user to AuthContext and redirect to Dashboard.
- *  3. If it fails, redirect back to Login.
- *
- * This page is intentionally stateless — it shows a spinner and
- * transitions the user without requiring any interaction.
+ *  1. Parse ?token=, ?refreshToken=, and ?user= from the URL.
+ *  2. Store them in localStorage and AuthContext.
+ *  3. Redirect to Dashboard.
+ *  4. On any failure, redirect back to Login.
  */
 export default function AuthSuccess() {
   const { setAuthUser } = useAuth();
@@ -29,30 +27,44 @@ export default function AuthSuccess() {
     if (hasRun.current) return;
     hasRun.current = true;
 
-    const verifyAndRedirect = async () => {
+    const handleOAuthSuccess = () => {
       try {
-        // Fetch authenticated user profile using the HttpOnly cookie sent automatically
-        const userData = await getCurrentUser();
+        const params = new URLSearchParams(window.location.search);
+        const token = params.get('token');
+        const refreshToken = params.get('refreshToken');
+        const userStr = params.get('user');
 
-        // Save the authenticated user to global auth state and localStorage
+        if (!token || !userStr) {
+          console.error('OAuth success: missing token or user data in URL params');
+          navigate('/login', { replace: true });
+          return;
+        }
+
+        // Store tokens in localStorage for subsequent API calls
+        localStorage.setItem('applyzen_token', token);
+        if (refreshToken) {
+          localStorage.setItem('applyzen_refresh_token', refreshToken);
+        }
+
+        // Parse and store user in AuthContext + localStorage
+        const userData = JSON.parse(userStr);
         setAuthUser(userData);
 
-        // Redirect to the application dashboard
+        // Redirect to dashboard
         navigate('/dashboard', { replace: true });
       } catch (err) {
-        // Authentication verification failed — redirect to Login cleanly
         console.error('OAuth verification failed:', err);
         navigate('/login', { replace: true });
       }
     };
 
-    verifyAndRedirect();
+    handleOAuthSuccess();
   }, [setAuthUser, navigate]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-surface-container-lowest">
       <div className="flex flex-col items-center gap-4">
-        {/* Spinner — matches existing design system loading pattern */}
+        {/* Spinner */}
         <div className="w-10 h-10 border-4 border-primary border-t-transparent rounded-full animate-spin" />
         <p className="text-sm font-medium text-on-surface-variant">Completing sign-in...</p>
       </div>

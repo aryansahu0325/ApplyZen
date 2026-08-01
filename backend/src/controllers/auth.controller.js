@@ -133,13 +133,17 @@ class AuthController {
   async googleCallback(req, res, next) {
     try {
       // req.user contains the authData returned from authService.handleGoogleAuth
-      const { accessToken, refreshToken } = req.user;
+      const { accessToken, refreshToken, user } = req.user;
 
-      // Set cookies using existing cookie helper — identical to Login API
-      attachTokenCookies(res, accessToken, refreshToken);
+      // NOTE: Cannot use HttpOnly cookies for cross-origin (Railway backend → Vercel frontend).
+      // Instead, pass tokens as URL params — AuthSuccess page will store them in localStorage.
+      const params = new URLSearchParams({
+        token: accessToken,
+        refreshToken,
+        user: JSON.stringify(user),
+      });
 
-      // Redirect to frontend auth success page
-      return res.redirect(`${config.frontendUrl}/auth/success`);
+      return res.redirect(`${config.frontendUrl}/auth/success?${params.toString()}`);
     } catch (error) {
       next(error);
     }
