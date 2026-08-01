@@ -25,6 +25,7 @@ const Login = React.lazy(() => import('./pages/Login'));
 const SignUp = React.lazy(() => import('./pages/SignUp'));
 const EnhancedLanding = React.lazy(() => import('./pages/EnhancedLanding'));
 const NotFound = React.lazy(() => import('./pages/NotFound'));
+const AuthSuccess = React.lazy(() => import('./pages/AuthSuccess'));
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
               {/* Public Routes */}
               <Route path="/" element={<HomeHero />} />
               <Route path="/landing-v2" element={<EnhancedLanding />} />
+              <Route path="/auth/success" element={<AuthSuccess />} />
 
               {/* Guest Only Routes (Login/SignUp) */}
               <Route path="/login" element={

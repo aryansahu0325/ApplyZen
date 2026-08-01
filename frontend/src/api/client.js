@@ -26,6 +26,7 @@ export async function apiFetch(endpoint, options = {}) {
   }
 
   const fetchOptions = {
+    credentials: 'include',
     ...options,
     headers
   };
@@ -59,4 +60,15 @@ export async function apiFetch(endpoint, options = {}) {
   }
 
   return response;
+}
+
+/**
+ * Retrieve the current authenticated user profile payload.
+ *
+ * @returns {Promise<object>} The user profile data object.
+ */
+export async function getCurrentUser() {
+  const response = await apiFetch('/api/v1/auth/me');
+  const result = await response.json();
+  return result.data.user;
 }

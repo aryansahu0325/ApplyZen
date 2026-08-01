@@ -46,3 +46,4 @@ process.on('uncaughtException', (error) => {
 });
 
 startServer();
+// Trigger nodemon restart to reload CORS configuration

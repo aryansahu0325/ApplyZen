@@ -90,8 +90,26 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  /**
+   * Set the authenticated user directly from an external source (e.g. Google OAuth).
+   * Persists user data to localStorage and updates in-memory state.
+   *
+   * @param {object} userData - Authenticated user profile from the API.
+   */
+  const setAuthUser = (userData) => {
+    const userPayload = {
+      fullName: userData.firstName
+        ? `${userData.firstName} ${userData.lastName || ''}`.trim()
+        : userData.fullName || userData.email,
+      email: userData.email,
+      provider: userData.provider,
+    };
+    localStorage.setItem('applyzen_current_user', JSON.stringify(userPayload));
+    setUser(userPayload);
+  };
+
   return (
-    <AuthContext.Provider value={{ user, loading, login, signup, logout, loginAsGuest, updateUserProfile }}>
+    <AuthContext.Provider value={{ user, loading, login, signup, logout, loginAsGuest, updateUserProfile, setAuthUser }}>
       {children}
     </AuthContext.Provider>
   );

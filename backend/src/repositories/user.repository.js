@@ -33,6 +33,35 @@ class UserRepository {
   }
 
   /**
+   * Find user by OAuth provider and provider-specific profile ID.
+   * Used during Google OAuth callback to detect returning Google users.
+   *
+   * @param {string} provider - OAuth provider name (e.g. 'google').
+   * @param {string} providerId - Provider-issued profile ID.
+   * @returns {Promise<object|null>} User document or null.
+   */
+  async findByProviderId(provider, providerId) {
+    return User.findOne({ provider, providerId }).exec();
+  }
+
+  /**
+   * Link an existing local account to an OAuth provider.
+   * Updates provider and providerId without modifying the password field.
+   *
+   * @param {string} userId - MongoDB ObjectId of the user to update.
+   * @param {string} provider - OAuth provider name (e.g. 'google').
+   * @param {string} providerId - Provider-issued profile ID.
+   * @returns {Promise<object|null>} Updated user document or null.
+   */
+  async updateProvider(userId, provider, providerId) {
+    return User.findByIdAndUpdate(
+      userId,
+      { provider, providerId },
+      { new: true } // Return the updated document
+    ).exec();
+  }
+
+  /**
    * Create and persist a new User entity.
    *
    * @param {object} userData - User creation attributes.
@@ -45,3 +74,4 @@ class UserRepository {
 }
 
 export default new UserRepository();
+

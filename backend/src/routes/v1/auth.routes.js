@@ -8,6 +8,8 @@ import { Router } from 'express';
 import authController from '../../controllers/auth.controller.js';
 import { validate, registerSchema, loginSchema } from '../../validators/auth.validator.js';
 import { authenticate } from '../../middleware/auth.middleware.js';
+import passport from '../../config/passport.js';
+import config from '../../config/index.js';
 
 const router = Router();
 
@@ -24,6 +26,12 @@ router.post('/register', validate(registerSchema), (req, res, next) => authContr
 router.post('/login', validate(loginSchema), (req, res, next) => authController.login(req, res, next));
 
 /**
+ * POST /api/v1/auth/refresh
+ * Refresh Access Token using Refresh Token.
+ */
+router.post('/refresh', (req, res, next) => authController.refreshToken(req, res, next));
+
+/**
  * POST /api/v1/auth/logout
  * Logout user and clear tokens.
  */
@@ -34,5 +42,24 @@ router.post('/logout', (req, res, next) => authController.logout(req, res, next)
  * Fetch authenticated user profile.
  */
 router.get('/me', authenticate, (req, res, next) => authController.getMe(req, res, next));
+
+/**
+ * GET /api/v1/auth/google
+ * Redirect user to Google Login consent screen.
+ */
+router.get(
+  '/google',
+  passport.authenticate('google', { scope: ['profile', 'email'], session: false })
+);
+
+/**
+ * GET /api/v1/auth/google/callback
+ * Google callback URI for passport authentication, followed by token setting and redirect.
+ */
+router.get(
+  '/google/callback',
+  passport.authenticate('google', { failureRedirect: `${config.frontendUrl}/auth/login`, session: false }),
+  (req, res, next) => authController.googleCallback(req, res, next)
+);
 
 export default router;
